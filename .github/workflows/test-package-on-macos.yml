@@ -1,10 +1,9 @@
-name: Test Package on macOS
-
-on: [push, pull_request]
-
 jobs:
   test:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9, 3.10]  # Add the Python versions you want to test
 
     steps:
     - name: Checkout repository
@@ -13,7 +12,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.11'  # Replace with the Python version you want to test against
+        python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
       run: |
@@ -22,6 +21,4 @@ jobs:
 
     - name: Run tests
       run: |
-        # Run your package's tests here
-        # For example, if you're using pytest:
         pytest
