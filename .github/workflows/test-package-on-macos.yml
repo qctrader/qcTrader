@@ -1,24 +1,30 @@
 name: Test Package on macOS
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        python-version: [3.10, 3.11]  # Add the Python versions you want to test
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  # Notice: node20 will be used by default
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v3  # Notice: node20 will be used by default
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.10'  # Choose a supported version, like 3.7, 3.8, 3.9, 3.10, or 3.11
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install .
+
+    # - name: Run tests
+    #   run: pytest
