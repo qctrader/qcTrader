@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+qcTrader/__init__.py
+qcTrader/environment.py
+qcTrader/is_dot_net_installed.py
+qcTrader/lean_runner.py
+qcTrader/uninstall.py
+qcTrader.egg-info/PKG-INFO
+qcTrader.egg-info/SOURCES.txt
+qcTrader.egg-info/dependency_links.txt
+qcTrader.egg-info/entry_points.txt
+qcTrader.egg-info/requires.txt
+qcTrader.egg-info/top_level.txt
