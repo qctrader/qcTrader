@@ -1,0 +1,2 @@
+[console_scripts]
+uninstall_qcTrader = qcTrader.uninstall:uninstall_lean_runner
