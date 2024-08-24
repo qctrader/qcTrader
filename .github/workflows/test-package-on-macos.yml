@@ -46,6 +46,12 @@ jobs:
         pip install --no-cache-dir -r requirements.txt || echo "No requirements.txt found"
         pip install .
         
+    - name: Build pythonnet with correct macros
+      run: |
+        pip install cython
+        export CFLAGS="-DPYTHON310"  
+        pip install pythonnet --verbose     
+        
     - name: Run the script
       run: |
         python examples/example_script.py
