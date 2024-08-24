@@ -20,6 +20,11 @@ jobs:
       uses: actions/setup-python@v3  # Notice: node20 will be used by default
       with:
         python-version: '3.10'  # Choose a supported version, like 3.7, 3.8, 3.9, 3.10, or 3.11
+        
+    - name: Install Mono and libomp (required for pythonnet)
+      run: |
+        brew update
+        brew install mono libomp    
 
     - name: Install dependencies
       run: |
