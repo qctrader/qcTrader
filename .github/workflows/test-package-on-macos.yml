@@ -35,6 +35,12 @@ jobs:
         brew install mono libomp pkg-config cmake gettext
         brew link gettext --force
 
+        
+    - name: Install .NET SDK (includes runtime)
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'  # Specify the .NET version you need    
+
     - name: Set Mono Environment Variables
       run: |
         echo 'export PATH="/usr/local/opt/mono/bin:$PATH"' >> $GITHUB_ENV
