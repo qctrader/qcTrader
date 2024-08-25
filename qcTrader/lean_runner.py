@@ -5,7 +5,8 @@ import subprocess
 import sys
 
 class LeanRunner:
-    def __init__(self, lean_path='qcTrader/Lean'):
+    def __init__(self, lean_path='qcTrader/Lean/Launcher/bin/Release'):
+        
         self.lean_path = lean_path
         self.base_config = {
             "environment": "backtesting",
@@ -102,13 +103,13 @@ class LeanRunner:
 
         return statistics
  
-
-
     def run_algorithm(self, algorithm_name, algorithm_location, parameters, config_file_path=None):
         print("Starting run_algorithm...")  # Debug statement
+
+        # Generate the configuration file if none is provided
         if config_file_path is None:
             config_file_path = self.generate_config(algorithm_name, algorithm_location, parameters)
- 
+
         print(f"Config file path: {config_file_path}")  # Debug statement
 
         # Ensure paths are cross-platform compatible
@@ -116,45 +117,130 @@ class LeanRunner:
         dll_path = os.path.normpath(dll_path)
         config_file_path = os.path.normpath(config_file_path)
 
+        # Verify DLL and config file existence
+        if not os.path.exists(dll_path):
+            print(f"Error: DLL not found at {dll_path}")
+            return None
+        if not os.path.exists(config_file_path):
+            print(f"Error: Config file not found at {config_file_path}")
+            return None
+
+        print(f"DLL found: {dll_path}")
+        print(f"Config file found: {config_file_path}")
+
+        # Construct the command to run the backtest
         command = [
             'dotnet', 
             dll_path, 
             '--config', config_file_path
         ]
         try:
-            # Run the backtest
+            print(f"Running command: {command}")
+
+            # Run the backtest using subprocess with communicate()
             process = subprocess.Popen(
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
+                encoding='utf-8',  # Ensure the encoding is set
+                errors='replace'   # Handle encoding errors gracefully
             )
-            messages_logs_filtered = []
+            
+            stdout, stderr = process.communicate()
 
-            # Filter the logs in real-time
-            while True:
-                output = process.stdout.readline()
-                if output == "" and process.poll() is not None:
-                    break
-                if output:
-                    # Filter out specific error
-                    if "System.InvalidOperationException: GIL must always be released" not in output:
-                        print(output.strip())  # Print the filtered log
-                        messages_logs_filtered.append(output.strip())
-                    else:
-                        print("Filtered out GIL error during shutdown.")  # Optionally log the filtering
-            
-            # Ensure to read stderr to avoid deadlocks
-            for error in process.stderr:
-                if "System.InvalidOperationException: GIL must always be released" not in error:
-                    print(error.strip())
+            # Process stdout
+            messages_logs_filtered = []
+            for line in stdout.splitlines():
+                if "System.InvalidOperationException: GIL must always be released" not in line:
+                    print(line.strip())
+                    messages_logs_filtered.append(line.strip())
                 else:
-                    print("Filtered out GIL error during shutdown.")  # Optionally log the filtering
-            
+                    print("Filtered out GIL error during shutdown.")
+
+            # Process stderr
+            if stderr:
+                for error in stderr.splitlines():
+                    if "System.InvalidOperationException: GIL must always be released" not in error:
+                        print(error.strip())
+                    else:
+                        print("Filtered out GIL error during shutdown.")
+
+            # Combine the filtered logs and extract statistics
             result = "\n".join(messages_logs_filtered)
             resDict = self.extract_statistics_dict(result)
             print(f"Algorithm {algorithm_name} run completed successfully.")
             return resDict
+
         except subprocess.CalledProcessError as e:
             print(f"An error occurred while running the algorithm {algorithm_name}: {e}")
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+
+
+    # def run_algorithm(self, algorithm_name, algorithm_location, parameters, config_file_path=None):
+    #     print("Starting run_algorithm...")  # Debug statement
+    #     if config_file_path is None:
+    #         config_file_path = self.generate_config(algorithm_name, algorithm_location, parameters)
+ 
+    #     print(f"Config file path: {config_file_path}")  # Debug statement
+
+    #     # Ensure paths are cross-platform compatible
+    #     dll_path = os.path.join(self.lean_path, 'QuantConnect.Lean.Launcher.dll')
+    #     dll_path = os.path.normpath(dll_path)
+    #     config_file_path = os.path.normpath(config_file_path)
+
+
+    #     if os.path.exists(dll_path):
+    #         print(f"DLL found: {dll_path}")
+    #     if os.path.exists(config_file_path):
+    #         print(f"Config file found: {config_file_path}")
+
+    #     command = [
+    #         'dotnet', 
+    #         dll_path, 
+    #         '--config', 
+    #         config_file_path
+    #     ]
+    #     try:
+    #         print(command)
+
+            
+    #         # Run the backtest
+    #         process = subprocess.Popen(
+    #             command,
+    #             stdout=subprocess.PIPE,
+    #             stderr=subprocess.PIPE,
+    #             text=True,
+    #             encoding='utf-8',  # Specify encoding
+    #         errors='replace'   # Handle encoding errors
+    #         )
+    #         messages_logs_filtered = []
+
+    #         # Filter the logs in real-time
+    #         while True:
+    #             output = process.stdout.readline()
+    #             if output == "" and process.poll() is not None:
+    #                 break
+    #             if output:
+    #                 # Filter out specific error
+    #                 if "System.InvalidOperationException: GIL must always be released" not in output:
+    #                     print(output.strip())  # Print the filtered log
+    #                     messages_logs_filtered.append(output.strip())
+    #                 else:
+    #                     print("Filtered out GIL error during shutdown.")  # Optionally log the filtering
+            
+    #         # Ensure to read stderr to avoid deadlocks
+    #         for error in process.stderr:
+    #             if "System.InvalidOperationException: GIL must always be released" not in error:
+    #                 print(error.strip())
+    #             else:
+    #                 print("Filtered out GIL error during shutdown.")  # Optionally log the filtering
+            
+    #         result = "\n".join(messages_logs_filtered)
+    #         resDict = self.extract_statistics_dict(result)
+    #         print(f"Algorithm {algorithm_name} run completed successfully.")
+    #         return resDict
+    #     except subprocess.CalledProcessError as e:
+    #         print(f"An error occurred while running the algorithm {algorithm_name}: {e}")
 

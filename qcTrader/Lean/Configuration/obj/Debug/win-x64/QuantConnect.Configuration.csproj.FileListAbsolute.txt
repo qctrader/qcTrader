@@ -1,0 +1,16 @@
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Configuration.deps.json
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Configuration.dll
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Configuration.pdb
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Configuration.xml
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Logging.pdb
+D:\qctrader\qcTrader\lean\Configuration\bin\Debug\win-x64\QuantConnect.Logging.xml
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantConnect.Configuration.csproj.AssemblyReference.cache
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantConnect.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantConnect.Configuration.csproj.CoreCompileInputs.cache
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantConnect.Configuration.sourcelink.json
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantCon.0B6A77F3.Up2Date
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantConnect.Configuration.dll
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\refint\QuantConnect.Configuration.dll
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\QuantConnect.Configuration.pdb
+D:\qctrader\qcTrader\lean\Configuration\obj\Debug\win-x64\ref\QuantConnect.Configuration.dll

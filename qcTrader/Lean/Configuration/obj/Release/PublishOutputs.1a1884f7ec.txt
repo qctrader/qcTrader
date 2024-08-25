@@ -1,0 +1,10 @@
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Configuration.dll
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Configuration.deps.json
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Configuration.pdb
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\McMaster.Extensions.CommandLineUtils.dll
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\Newtonsoft.Json.dll
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\System.ComponentModel.Composition.dll
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Logging.pdb
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Logging.xml
+D:\qctrader\qcTrader\Lean\Configuration\bin\Release\publish\QuantConnect.Configuration.xml

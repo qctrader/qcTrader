@@ -10,7 +10,10 @@ setup(
     'pythonnet>=2.5.2',
     'pandas>=1.1.5',
     'numpy>=1.19.5',
-    'quantconnect',  
+    'quantconnect', 
+    'requests',
+    'tqdm',
+    'distro' 
    ],
     entry_points={
         'console_scripts': [

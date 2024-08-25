@@ -1,0 +1,16 @@
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.xml
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.deps.json
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.dll
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.pdb
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Logging.pdb
+D:\qctrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Logging.xml
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.csproj.AssemblyReference.cache
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.GeneratedMSBuildEditorConfig.editorconfig
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.csproj.CoreCompileInputs.cache
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.sourcelink.json
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantCon.794D27AD.Up2Date
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.dll
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\refint\QuantConnect.Compression.dll
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.pdb
+D:\qctrader\qcTrader\Lean\Compression\obj\Debug\ref\QuantConnect.Compression.dll
