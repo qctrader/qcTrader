@@ -1,0 +1,4 @@
+quantconnect
+numpy
+pandas
+pythonnet

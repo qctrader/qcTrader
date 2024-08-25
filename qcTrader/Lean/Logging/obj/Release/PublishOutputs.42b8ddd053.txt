@@ -1,0 +1,5 @@
+D:\qctrader\qcTrader\Lean\Logging\bin\Release\publish\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\Lean\Logging\bin\Release\publish\QuantConnect.Logging.deps.json
+D:\qctrader\qcTrader\Lean\Logging\bin\Release\publish\QuantConnect.Logging.pdb
+D:\qctrader\qcTrader\Lean\Logging\bin\Release\publish\System.ComponentModel.Composition.dll
+D:\qctrader\qcTrader\Lean\Logging\bin\Release\publish\QuantConnect.Logging.xml

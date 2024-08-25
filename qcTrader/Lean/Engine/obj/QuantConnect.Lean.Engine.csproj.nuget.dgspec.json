@@ -1,0 +1,1227 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj": {}
+  },
+  "projects": {
+    "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj",
+        "projectName": "QuantConnect.Algorithm.CSharp",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Algorithm.Framework\\QuantConnect.Algorithm.Framework.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.Framework\\QuantConnect.Algorithm.Framework.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Accord": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Accord.Fuzzy": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Accord.Math": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Accord.Statistics": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "DynamicInterop": {
+              "target": "Package",
+              "version": "[0.9.1, )"
+            },
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Algorithm.Framework\\QuantConnect.Algorithm.Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Algorithm.Framework\\QuantConnect.Algorithm.Framework.csproj",
+        "projectName": "QuantConnect.Algorithm.Framework",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.Framework\\QuantConnect.Algorithm.Framework.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Accord": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Accord.Math": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Accord.Statistics": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj",
+        "projectName": "QuantConnect.AlgorithmFactory",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj",
+        "projectName": "QuantConnect.Algorithm",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
+        "projectName": "QuantConnect.Api",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj",
+        "projectName": "QuantConnect.Brokerages",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Brokerages\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[19.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj",
+        "projectName": "QuantConnect.Common",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "CloneExtensions": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.IO.RecyclableMemoryStream": {
+              "target": "Package",
+              "version": "[2.3.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "QLNet": {
+              "target": "Package",
+              "version": "[1.13.0, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            },
+            "fasterflect": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "protobuf-net": {
+              "target": "Package",
+              "version": "[3.1.33, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj",
+        "projectName": "QuantConnect.Compression",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Compression\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "DotNetZip": {
+              "target": "Package",
+              "version": "[1.16.0, )"
+            },
+            "SharpZipLib": {
+              "target": "Package",
+              "version": "[1.3.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj",
+        "projectName": "QuantConnect.Configuration",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "McMaster.Extensions.CommandLineUtils": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj",
+        "projectName": "QuantConnect.Lean.Engine",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Engine\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            },
+            "fasterflect": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj",
+        "projectName": "QuantConnect.Indicators",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+              },
+              "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+                "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "QuantConnect.pythonnet": {
+              "target": "Package",
+              "version": "[2.0.38, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj",
+        "projectName": "QuantConnect.Logging",
+        "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.ComponentModel.Composition": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

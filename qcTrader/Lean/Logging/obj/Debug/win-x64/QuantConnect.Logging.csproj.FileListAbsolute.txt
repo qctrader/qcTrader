@@ -1,0 +1,12 @@
+D:\qctrader\qcTrader\lean\Logging\bin\Debug\win-x64\QuantConnect.Logging.deps.json
+D:\qctrader\qcTrader\lean\Logging\bin\Debug\win-x64\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\lean\Logging\bin\Debug\win-x64\QuantConnect.Logging.pdb
+D:\qctrader\qcTrader\lean\Logging\bin\Debug\win-x64\QuantConnect.Logging.xml
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\QuantConnect.Logging.csproj.AssemblyReference.cache
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\QuantConnect.Logging.GeneratedMSBuildEditorConfig.editorconfig
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\QuantConnect.Logging.csproj.CoreCompileInputs.cache
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\QuantConnect.Logging.sourcelink.json
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\refint\QuantConnect.Logging.dll
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\QuantConnect.Logging.pdb
+D:\qctrader\qcTrader\lean\Logging\obj\Debug\win-x64\ref\QuantConnect.Logging.dll
