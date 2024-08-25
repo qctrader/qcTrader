@@ -1,7 +1,7 @@
 {
     "environment": "backtesting",
     "algorithm-language": "Python",
-    "data-folder": "D:\\qctrader\\qcTrader/Lean/Launcher/bin/Release\\Data",
+    "data-folder": "qcTrader/Lean/Data",
     "debugging": false,
     "debugging-method": "LocalCmdLine",
     "log-handler": "ConsoleLogHandler",
@@ -28,7 +28,7 @@
     "job-organization-id": "",
     "log-level": "trace",
     "debug-mode": true,
-    "results-destination-folder": "D:\\qctrader\\qcTrader/Lean/Launcher/bin/Release\\Results",
+    "results-destination-folder": "qcTrader/Lean/Results",
     "mute-python-library-logging": "False",
     "close-automatically": true,
     "python-additional-paths": [],
@@ -46,7 +46,7 @@
         }
     },
     "algorithm-type-name": "BacktestingAlgorithm.py",
-    "algorithm-location": "qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py",
+    "algorithm-location": "qcTrader/Lean/Algorithm.Python/BacktestingAlgorithm.py",
     "parameters": {
         "weighting_scheme": "market_cap",
         "rebalancing_frequency": "monthly",

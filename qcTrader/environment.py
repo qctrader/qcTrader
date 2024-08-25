@@ -11,7 +11,7 @@ def find_libpython_so():
     try:
         # Use the find command to locate libpython3.X.so
         print(f"Searching for {libpython_name}...")
-        result = subprocess.run(['sudo', 'find', '/usr', '-name', libpython_name], 
+        result = subprocess.run(['find', '/usr', '-name', libpython_name], 
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
         
         # Check if the command found any results
