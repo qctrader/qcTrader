@@ -5,23 +5,23 @@ import subprocess
 
 
 class LeanRunner:
-    def __init__(self, lean_path=None):
-        if lean_path is None:
-            # Default path for local development
-            lean_path = 'qcTrader/Lean/Launcher/bin/Release'
+    def __init__(self, lean_path='Lean/Launcher/bin/Release'):
 
-        # Adjust the path if running in Docker
         # Dynamically capture the working directory
         current_working_directory = os.getcwd()
 
-        # Adjust the path based on the working directory
-        lean_path = os.path.join(current_working_directory, lean_path)
+        # Store relative path for internal use
+        self.internal_lean_path = lean_path
 
-        self.lean_path = lean_path
+        print(f"current_working_directory----------------->{current_working_directory}")
+ 
+
+        # # Store absolute path for external use if needed
+        # self.lean_path = os.path.join(current_working_directory, lean_path)
         self.base_config = {
             "environment": "backtesting",
             "algorithm-language": "Python",
-            "data-folder": os.path.join(lean_path, "Data"),
+            "data-folder": os.path.join(self.internal_lean_path, "Data"),
             "debugging": False,
             "debugging-method": "LocalCmdLine",
             "log-handler": "ConsoleLogHandler",
@@ -48,7 +48,7 @@ class LeanRunner:
             "job-organization-id": "",
             "log-level": "trace",
             "debug-mode": True,
-            "results-destination-folder": os.path.join(lean_path, "Results"),
+            "results-destination-folder": os.path.join(self.internal_lean_path, "Results"),
             "mute-python-library-logging": "False",
             "close-automatically": True,
             "python-additional-paths": [],
@@ -79,11 +79,11 @@ class LeanRunner:
     def generate_config(self, algorithm_name, algorithm_location, parameters, config_path=None):
         config = self.set_algorithm_config(algorithm_name, algorithm_location, parameters)
 
-        if not os.path.exists(self.lean_path):
-            os.makedirs(self.lean_path)
+        if not os.path.exists(self.internal_lean_path):
+            os.makedirs(self.internal_lean_path)
         
         if config_path is None:
-            config_path = os.path.join(self.lean_path, f'{algorithm_name}_config.json')
+            config_path = os.path.join(self.internal_lean_path, f'{algorithm_name}_config.json')
         
         try:
             print(f"Attempting to create config file at: {config_path}")
@@ -123,7 +123,7 @@ class LeanRunner:
         print(f"Config file path: {config_file_path}")  # Debug statement
 
         # Ensure paths are cross-platform compatible
-        dll_path = os.path.join(self.lean_path, 'QuantConnect.Lean.Launcher.dll')
+        dll_path = os.path.join(self.internal_lean_path, 'QuantConnect.Lean.Launcher.dll')
         dll_path = os.path.normpath(dll_path)
         config_file_path = os.path.normpath(config_file_path)
 
@@ -189,3 +189,9 @@ class LeanRunner:
 
 
    
+    #    # Adjust the path if running in Docker
+    #     # Dynamically capture the working directory
+    #     current_working_directory = os.getcwd()
+
+    #     # Adjust the path based on the working directory
+    #     lean_path = os.path.join(current_working_directory, lean_path)

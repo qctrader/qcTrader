@@ -1,0 +1,58 @@
+# Include specific directories that are important for Python-based Lean Engine usage
+
+# Include Python algorithms and related configurations
+recursive-include qcTrader/Lean/Algorithm.Python *
+
+# Include the Launcher directory (responsible for running Lean)
+recursive-include qcTrader/Lean/Launcher *
+
+# Include the Data directory (containing market data)
+recursive-include qcTrader/Lean/Data *
+
+# Include the Engine directory (core components of Lean)
+recursive-include qcTrader/Lean/Engine *
+
+# Include configuration files
+recursive-include qcTrader/Lean/Config *
+
+
+
+# Include all files in the Lean folder
+recursive-include qcTrader/Lean *
+
+
+
+# Exclude directories that are not relevant for Python-based Lean usage
+
+# Exclude directories related to other programming languages or unnecessary build outputs
+prune qcTrader/Lean/Tests
+prune qcTrader/Lean/Documentation
+prune qcTrader/Lean/Optimizer
+prune qcTrader/Lean/ToolBox
+prune qcTrader/Lean/VisualStudio
+prune qcTrader/Lean/Algorithm.FSharp
+prune qcTrader/Lean/.vscode
+prune qcTrader/Lean/.idea
+prune qcTrader/Lean/lib
+
+# Exclude build and configuration files that are not needed
+exclude qcTrader/Lean/*.user
+exclude qcTrader/Lean/*.suo
+exclude qcTrader/Lean/.env
+
+# Exclude all bin and obj directories
+prune qcTrader/Lean/*/bin
+prune qcTrader/Lean/*/*/bin
+prune qcTrader/Lean/*/*/*/bin
+prune qcTrader/Lean/*/*/*/*/bin
+
+prune qcTrader/Lean/*/obj
+prune qcTrader/Lean/*/*/obj
+prune qcTrader/Lean/*/*/*/obj
+prune qcTrader/Lean/*/*/*/*/obj
+
+# Include the Release directories inside bin
+recursive-include qcTrader/Lean/*/bin/Release *
+recursive-include qcTrader/Lean/*/*/bin/Release *
+recursive-include qcTrader/Lean/*/*/*/bin/Release *
+recursive-include qcTrader/Lean/*/*/*/*/bin/Release *
