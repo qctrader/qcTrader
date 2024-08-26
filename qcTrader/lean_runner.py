@@ -5,7 +5,7 @@ import subprocess
 
 
 class LeanRunner:
-    def __init__(self, lean_path='Lean/Launcher/bin/Release'):
+    def __init__(self, lean_path='qcTrader/Lean/Launcher/bin/Release'):
 
         # Dynamically capture the working directory
         current_working_directory = os.getcwd()

@@ -1,7 +1,7 @@
 {
     "environment": "backtesting",
     "algorithm-language": "Python",
-    "data-folder": "qcTrader/Lean/Launcher/bin/Release\\Data",
+    "data-folder": "D:\\qctrader\\examples\\qcTrader/Lean/Launcher/bin/Release\\Data",
     "debugging": false,
     "debugging-method": "LocalCmdLine",
     "log-handler": "ConsoleLogHandler",
@@ -28,7 +28,7 @@
     "job-organization-id": "",
     "log-level": "trace",
     "debug-mode": true,
-    "results-destination-folder": "qcTrader/Lean/Launcher/bin/Release\\Results",
+    "results-destination-folder": "D:\\qctrader\\examples\\qcTrader/Lean/Launcher/bin/Release\\Results",
     "mute-python-library-logging": "False",
     "close-automatically": true,
     "python-additional-paths": [],
