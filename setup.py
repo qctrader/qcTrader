@@ -6,32 +6,11 @@ import glob
 setup(
     name="qcTrader",
     version="1.1.7",
-    packages=find_packages(include=['qcTrader', 'qcTrader.*'
-                                    # 'qcTrader-submodule1',
-                                    # 'qcTrader-submodule2',
-                                    # 'qcTrader-submodule3',
-                                    # 'qcTrader-submodule12',
-                                    # 'qcTrader-submodule13',
-                                    # 'qcTrader-submodule14',
-                                    # 'qcTrader-submodule15',
-                                    # 'qcTrader-submodule16',
-                                    # 'qcTrader-submodule18',
-                                    # 'qcTrader-submodule19',
-                                    # 'qcTrader-submodule20',
-                                    # 'qcTrader-submodule21',
-                                    # 'qcTrader-submodule22',
-                                    # 'qcTrader-submodule23',
-                                    # 'qcTrader-submodule24',
-                                    # 'qcTrader-submodule25',
-                                    # 'qcTrader-submodule26',
-                                    # 'qcTrader-submodule27',
-                                    # 'qcTrader-submodule28',
-                                    # 'qcTrader-submodule222'
-                                    ]),
-    # include_package_data=True,
-    # package_data={
-    #     '': tar_chunks  # Include all tar chunks in the package
-    # },
+    packages=find_packages(),
+    include_package_data=True,
+    package_data={
+        '': ['Lean/**/*', 'utils/**/*','*.txt', '*.md', '*.cs', '*.csproj', '*.csproj.*', '*.json', '*.bat', '*.sh',  '*.xml',  '*.pdb', '*.dll',  '*.yaml',  '*.config',  '*.exe'],
+    },
     install_requires=[
         'setuptools>=42',
         'wheel>=0.34.2',

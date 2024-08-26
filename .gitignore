@@ -15,6 +15,3 @@
 /qcTrader/Lean/*.suo 
 /qcTrader/Lean/lib/
 /qcTrader/Lean/Launcher/bin/Release/Results/
-/qcTrader.egg-info
-/dist
-/build

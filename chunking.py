@@ -16,4 +16,4 @@ def split_file(file_path, chunk_size):
                 chunk_file.write(chunk)
             print(f"Created chunk: {chunk_filename}")
             chunk_number += 1
-split_file('./dist/qctrader-1.1.6.dev2.tar.gz', chunk_size=100*1024*1024)  # 100 MB chunks
+split_file('./dist/qctrader-1.1.7.tar.gz', chunk_size=20*1024*1024)  # 100 MB chunks
