@@ -1,0 +1,7 @@
+clr_loader==0.2.6
+matplotlib==3.9.2
+numpy==2.1.0
+pandas==2.2.2
+QuantConnect==0.1.0
+scipy==1.14.1
+setuptools==73.0.1
