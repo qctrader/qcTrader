@@ -1,17 +1,28 @@
 import json
 import os
 import re
+import site
 import subprocess
 
 
 class LeanRunner:
     def __init__(self, lean_path='qcTrader/Lean/Launcher/bin/Release'):
 
+        # Check if we are running inside a Docker container
+        self.is_docker = self.detect_docker_environment()
+        
+
         # Dynamically capture the working directory
         current_working_directory = os.getcwd()
 
-        # Store relative path for internal use
-        self.internal_lean_path = lean_path
+        if self.is_docker:
+                # If running inside Docker, use the site-packages path
+                site_packages_path = site.getsitepackages()[0]
+                print(f"site_packages_path----------------->{site_packages_path}")
+                self.internal_lean_path = os.path.join(site_packages_path, lean_path)
+        else:
+                # Otherwise, use the default path for non-Docker installations
+                self.internal_lean_path = lean_path
 
         print(f"current_working_directory----------------->{current_working_directory}")
  
@@ -66,7 +77,20 @@ class LeanRunner:
                 }
             },
         }
+    def detect_docker_environment(self):
+        """Detect if the code is running inside a Docker container."""
+        path = '/proc/1/cgroup'
+        if os.path.exists(path):
+            with open(path, 'r') as f:
+                for line in f:
+                    if 'docker' in line or 'kubepods' in line:
+                        return True
 
+        # Additional check: Environment variables commonly set in Docker
+        if os.getenv('DOCKER_ENV') or os.getenv('CI'):
+            return True
+        
+        return False
     def set_algorithm_config(self, algorithm_name, algorithm_location, parameters):
         config = self.base_config.copy()
         config.update({
@@ -76,8 +100,8 @@ class LeanRunner:
         })
         return config
 
-    def generate_config(self, algorithm_name, algorithm_location, parameters, config_path=None):
-        config = self.set_algorithm_config(algorithm_name, algorithm_location, parameters)
+    def generate_config(self, algorithm_name,algorithm_location, parameters, config_path=None):
+        config = self.set_algorithm_config(algorithm_name,algorithm_location, parameters)
 
         if not os.path.exists(self.internal_lean_path):
             os.makedirs(self.internal_lean_path)
@@ -113,8 +137,22 @@ class LeanRunner:
 
         return statistics
  
-    def run_algorithm(self, algorithm_name, algorithm_location, parameters, config_file_path=None):
+    def run_algorithm(self, algorithm_name, parameters, config_file_path=None):
         print("Starting run_algorithm...")  # Debug statement
+        algorithm_location=f''
+        if self.is_docker:
+                # If running inside Docker, use the site-packages path
+                site_packages_path = site.getsitepackages()[0]
+                print(f"site_packages_path----------------->{site_packages_path}")
+                algorithm_location = os.path.join(site_packages_path, 'qcTrader/Lean/Algorithm.Python', algorithm_name)
+        else:
+                algorithm_location_in = os.path.join('qcTrader', 'Lean', 'Algorithm.Python')
+                # Normalize the path to ensure it works on both Windows and macOS/Linux
+                algorithm_location_in = os.path.normpath(algorithm_location_in)
+                algorithm_location = f'{algorithm_location_in}/{algorithm_name}'
+
+
+        
 
         # Generate the configuration file if none is provided
         if config_file_path is None:
@@ -189,9 +227,3 @@ class LeanRunner:
 
 
    
-    #    # Adjust the path if running in Docker
-    #     # Dynamically capture the working directory
-    #     current_working_directory = os.getcwd()
-
-    #     # Adjust the path based on the working directory
-    #     lean_path = os.path.join(current_working_directory, lean_path)

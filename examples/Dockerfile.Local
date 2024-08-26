@@ -1,0 +1,33 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+ENV DOCKER_ENV=true
+# Set the working directory in the container
+WORKDIR /app
+
+# Install dependencies needed to run the application (if any)
+RUN apt-get update && apt-get install -y \
+    wget \
+    apt-transport-https \
+    software-properties-common \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Microsoft package signing key and repository
+RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb
+
+# Install the .NET SDK and Runtime
+RUN apt-get update && apt-get install -y \
+    dotnet-sdk-6.0 \
+    dotnet-runtime-6.0    
+
+# Copy your wheel file to the container
+COPY qcTrader-1.1.7-py3-none-any.whl /app/
+
+# Install the wheel file
+RUN pip install qcTrader-1.1.7-py3-none-any.whl
+
+# Copy the application code if needed
+COPY . ./app 
+
+# Set the command to run your application or tests
+CMD ["python", "/app/app/example_script.py"]

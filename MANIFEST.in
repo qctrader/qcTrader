@@ -1,16 +1,18 @@
 
-recursive-include qcTrader/Lean/Algorithm.Python *
+# Include all files under qcTrader/Lean except for debug folders
+recursive-include qcTrader/Lean *
 
-recursive-include qcTrader/Lean/Common *
-# Include the Launcher directory (responsible for running Lean)
-recursive-include qcTrader/Lean/Launcher *
 
-# Include the Engine directory (core components of Lean)
-recursive-include qcTrader/Lean/Engine *
+# Prune all 'debug' directories within qcTrader/Lean
+prune qcTrader/Lean/**/bin/Release/publish
+prune qcTrader/Lean/**/bin/Release/pythonnet
 
-# Include configuration files
-recursive-include qcTrader/Lean/Api *
+# Prune all 'debug' directories within qcTrader/Lean
+prune qcTrader/Lean/**/Debug
 
-recursive-include qcTrader/Lean/Queues *
-recursive-include qcTrader/Lean/Logging *
-recursive-include qcTrader/Lean/Messaging *
+prune qcTrader/Lean/**/win-x64
+prune qcTrader/Lean/**/win-x64/*
+
+# Include all files under qcTrader/utils and qcTrader/storage
+recursive-include qcTrader/utils *
+recursive-include qcTrader/installers *

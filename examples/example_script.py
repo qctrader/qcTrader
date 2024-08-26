@@ -11,13 +11,6 @@ runner = LeanRunner()
 # lean_base = 'qcTrader/Lean'
 # algorithm_folder = 'Algorithm.Python'
 algorithm_file = 'BacktestingAlgorithm.py'
-
-# Join the components to form the full path
-algorithm_location = os.path.join('qcTrader', 'Lean', 'Algorithm.Python', 'BacktestingAlgorithm.py')
-# Normalize the path to ensure it works on both Windows and macOS/Linux
-algorithm_location = os.path.normpath(algorithm_location)
-
-print(f"Algorithm Location: {algorithm_location}")
 parameters = {
     "weighting_scheme": "market_cap",
     "rebalancing_frequency": "monthly",
@@ -29,7 +22,7 @@ print(os.getcwd())
 
 # Run the first algorithm
 
-result = runner.run_algorithm(algorithm_file, algorithm_location, parameters)
+result = runner.run_algorithm(algorithm_file, parameters)
 
 
 # Process the result

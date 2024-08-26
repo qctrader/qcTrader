@@ -3,8 +3,6 @@ import platform
 import subprocess
 import sys
 from qcTrader.installers.windows_installer import notify_user_and_exit
-# from installers.linux_installer import install_dotnet_linux
-# from installers.mac_installer import install_dotnet_mac
 from qcTrader.utils.logger import setup_logger 
 
 
@@ -17,18 +15,35 @@ def is_dotnet_installed():
         return False
 
 def set_dotnet_root():
-    """Set the DOTNET_ROOT environment variable based on the OS."""
+    """Set the DOTNET_ROOT environment variable based on the OS and Python installation path."""
     system = platform.system()
     
+    # Detect the Python installation path
+    python_install_path = os.path.dirname(sys.executable)
+    
+    # Set the .NET root path based on the Python installation path
     if system == "Windows":
-        dotnet_root = r"C:\Program Files\dotnet"
+        dotnet_root = os.path.join(python_install_path, "dotnet")
     elif system == "Linux":
-        dotnet_root = "/usr/share/dotnet"
+        dotnet_root = os.path.join(python_install_path, "dotnet")
     elif system == "Darwin":
-        dotnet_root = "/usr/local/share/dotnet"
+        dotnet_root = os.path.join(python_install_path, "dotnet")
     else:
         raise ValueError(f"Unsupported operating system: {system}")
-
+    
+    # Verify if the dotnet_root directory exists, if not, fall back to a common location
+    if not os.path.isdir(dotnet_root):
+        if system == "Windows":
+            dotnet_root = r"C:\Program Files\dotnet"
+        elif system == "Linux":
+            dotnet_root = "/usr/share/dotnet"
+        elif system == "Darwin":
+            dotnet_root = "/usr/local/share/dotnet"
+    
+    # Check if the .NET runtime exists
+    if not os.path.isdir(dotnet_root):
+        raise EnvironmentError(f".NET runtime not found at {dotnet_root}")
+    
     # Set DOTNET_ROOT for the current session
     os.environ['DOTNET_ROOT'] = dotnet_root
     print(f"DOTNET_ROOT set temporarily to {dotnet_root}")
@@ -41,9 +56,17 @@ def set_dotnet_root():
     else:
         # For Linux/MacOS, add it to the profile files (e.g., ~/.bashrc or ~/.zshrc)
         bashrc_path = os.path.expanduser("~/.bashrc")
-        with open(bashrc_path, "a") as f:
-            f.write(f'\nexport DOTNET_ROOT="{dotnet_root}"\n')
-        print(f"Added DOTNET_ROOT to {bashrc_path}. Please restart your terminal or run 'source {bashrc_path}' to apply changes.")
+        zshrc_path = os.path.expanduser("~/.zshrc")
+        if os.path.exists(bashrc_path):
+            with open(bashrc_path, "a") as f:
+                f.write(f'\nexport DOTNET_ROOT="{dotnet_root}"\n')
+            print(f"Added DOTNET_ROOT to {bashrc_path}. Please restart your terminal or run 'source {bashrc_path}' to apply changes.")
+        elif os.path.exists(zshrc_path):
+            with open(zshrc_path, "a") as f:
+                f.write(f'\nexport DOTNET_ROOT="{dotnet_root}"\n')
+            print(f"Added DOTNET_ROOT to {zshrc_path}. Please restart your terminal or run 'source {zshrc_path}' to apply changes.")
+        else:
+            print(f"No suitable shell configuration file found for setting DOTNET_ROOT permanently.")
 
 def install_dotnet():
     """Detect OS and instruct the user to install .NET SDK and Runtime if necessary."""
@@ -53,19 +76,7 @@ def install_dotnet():
         logger.info(".NET is already installed.")
         set_dotnet_root()
         return
-    
-    system = platform.system()
-    
-    if system == "Windows":
-        notify_user_and_exit()
-    elif system == "Linux":
-        # Uncomment the following line when ready to support Linux
-        # install_dotnet_linux()
-        logger.info("Linux detected. .NET installation logic for Linux is currently not implemented.")
-    elif system == "Darwin":
-        # Uncomment the following line when ready to support macOS
-        # install_dotnet_mac()
-        logger.info("macOS detected. .NET installation logic for macOS is currently not implemented.")
     else:
-        logger.error(f"Unsupported operating system: {system}")
-        sys.exit(1)
+        notify_user_and_exit()
+    
+    

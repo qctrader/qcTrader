@@ -8,9 +8,9 @@ setup(
     version="1.1.7",
     packages=find_packages(),
     include_package_data=True,
-    package_data={
-        '': ['Lean/**/*', 'utils/**/*','*.txt', '*.md', '*.cs', '*.csproj', '*.csproj.*', '*.json', '*.bat', '*.sh',  '*.xml',  '*.pdb', '*.dll',  '*.yaml',  '*.config',  '*.exe'],
-    },
+    # package_data={
+    #     '': ['Lean/**/*', 'installers/**/*', 'utils/**/*','*.txt', '*.md', '*.cs', '*.csproj', '*.csproj.*', '*.json', '*.bat', '*.sh',  '*.xml',  '*.pdb', '*.dll',  '*.yaml',  '*.config',  '*.exe'],
+    # },
     install_requires=[
         'setuptools>=42',
         'wheel>=0.34.2',

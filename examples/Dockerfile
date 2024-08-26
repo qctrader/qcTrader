@@ -1,6 +1,10 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim
+# Set environment variables to help detect Docker environment
+ENV DOCKER_ENV=true
 
+# Alternatively, you could use CI if your Docker setup is also used in CI/CD pipelines
+# ENV CI=true
 # Set the working directory in the container
 WORKDIR /app
 
