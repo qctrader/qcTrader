@@ -46,7 +46,7 @@
         }
     },
     "algorithm-type-name": "BacktestingAlgorithm.py",
-    "algorithm-location": "qcTrader\\Lean\\Algorithm.Python/BacktestingAlgorithm.py",
+    "algorithm-location": "qcTrader/Lean/Algorithm.Python",
     "parameters": {
         "weighting_scheme": "market_cap",
         "rebalancing_frequency": "monthly",
