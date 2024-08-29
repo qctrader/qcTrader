@@ -1,38 +1,61 @@
-https://github.com/qctrader/qcTrader/tree/feature-fixes
+## Introduction
+This is a wrapper around lean engine, - > Open-Source
+Algorithmic Trading Engine.
+
+It simplifies the run of backtesting algorithms in python.
+
+## Features
+- Simple Moving Average (SMA) Crossover
+
+## Installation
+
+### Prerequisites
+- Python 3.6+
+- Dotnet SDK 6.0
+- Dotnet runtime 6.0
+
+### Installation Steps
+- Install from source : pip install https://github.com/qctrader/qcTrader/releases/download/v1.0-beta.1/qcTrader-1.1.7-py3-none-any.whl
+- Install from dockerfile : There is two Dockerfiles in examples directory, simply run that, create the image and run python examples/example_script.py
+- Install from repository : 
+  git clone -b feature-fixes https://github.com/qctrader/qcTrader.git
+  cd qcTrader
+  pip install .
+  python examples/example_script.py
+
+### Basic usage 
+check examples/example_script.py file
+
+### Feature Explanation - Simple Moving Average (SMA) Crossover
+- We use this strategy to calculate the portfolio returns based on historical data
+- There is a basic configuration in the runner file and the user will give the dynamic configuration from client file.
+- This altogether creates a config which is required to run the starategy against historical data and everything else is automated- check the lean_runner.py for more clarity
+- If you want to add more historical data then refer the directory Lean/Launcher/bin/Release/Data/equity directory
+- You can add the ticker data along with mapfiles there
+- The map files should be in csv format along with anychanges to the ticker symbol in history
+- You can add data to the daily, hour, minute, second folder and it is in zip format
+- Currently it supports daily data history for ticker symbols
+
+### Contributing
+`# Clone the repository
+git clone https://github.com/your-username/repository-name.git
+
+# Create a new branch for your feature or bugfix
+git checkout -b feature/your-feature
+
+# Commit your changes
+git commit -am 'Add your feature'
+
+# Push to the branch
+git push origin feature/your-feature
+
+# Create a pull request`
 
 
 
-Above the link where you can make the changes and create the PR.
-
-If you want you can add your change here. 
+  
 
 
-
-You cannot do any activity on main,its on restricted mode, please dont mess up with main branch. 
-
-
-
-Any guidance on my package, reach out pallavidapriya75@gmail.com, will respond on weekends.
-
-
-
-There is a docker file which you can run in your local and see what's not working
-
- Alternatively, you can download the whl files from asset section (pre-release version), create a docker file run.
-
-
-
-This is os independent, should work in windows, linux , darwin. if not please reach out. 
-
-
-
-Anything you change please configure pytest and add testcases.
-
-
-
-I would appreciate if anyone can apply end to end testing for the scenarios for installation
-
-
-
-custom uninstallation is not implemented yet. This is not a prod realease.
+  
+  
 
