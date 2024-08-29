@@ -1,20 +1,18 @@
 import json
 import os
+import platform
 import re
 import site
 import subprocess
+from qcTrader.data_aggregrator import QuantConnectDataUpdater
 
 
 class LeanRunner:
     def __init__(self, lean_path='qcTrader/Lean/Launcher/bin/Release'):
 
-        # Check if we are running inside a Docker container
-        self.is_docker = self.detect_docker_environment()
-      
-        
-
         # Dynamically capture the working directory
         current_working_directory = os.getcwd()
+        self.is_docker = self.detect_is_docker()
       
         if self.is_docker:
                 # If running inside Docker, use the site-packages path
@@ -75,27 +73,47 @@ class LeanRunner:
                 }
             },
         }
-    def detect_docker_environment(self):
-        """Detect if the code is running inside a Docker container."""
-        path = '/proc/1/cgroup'
-        if os.path.exists(path):
-            with open(path, 'r') as f:
-                for line in f:
-                    if 'docker' in line or 'kubepods' in line:
+    def detect_is_docker(self):
+        """Check if the code is running inside a Docker container or WSL environment."""
+
+        # Get the platform type (Windows, Linux, Darwin (macOS))
+        os_type = platform.system().lower()
+        print(f"os_type --------------------> {os_type }")
+
+        # Check if the OS is Windows; if so, immediately return False
+        if os_type == 'windows':
+            return False
+
+        # Check if the OS is macOS; if so, immediately return False
+        if os_type == 'darwin':
+            return False
+
+        # If it's a plain Linux environment, check if it's WSL first
+        if os_type == 'linux':
+            # Detect if running under WSL (Windows Subsystem for Linux)
+            if 'microsoft' in platform.uname().release.lower():
+                print("Running in WSL, not Docker.")
+                return False  # It's WSL, not Docker
+
+            # Now check for Docker-specific files
+            docker_env_path = '/.dockerenv'
+            cgroup_path = '/proc/self/cgroup'
+            
+            # Check for the existence of .dockerenv file
+            if os.path.exists(docker_env_path):
+                return True
+            
+            # Check for 'docker' in /proc/self/cgroup
+            if os.path.isfile(cgroup_path):
+                with open(cgroup_path) as f:
+                    if any('docker' in line for line in f):
                         return True
 
-        # Additional check: Environment variables commonly set in Docker
-        if os.getenv('DOCKER_ENV') or os.getenv('CI'):
-            return True
-        
+        # If none of the above conditions are met, return False
         return False
-    def set_algorithm_config(self, algorithm_name, parameters):
-        algorithm_location=f""
-        if os.getenv('DOCKER_ENV'):  # Check if running inside Docker
-            site_packages_path = site.getsitepackages()[0]
-            algorithm_location = os.path.join(site_packages_path, 'qcTrader/Lean/Algorithm.Python')
-        else:
-            algorithm_location = "qcTrader/Lean/Algorithm.Python"
+            
+    def set_algorithm_config(self, algorithm_location, algorithm_name, parameters):
+      
         config = self.base_config.copy()
         config.update({
             "algorithm-type-name": algorithm_name,
@@ -104,8 +122,8 @@ class LeanRunner:
         })
         return config
 
-    def generate_config(self, algorithm_name, parameters, config_path=None):
-        config = self.set_algorithm_config(algorithm_name, parameters)
+    def generate_config(self,algorithm_location,  algorithm_name, parameters, config_path=None):
+        config = self.set_algorithm_config(algorithm_location, algorithm_name, parameters)
 
         if not os.path.exists(self.internal_lean_path):
             os.makedirs(self.internal_lean_path)
@@ -141,7 +159,20 @@ class LeanRunner:
 
         return statistics
  
-    def run_algorithm(self, algorithm_name, parameters,config_file_path=None):
+    def run_algorithm(self, algorithm_name, algorithm_type_name, parameters, config_file_path=None):
+        # Initialize the DataManager
+        data_manager = QuantConnectDataUpdater(parameters)
+
+
+        data_manager.update_data()
+                # Create a datetime.date object
+        date_obj_start_date = parameters["start_date"]
+        date_obj_end_date = parameters["end_date"]
+        # Convert to string in "YYYY-MM-DD" format
+        date_str_start = date_obj_start_date.strftime("%Y-%m-%d")
+        date_str_end = date_obj_end_date.strftime("%Y-%m-%d")
+        parameters["start_date"] = date_str_start
+        parameters["end_date"] = date_str_end
         print(f"Inside run_algorithm with algorithm_name: {algorithm_name} and parameters: {parameters}")
         print("Starting run_algorithm...")  # Debug statement
        
@@ -155,19 +186,19 @@ class LeanRunner:
                 # If running inside Docker, use the site-packages path
                 site_packages_path = site.getsitepackages()[0]
                 print(f"site_packages_path----------------->{site_packages_path}")
-                algorithm_location = os.path.join(site_packages_path, 'qcTrader/Lean/Algorithm.Python', algorithm_name)
+                algorithm_location = os.path.join(site_packages_path, 'qcTrader/Lean/Algorithm.Python' , algorithm_name)
         else:
-                algorithm_location = os.path.join('qcTrader', 'Lean', 'Algorithm.Python')
+                algorithm_location = os.path.join('qcTrader', 'Lean', 'Algorithm.Python', algorithm_name)
                 # Normalize the path to ensure it works on both Windows and macOS/Linux
                 algorithm_location = os.path.normpath(algorithm_location)
-                algorithm_location = f'{algorithm_location}/{algorithm_name}'
+
 
 
         
 
         # Generate the configuration file if none is provided
         if config_file_path is None:
-            config_file_path = self.generate_config(algorithm_name, parameters,algorithm_location)
+            config_file_path = self.generate_config(algorithm_location, algorithm_name, parameters)
 
         print(f"Config file path: {config_file_path}")  # Debug statement
 

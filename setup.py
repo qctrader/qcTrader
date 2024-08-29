@@ -20,7 +20,13 @@ setup(
         'quantconnect',
         'requests',
         'tqdm',
-        'distro'
+        'distro',
+        'pexpect',
+        'python-dotenv',
+        'wexpect',
+        'yfinance'
+  
+
         
         # 'qcTrader-submodule1 @ https://github.com/qcTraderPackages/packages-bundle/releases/download/testing_001/qctrader_submodule1-1.1.7.tar.gz',
         #                             'qcTrader-submodule2 @ https://github.com/qcTraderPackages/packages-bundle/releases/download/testing_001/qctrader_submodule2-1.1.7.tar.gz',
