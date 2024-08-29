@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8mkuUI4tjMM=",
+  "dgSpecHash": "j7/9VwfkFTA=",
   "success": true,
-  "projectFilePath": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
+  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\cloneextensions\\1.3.0\\cloneextensions.1.3.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\dotnetzip\\1.16.0\\dotnetzip.1.16.0.nupkg.sha512",

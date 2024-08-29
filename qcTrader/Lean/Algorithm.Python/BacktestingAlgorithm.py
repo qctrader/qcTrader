@@ -1,7 +1,6 @@
 import json
-from datetime import timedelta
+from datetime import timedelta, datetime
 import numpy as np
-from datetime import datetime
 import sys
 import os
 
@@ -20,12 +19,14 @@ print(f"release_dir--------------->{release_dir}")
 if release_dir not in sys.path:
     sys.path.append(release_dir)
 
-from AlgorithmImports import *
-
+from AlgorithmImports import QCAlgorithm, Resolution, Slice, Market, DateRules, TimeRules
 
 class BacktestingAlgorithm(QCAlgorithm):
     def Initialize(self):
         try:
+            # Initialize securities dictionary
+            self.securities["AAPL"] = self.AddEquity("AAPL", Resolution.Daily)
+
             # Read start and end dates dynamically from parameters
             start_date_str = self.GetParameter("start_date")
             end_date_str = self.GetParameter("end_date")
@@ -80,7 +81,7 @@ class BacktestingAlgorithm(QCAlgorithm):
             self.ValidateAssetData()
         
             # Add securities
-            self.securities["AAPL"] = self.AddEquity("AAPL", Resolution.Daily)
+            
             self.AddSecurities()
 
             # Schedule rebalancing
@@ -90,10 +91,9 @@ class BacktestingAlgorithm(QCAlgorithm):
                 self.Rebalance
             )
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during Initialize: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during Initialize: {str(e)}")
+    
     def ParseDate(self, date_str):
         """Helper method to parse a date string into a datetime object."""
         return datetime.strptime(date_str, "%Y-%m-%d")
@@ -120,9 +120,10 @@ class BacktestingAlgorithm(QCAlgorithm):
 
         except Exception as e:
             self.Log(f"Unexpected exception during ValidateDateRange: {str(e)}")
+
     def ValidateAssetData(self):
+        """Ensure that all assets have market caps and volatilities, removing those that are missing."""
         try:
-            """Ensure that all assets have market caps and volatilities, removing those that are missing."""
             missing_market_caps = [asset for asset in self.assets if asset not in self.market_caps]
             missing_volatilities = [asset for asset in self.assets if asset not in self.volatilities]
 
@@ -140,8 +141,6 @@ class BacktestingAlgorithm(QCAlgorithm):
             if not self.assets:
                 raise ValueError("No valid assets remain after removing those with missing data.")
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during ValidateAssetData: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during ValidateAssetData: {str(e)}")
 
@@ -164,8 +163,6 @@ class BacktestingAlgorithm(QCAlgorithm):
                 self.Log("No valid securities were added to the portfolio.")
                 raise ValueError("Portfolio could not be initialized with the given assets.")
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during AddSecurities: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during AddSecurities: {str(e)}")
 
@@ -183,8 +180,6 @@ class BacktestingAlgorithm(QCAlgorithm):
             else:
                 raise ValueError(f"Unknown weighting scheme: {self.weighting_scheme}")
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during Rebalance: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during Rebalance: {str(e)}")
 
@@ -215,8 +210,6 @@ class BacktestingAlgorithm(QCAlgorithm):
                 else:
                     self.Log(f"Skipping {symbol} due to invalid price or non-tradable status.")
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during MarketCapWeighting: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during MarketCapWeighting: {str(e)}")
 
@@ -235,8 +228,6 @@ class BacktestingAlgorithm(QCAlgorithm):
                 else:
                     self.Log(f"Skipping {symbol} as it doesn't have a valid price yet.")
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during RiskParityWeighting: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during RiskParityWeighting: {str(e)}")
 
@@ -253,7 +244,5 @@ class BacktestingAlgorithm(QCAlgorithm):
                 else:
                     self.Log(f"No data available for {symbol} at this time.")
 
-        except System.InvalidOperationException as e:
-            self.Log(f"InvalidOperationException caught during OnData: {str(e)}")
         except Exception as e:
             self.Log(f"Unexpected exception during OnData: {str(e)}")

@@ -256,11 +256,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj",
+      "projectUniqueName": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj",
       "projectName": "QuantConnect.Configuration",
-      "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj",
+      "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\obj\\",
+      "outputPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -275,8 +275,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
             }
           }
         }

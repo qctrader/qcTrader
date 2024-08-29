@@ -1,21 +1,22 @@
 /myenv
-/qcTrader/Lean/Tests/ 
-/qcTrader/Lean/Documentation/ 
-/qcTrader/Lean/Research/ 
-/qcTrader/Lean/Optimizer/ 
-/qcTrader/Lean/ToolBox/ 
-/qcTrader/Lean/VisualStudio/ 
-/qcTrader/Lean/Algorithm.FSharp/ 
-/qcTrader/Lean/bin/ 
-/qcTrader/Lean/obj/ 
-/qcTrader/Lean/.vscode/ 
-/qcTrader/Lean/.idea/ 
-/qcTrader/Lean/.env 
-/qcTrader/Lean/*.user 
-/qcTrader/Lean/*.suo 
-/qcTrader/Lean/lib/
-/qcTrader/Lean/Launcher/bin/Release/Results/
+# /qcTrader/Lean/Tests/ 
+# /qcTrader/Lean/Documentation/ 
+# /qcTrader/Lean/Research/ 
+# /qcTrader/Lean/Optimizer/ 
+# /qcTrader/Lean/ToolBox/ 
+# /qcTrader/Lean/VisualStudio/ 
+# /qcTrader/Lean/Algorithm.FSharp/ 
+# /qcTrader/Lean/bin/ 
+# /qcTrader/Lean/obj/ 
+# /qcTrader/Lean/.vscode/ 
+# /qcTrader/Lean/.idea/ 
+# /qcTrader/Lean/.env 
+# /qcTrader/Lean/*.user 
+# /qcTrader/Lean/*.suo 
+# /qcTrader/Lean/lib/
+# /qcTrader/Lean/Launcher/bin/Release/Results/
 /dist
 /build
 /qcTrader.egg-info
 __pycache__/
+/Release_old

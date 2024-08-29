@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "egFmhIEOYqg=",
+  "dgSpecHash": "hguYo+8lX8Y=",
   "success": true,
-  "projectFilePath": "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj",
+  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\accord\\3.6.0\\accord.3.6.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\accord.fuzzy\\3.6.0\\accord.fuzzy.3.6.0.nupkg.sha512",

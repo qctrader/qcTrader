@@ -8883,11 +8883,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Launcher\\QuantConnect.Lean.Launcher.csproj",
+      "projectUniqueName": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Launcher\\QuantConnect.Lean.Launcher.csproj",
       "projectName": "QuantConnect.Lean",
-      "projectPath": "D:\\qctrader\\qcTrader\\lean\\Launcher\\QuantConnect.Lean.Launcher.csproj",
+      "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Launcher\\QuantConnect.Lean.Launcher.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\qctrader\\qcTrader\\lean\\Launcher\\obj\\",
+      "outputPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Launcher\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8902,56 +8902,56 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Algorithm.CSharp\\QuantConnect.Algorithm.CSharp.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\AlgorithmFactory\\QuantConnect.AlgorithmFactory.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Algorithm\\QuantConnect.Algorithm.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\DownloaderDataProvider\\QuantConnect.DownloaderDataProvider.Launcher.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\DownloaderDataProvider\\QuantConnect.DownloaderDataProvider.Launcher.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\DownloaderDataProvider\\QuantConnect.DownloaderDataProvider.Launcher.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\DownloaderDataProvider\\QuantConnect.DownloaderDataProvider.Launcher.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Indicators\\QuantConnect.Indicators.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Messaging\\QuantConnect.Messaging.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Messaging\\QuantConnect.Messaging.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Messaging\\QuantConnect.Messaging.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Messaging\\QuantConnect.Messaging.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Optimizer.Launcher\\QuantConnect.Optimizer.Launcher.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Optimizer.Launcher\\QuantConnect.Optimizer.Launcher.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Optimizer.Launcher\\QuantConnect.Optimizer.Launcher.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Optimizer.Launcher\\QuantConnect.Optimizer.Launcher.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Queues\\QuantConnect.Queues.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Queues\\QuantConnect.Queues.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Queues\\QuantConnect.Queues.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Queues\\QuantConnect.Queues.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Research\\QuantConnect.Research.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Research\\QuantConnect.Research.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Research\\QuantConnect.Research.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Research\\QuantConnect.Research.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\ToolBox\\QuantConnect.ToolBox.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\ToolBox\\QuantConnect.ToolBox.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\ToolBox\\QuantConnect.ToolBox.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\ToolBox\\QuantConnect.ToolBox.csproj"
             }
           }
         }
