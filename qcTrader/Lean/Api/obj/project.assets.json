@@ -1346,11 +1346,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
+      "projectUniqueName": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
       "projectName": "QuantConnect.Api",
-      "projectPath": "D:\\qctrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
+      "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Api\\QuantConnect.Api.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\qctrader\\qcTrader\\lean\\Api\\obj\\",
+      "outputPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1365,14 +1365,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Common\\QuantConnect.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Common\\QuantConnect.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Configuration\\QuantConnect.Configuration.csproj"
             },
-            "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
-              "projectPath": "D:\\qctrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj"
             }
           }
         }
