@@ -41,19 +41,20 @@ jobs:
       with:
         dotnet-version: '6.0.x'  # Specify the .NET version you need 
 
-      env:
-        DOTNET_ROOT: /usr/local/share/dotnet     
-    - name: Verify .NET Installation
+    - name: Set DOTNET_ROOT Environment Variable
       run: |
-        dotnet --info
-        echo "DOTNET_ROOT: $DOTNET_ROOT"
+        echo 'export DOTNET_ROOT="/Users/runner/.dotnet"' >> $GITHUB_ENV
 
-        
+
     - name: Set Mono Environment Variables
       run: |
         echo 'export PATH="/usr/local/opt/mono/bin:$PATH"' >> $GITHUB_ENV
         echo 'export PKG_CONFIG_PATH="/usr/local/opt/mono/lib/pkgconfig"' >> $GITHUB_ENV
-
+        
+    - name: Verify .NET Installation
+      run: |
+        dotnet --info
+        echo "DOTNET_ROOT: $DOTNET_ROOT"
         
     - name: Build pythonnet with correct macros
       run: |
