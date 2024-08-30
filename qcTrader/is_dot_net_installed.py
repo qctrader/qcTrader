@@ -31,6 +31,8 @@ def set_dotnet_root():
     else:
         raise ValueError(f"Unsupported operating system: {system}")
     
+    print(f"dotnet_root-------------->{dotnet_root}")
+    
     # Verify if the dotnet_root directory exists, if not, fall back to a common location
     if not os.path.isdir(dotnet_root):
         if system == "Windows":
@@ -39,7 +41,8 @@ def set_dotnet_root():
             dotnet_root = "/usr/share/dotnet"
         elif system == "Darwin":
             dotnet_root = "/usr/local/share/dotnet"
-    
+            
+    print(f"dotnet_root default-------------->{dotnet_root}")
     # Check if the .NET runtime exists
     if not os.path.isdir(dotnet_root):
         raise EnvironmentError(f".NET runtime not found at {dotnet_root}")
