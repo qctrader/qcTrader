@@ -39,13 +39,22 @@ jobs:
     - name: Install .NET SDK (includes runtime)
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.0.x'  # Specify the .NET version you need    
+        dotnet-version: '6.0.x'  # Specify the .NET version you need 
+
+    - name: Set DOTNET_ROOT Environment Variable
+      run: |
+        echo 'export DOTNET_ROOT="/Users/runner/.dotnet"' >> $GITHUB_ENV
+
 
     - name: Set Mono Environment Variables
       run: |
         echo 'export PATH="/usr/local/opt/mono/bin:$PATH"' >> $GITHUB_ENV
         echo 'export PKG_CONFIG_PATH="/usr/local/opt/mono/lib/pkgconfig"' >> $GITHUB_ENV
-
+        
+    - name: Verify .NET Installation
+      run: |
+        dotnet --info
+        echo "DOTNET_ROOT: $DOTNET_ROOT"
         
     - name: Build pythonnet with correct macros
       run: |
