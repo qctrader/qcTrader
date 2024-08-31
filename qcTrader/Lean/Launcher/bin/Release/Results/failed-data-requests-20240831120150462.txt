@@ -1,0 +1,4 @@
+\base\empty\daily\aapl.zip
+\base\empty\daily\googl.zip
+\base\empty\daily\ibm.zip
+\base\empty\daily\msft.zip

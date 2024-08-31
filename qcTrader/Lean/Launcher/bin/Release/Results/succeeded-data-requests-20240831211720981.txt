@@ -1,0 +1,4 @@
+\equity\usa\daily\googl.zip
+\equity\usa\daily\ibm.zip
+\equity\usa\daily\aapl.zip
+\alternative\interest-rate\usa\interest-rate.csv

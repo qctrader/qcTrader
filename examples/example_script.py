@@ -19,13 +19,13 @@ data_config_paramters= {
 }
 
 parameters = {
-        "start_date": datetime(2020, 1, 1).date(),
+        "start_date": datetime(2020, 1, 2).date(),
         "end_date" : datetime(2024, 8, 30).date(),
         "weighting_scheme": "market_cap",
-        "rebalancing_frequency": "monthly",
-        "market_caps": '{"AAPL": 3436202642196, "GOOGL": 969430108231, "IBM": 131850000000, "MSFT": 3144993500241}',
-        "volatilities": '{"AAPL": 0.0143, "GOOGL": 0.0175, "IBM": 0.0120, "MSFT": 0.0125}',
-        "portfolio": '{"initial_capital": "2000000.00", "assets": ["AAPL", "GOOGL", "IBM", "MSFT"]}'
+        "rebalancing_frequency": "Daily",
+        "market_caps": '{"MSFT": 3144993500241, "AAPL": 3436202642196, "GOOGL": 969430108231, "IBM": 131850000000}',
+        "volatilities": '{"MSFT": 0.0125, "AAPL": 0.0143, "GOOGL": 0.0175, "IBM": 0.0120}',
+        "portfolio": '{"initial_capital": "2000000.00", "assets": ["MSFT", "AAPL", "GOOGL", "IBM"]}'
 }
 
 set_python_dll_env_var()

@@ -1,0 +1,8 @@
+2020-01-01 00:00:00 Launching analysis for MSFTDataTestAlgorithm.py with LEAN Engine v2.5.0.0.v1.0.0
+2020-01-01 00:00:00 Initializing MSFT Data Test Algorithm
+2020-01-01 00:00:00 Added MSFT with adjusted data. Symbol: MSFT
+2020-01-01 00:00:00 Accurate daily end-times now enabled by default. See more at https://qnt.co/3YHaWHL. To disable it and use legacy daily bars set self.settings.daily_precise_end_time = False.
+2020-01-01 00:00:00 Market is closed for MSFT at 2020-01-01 00:00:00. Check data and market hours.
+2020-01-01 00:00:00 Algorithm finished running.
+2020-01-01 00:00:00 Algorithm Id:(MSFTDataTestAlgorithm.py) completed in 0.23 seconds at 0k data points per second. Processing total of 1 data points.
+2020-01-01 00:00:00 The starting dates for the following symbols have been adjusted to match their map files first date: [MSFT, 2050-12-31]

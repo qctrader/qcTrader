@@ -44,6 +44,7 @@
             "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BacktestingTransactionHandler"
         }
     },
+    "settings.daily_precise_end_time": true,
     "version-id": "v1.0.0",
     "cache-location": "qcTrader/Lean/Launcher/bin/Release\\cache",
     "plugin-directory": "qcTrader/Lean/Launcher/bin/Release\\plugins",
@@ -77,12 +78,12 @@
     "api-access-token": "705318b582c5a6081d25d74c13060ee30a7271c6785cab8177c385996c80a5ca",
     "job-organization-id": "218615a08dcf74b301e456919f4a6041",
     "parameters": {
-        "start_date": "2020-01-01",
+        "start_date": "2020-01-02",
         "end_date": "2024-08-30",
         "weighting_scheme": "market_cap",
-        "rebalancing_frequency": "monthly",
-        "market_caps": "{\"AAPL\": 3436202642196, \"GOOGL\": 969430108231, \"IBM\": 131850000000, \"MSFT\": 3144993500241}",
-        "volatilities": "{\"AAPL\": 0.0143, \"GOOGL\": 0.0175, \"IBM\": 0.0120, \"MSFT\": 0.0125}",
-        "portfolio": "{\"initial_capital\": \"2000000.00\", \"assets\": [\"AAPL\", \"GOOGL\", \"IBM\", \"MSFT\"]}"
+        "rebalancing_frequency": "Daily",
+        "market_caps": "{\"MSFT\": 3144993500241, \"AAPL\": 3436202642196, \"GOOGL\": 969430108231, \"IBM\": 131850000000}",
+        "volatilities": "{\"MSFT\": 0.0125, \"AAPL\": 0.0143, \"GOOGL\": 0.0175, \"IBM\": 0.0120}",
+        "portfolio": "{\"initial_capital\": \"2000000.00\", \"assets\": [\"MSFT\", \"AAPL\", \"GOOGL\", \"IBM\"]}"
     }
 }

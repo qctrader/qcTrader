@@ -5,6 +5,153 @@ import pandas as pd
 import zipfile
 import pandas as pd
 from io import BytesIO
+from datetime import timedelta
+import yfinance as yf
+from zipfile import ZipFile
+from datetime import datetime, timedelta
+from pytz import timezone, utc
+import requests
+
+
+
+class AddOnFileManager:
+    def __init__(self, symbols, start_date, end_date, corporate_actions_path, factor_file_path, map_file_path):
+        """
+        Initializes the FileManager with the given symbols and date range.
+        """
+        self.symbols = symbols
+        self.start_date = start_date
+        self.end_date = end_date
+        self.corporate_actions_path = corporate_actions_path
+        self.factor_file_path = factor_file_path
+        self.map_file_path = map_file_path
+
+    def download_corporate_actions(self, symbol):
+        """
+        Downloads splits and dividends for the given symbol and date range using yfinance.
+        """
+        ticker = yf.Ticker(symbol)
+
+        # Download splits and dividends with date range filtering
+        splits = ticker.splits.loc[self.start_date:self.end_date]
+        dividends = ticker.dividends.loc[self.start_date:self.end_date]
+
+        # Format splits data
+        if not splits.empty:
+            splits_df = splits.reset_index()
+            splits_df['EventType'] = 'Split'
+            splits_df['Date'] = splits_df['Date'].dt.strftime('%Y%m%d')
+            splits_df = splits_df.rename(columns={splits.name: 'Value'})
+            splits_df = splits_df[['EventType', 'Date', 'Value']]
+        else:
+            splits_df = pd.DataFrame(columns=['EventType', 'Date', 'Value'])
+
+        # Format dividends data
+        if not dividends.empty:
+            dividends_df = dividends.reset_index()
+            dividends_df['EventType'] = 'Dividend'
+            dividends_df['Date'] = dividends_df['Date'].dt.strftime('%Y%m%d')
+            dividends_df = dividends_df.rename(columns={dividends.name: 'Value'})
+            dividends_df = dividends_df[['EventType', 'Date', 'Value']]
+        else:
+            dividends_df = pd.DataFrame(columns=['EventType', 'Date', 'Value'])
+
+        # Combine splits and dividends
+        corporate_actions = pd.concat([splits_df, dividends_df]).sort_values(by='Date')
+
+        return corporate_actions
+
+    def save_corporate_actions_to_lean_format(self, data, symbol):
+        """
+        Saves corporate actions data to Lean's expected format and location.
+        """
+        directory = self.corporate_actions_path
+        filename = f"{symbol.lower()}.zip"
+        os.makedirs(directory, exist_ok=True)
+        file_path = os.path.join(directory, filename)
+
+        # Save data to a CSV within a ZIP file
+        csv_filename = f"{symbol.lower()}.csv"
+        data.to_csv(csv_filename, index=False)
+
+        with ZipFile(file_path, 'w') as zipf:
+            zipf.write(csv_filename, arcname=csv_filename)
+
+        os.remove(csv_filename)
+
+        print(f"Saved corporate actions for {symbol} to {file_path}")
+
+    def save_factor_file(self, symbol, corporate_actions):
+        """
+        Generates and saves a factor file for Lean using splits and dividends data.
+        """
+        directory = self.factor_file_path
+        filename = f"{symbol.lower()}.csv"
+        os.makedirs(directory, exist_ok=True)
+        file_path = os.path.join(directory, filename)
+
+        if not corporate_actions.empty:
+            factors = []
+            cumulative_factor = 1.0
+            
+            for _, row in corporate_actions.iterrows():
+                date = row['Date']
+                if row['EventType'] == 'Split':
+                    # Calculate split adjustment factor
+                    factor = 1 / row['Value']
+                    cumulative_factor *= factor
+                    factors.append([date, cumulative_factor])
+                elif row['EventType'] == 'Dividend':
+                    # Placeholder for dividend handling logic
+                    factor = 1.0  # Adjust if dividends affect factors
+                    factors.append([date, cumulative_factor])
+
+            if factors:
+                factors_df = pd.DataFrame(factors, columns=['Date', 'Factor'])
+                factors_df.to_csv(file_path, index=False, header=False)
+                print(f"Saved factor file for {symbol} to {file_path}")
+            else:
+                print(f"No split or significant dividend data for {symbol}. Creating default factor file.")
+                pd.DataFrame([[f"20200101,1.0"]]).to_csv(file_path, index=False, header=False)
+        else:
+            print(f"No corporate actions data to create factor file for {symbol}. Creating default factor file.")
+            pd.DataFrame([[f"20200101,1.0"]]).to_csv(file_path, index=False, header=False)
+
+    def save_map_file(self, symbol):
+        """
+        Generates and saves a map file for Lean. Assumes no ticker changes for simplicity.
+        """
+        directory = self.map_file_path
+        filename = f"{symbol.lower()}.csv"
+        os.makedirs(directory, exist_ok=True)
+        file_path = os.path.join(directory, filename)
+
+        # Create a basic map file with current ticker only
+        pd.DataFrame([[f"{datetime.now().strftime('%Y%m%d')},{symbol}"]]).to_csv(file_path, index=False, header=False)
+        print(f"Saved map file for {symbol} to {file_path}")
+
+    def create_files_for_all_symbols(self):
+        """
+        Creates corporate actions, factor files, and map files for all symbols in the array.
+        """
+        for symbol in self.symbols:
+            print(f"Processing {symbol}...")
+
+            # Download and validate corporate actions data
+            corporate_actions = self.download_corporate_actions(symbol)
+            if not corporate_actions.empty:
+                print(f"Downloaded corporate actions for {symbol}:\n", corporate_actions.head())
+                self.save_corporate_actions_to_lean_format(corporate_actions, symbol)
+                self.save_factor_file(symbol, corporate_actions)
+            else:
+                print(f"No corporate actions data available for {symbol} from {self.start_date} to {self.end_date}.")
+                self.save_factor_file(symbol, corporate_actions)  # Create a default factor file
+
+            # Save map file
+            self.save_map_file(symbol)
+
+
+
 class QuantConnectDataUpdater:
     def __init__(self, data_config_paramters, parameters):
         self.parameters = parameters
@@ -123,13 +270,100 @@ class QuantConnectDataUpdater:
             print(f"Data file for {symbol} not found.")
             return False
     
-    def _download_data(self, symbol, start_date, end_date):
+
+    def get_exchange_timezone(self,symbol, exchange_timezones):
+        """
+        Dynamically fetches the exchange and time zone information for a symbol using yfinance.
+        If the exchange is not found in the mapping, it attempts to add it dynamically.
+        """
+        try:
+            # Fetch ticker information using yfinance
+            ticker = yf.Ticker(symbol)
+            
+            # Extract the time zone directly from ticker info if available
+            tz_name = ticker.info.get('timezone')
+            if tz_name:
+                print(f"Retrieved time zone for {symbol}: {tz_name}")
+                return timezone(tz_name)
+
+            # Extract the exchange name
+            exchange = ticker.info.get('exchange', '').upper()
+
+            # Check if the exchange is already in the mapping
+            if exchange not in exchange_timezones:
+                # If the exchange is not in the mapping, try to dynamically add it
+                new_time_zone = self.fetch_timezone_from_external_source(exchange)
+                if new_time_zone:
+                    exchange_timezones[exchange] = new_time_zone
+                    print(f"Added new exchange: {exchange} with time zone: {new_time_zone}")
+                else:
+                    print(f"Time zone for {exchange} not found, defaulting to UTC.")
+                    exchange_timezones[exchange] = 'UTC'
+
+            # Retrieve the time zone for the given exchange
+            time_zone = exchange_timezones.get(exchange, 'UTC')
+            print(f"Using exchange-based time zone for {symbol}: {time_zone}")
+            return timezone(time_zone)
+
+        except Exception as e:
+            print(f"Error fetching exchange data for {symbol}: {str(e)}")
+            return utc  # Default to UTC in case of an error
+            
+    def fetch_timezone_from_external_source(self,exchange):
+        """
+        Fetches time zone information for an exchange dynamically using yfinance.
+        This function looks for a symbol commonly traded on the given exchange to infer its time zone.
+        """
+        # Example symbols commonly associated with specific exchanges
+        common_symbols = {
+            'TSE': '7203.T',   # Tokyo Stock Exchange
+            'HKG': '0001.HK',  # Hong Kong Stock Exchange
+            'NMS': 'AAPL',     # NASDAQ
+            'NYQ': 'MSFT',     # NYSE
+            'LSE': 'AZN.L',    # London Stock Exchange
+            'ASX': 'BHP.AX',   # Australian Securities Exchange
+            # Additional symbols for Apple, Microsoft, and Google
+            'NASDAQ': 'AAPL',  # NASDAQ - Apple
+            'NYSE': 'MSFT',    # NYSE - Microsoft
+            'GOOGL': 'GOOGL',  # NASDAQ - Google
+            'NMS': 'GOOGL',    # NASDAQ - Google
+        }
+        
+        # Attempt to find a symbol associated with the exchange
+        example_symbol = common_symbols.get(exchange)
+        
+        if example_symbol:
+            try:
+                # Use yfinance to fetch ticker info for the example symbol
+                ticker = yf.Ticker(example_symbol)
+                tz_name = ticker.info.get('timezone')
+                if tz_name:
+                    print(f"Fetched time zone {tz_name} for exchange {exchange} using symbol {example_symbol}")
+                    return tz_name
+            except Exception as e:
+                print(f"Error fetching time zone for exchange {exchange} using {example_symbol}: {str(e)}")
+        
+        print(f"No specific time zone found for exchange {exchange}, defaulting to UTC.")
+        return 'UTC'  # Fallback to UTC if the exchange's time zone cannot be determined   
+    
+
+    def _download_data(self, symbol, start_date, end_date, exchange_timezones):
         """
         Downloads data for the given symbol and date range using yfinance.
         """
-        data = yf.download(symbol, start=start_date, end=end_date)
+        data = yf.download(symbol, start=start_date, end=end_date + timedelta(days=1), interval='1d', auto_adjust=True)
+        
         if not data.empty:
+
+            local_time_zone = self.get_exchange_timezone(symbol, exchange_timezones)
+
+            # Convert index (timestamps) from local time zone to UTC
+            data.index = data.index.tz_localize(local_time_zone).tz_convert(utc)
+            
+            # Format the index to match Lean's expected date format 'YYYYMMDD HH:MM'
             data.index = data.index.strftime('%Y%m%d %H:%M')
+
+            # Select only the required columns and rename them to match the format expected by Lean
             data = data[['Open', 'High', 'Low', 'Close', 'Volume']]
             data.columns = ['open', 'high', 'low', 'close', 'volume']
         return data
@@ -186,52 +420,7 @@ class QuantConnectDataUpdater:
                 csv_file.write(buffer.read())
 
         print(f"Successfully replaced the data in the ZIP file for {symbol}.")
-    def _download_factor_file_with_close(self, symbol, start_date, end_date):
-        # Fetch the ticker data using yfinance
-        ticker = yf.Ticker(symbol)
 
-        # Download historical data (including Close prices) within the specified date range
-        hist = ticker.history(start=start_date, end=end_date)
-
-        # Fetch dividends and splits data
-        dividends = ticker.dividends
-        splits = ticker.splits
-
-        # Convert indices to timezone-naive to match the start and end dates
-        dividends.index = dividends.index.tz_localize(None)
-        splits.index = splits.index.tz_localize(None)
-
-        # Filter dividends and splits within the specified date range
-        dividends = dividends[(dividends.index >= pd.to_datetime(start_date)) & (dividends.index <= pd.to_datetime(end_date))]
-        splits = splits[(splits.index >= pd.to_datetime(start_date)) & (splits.index <= pd.to_datetime(end_date))]
-
-        # Calculate price factors using cumulative product (considering dividends)
-        price_factors = (1 - dividends / hist['Close']).fillna(1).cumprod().rename('price_factor')
-
-        # Create split factors (cumulative product of splits, replace 0 with 1)
-        split_factors = splits.cumprod().replace(0, 1).rename('split_factor')
-
-        # Merge factors with the historical data
-        factor_data = pd.DataFrame({
-            'date': hist.index,
-            'close_price': hist['Close']
-        })
-        
-        # Combine price factors and split factors into the data
-        factor_data = factor_data.join(price_factors, on='date').join(split_factors, on='date')
-        factor_data[['price_factor', 'split_factor']] = factor_data[['price_factor', 'split_factor']].fillna(method='ffill').fillna(1)
-
-        # Format date to YYYYMMDD
-        factor_data['date'] = factor_data['date'].dt.strftime('%Y%m%d')
-
-        # Rearrange and format the data as requested
-        factor_data = factor_data[['date', 'price_factor', 'split_factor', 'close_price']]
-
-        # Convert to the required format: YYYYMMDD, Price Factor, Split Factor, Close Price
-        factor_data = factor_data.apply(lambda row: f"{row['date']},{row['price_factor']:.7f},{row['split_factor']:.1f},{row['close_price']:.2f}", axis=1)
-
-        # Return as a list of formatted strings
-        return factor_data.tolist()
 
     def update_data(self):
         """
@@ -240,10 +429,30 @@ class QuantConnectDataUpdater:
         # Ensure dates are in the correct format
         start_date = self.parameters["start_date"]
         end_date = self.parameters["end_date"]
+
+
+        # # Create a date object
+        # start_date_obj = start_date
+
+        # # Convert the date object to a string in the format 'YYYY-MM-DD'
+        # start_date_str = start_date_obj.strftime('%Y-%m-%d')
+
+
+        #         # Create a date object
+        # end_date_obj = end_date
+
+        # # Convert the date object to a string in the format 'YYYY-MM-DD'
+        # end_date_str = end_date_obj.strftime('%Y-%m-%d')
         
         for asset in self.assets:
                 # Download missing data
-                new_data = self._download_data(asset, start_date, end_date)
+
+                exchange_timezones = {
+                    'NMS': 'America/New_York',  # NASDAQ
+                    'NYQ': 'America/New_York',  # NYSE
+                }
+                new_data = self._download_data(asset, start_date, end_date, exchange_timezones)
+              
                 
                 if new_data.empty:
                     print(f"No new data available for {asset} between {start_date} and {end_date}.")
@@ -253,13 +462,11 @@ class QuantConnectDataUpdater:
                 self._update_zip_file(asset, new_data)
                 print(f"Data for {asset} from {start_date} to {end_date} has been updated.")
 
-                # new_data_factor_files = self._download_factor_file_with_close(asset, start_date, end_date)
 
-                # if new_data_factor_files.empty:
-                #     print(f"No new data available for {asset} between {start_date} and {end_date}.")
-                #     return
-                # self._update_zip_file_factor_file(asset, new_data_factor_files)
+        # file_manager = AddOnFileManager(self.assets, start_date_str, end_date_str)
+        # file_manager.create_files_for_all_symbols()
 
+                
               
         
         

@@ -78,6 +78,7 @@ class LeanRunner:
         }
     },
     # Recommended Additions for Missing Keys:
+    "settings.daily_precise_end_time":True,
     "version-id": "v1.0.0",  # Set the appropriate version
     "cache-location": os.path.join(self.internal_lean_path, "cache"),  # Path for caching
     "plugin-directory": os.path.join(self.internal_lean_path, "plugins"),  # Path for plugins
