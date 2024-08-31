@@ -1,5 +1,0 @@
-\equity\usa\daily\googl.zip
-\equity\usa\daily\aapl.zip
-\equity\usa\hour\spy.zip
-\equity\usa\hour\spy.zip
-\alternative\interest-rate\usa\interest-rate.csv

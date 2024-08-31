@@ -59,3 +59,7 @@ D:\qcTrader-par1\qcTrader\qcTrader\lean\Configuration\obj\Release\QuantConnect.C
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Configuration\obj\Release\refint\QuantConnect.Configuration.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Configuration\obj\Release\QuantConnect.Configuration.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Configuration\obj\Release\ref\QuantConnect.Configuration.dll
+D:\Lean\Launcher\composer\QuantConnect.Configuration.deps.json
+D:\Lean\Launcher\composer\QuantConnect.Configuration.dll
+D:\Lean\Launcher\composer\QuantConnect.Configuration.pdb
+D:\Lean\Launcher\composer\QuantConnect.Configuration.xml

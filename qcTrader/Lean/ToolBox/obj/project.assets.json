@@ -1907,11 +1907,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\ToolBox\\QuantConnect.ToolBox.csproj",
+      "projectUniqueName": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\ToolBox\\QuantConnect.ToolBox.csproj",
       "projectName": "QuantConnect.ToolBox",
-      "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\ToolBox\\QuantConnect.ToolBox.csproj",
+      "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\ToolBox\\QuantConnect.ToolBox.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\ToolBox\\obj\\",
+      "outputPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\ToolBox\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1926,8 +1926,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj": {
-              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Engine\\QuantConnect.Lean.Engine.csproj"
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Engine\\QuantConnect.Lean.Engine.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Engine\\QuantConnect.Lean.Engine.csproj"
             }
           }
         }

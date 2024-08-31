@@ -3,14 +3,15 @@ import yfinance as yf
 import os
 import pandas as pd
 import zipfile
-from datetime import datetime
-
+import pandas as pd
+from io import BytesIO
 class QuantConnectDataUpdater:
-    def __init__(self, parameters):
+    def __init__(self, data_config_paramters, parameters):
         self.parameters = parameters
-        self.data_folder = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.parameters["asset_class"],self.parameters["market"],self.parameters["resolution"])
-        self.map_files_path = os.path.join(self.data_folder, self.parameters["asset_class"],self.parameters["market"],self.parameters["resolution"], "map_files" )
-        self.factor_files_path = os.path.join(self.data_folder, self.parameters["asset_class"],self.parameters["market"],self.parameters["resolution"],"factor_files" )
+        self.data_config_paramters = data_config_paramters
+        self.data_folder = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"],self.data_config_paramters["resolution"])
+        self.map_files_path = os.path.join(self.data_folder, "map_files" )
+        self.factor_files_path = os.path.join(self.data_folder,"factor_files" )
         
         # Parse the JSON string
         portfolio_dict = json.loads(self.parameters['portfolio'])
@@ -133,40 +134,105 @@ class QuantConnectDataUpdater:
             data.columns = ['open', 'high', 'low', 'close', 'volume']
         return data
     
+    def _update_zip_file_factor_file(self,symbol, formatted_data):
+        # Define the path for the ZIP file
+        zip_file_path = self.factor_files_path
+        csv_file_name = f"{symbol.lower()}.csv"
+
+        # Remove existing ZIP file if it exists
+        if os.path.exists(zip_file_path):
+            os.remove(zip_file_path)
+            print(f"Removed existing ZIP file: {zip_file_path}")
+
+        # Create a new ZIP file and add the formatted data as a CSV
+        with zipfile.ZipFile(zip_file_path, 'w') as zip_file:
+            with zip_file.open(csv_file_name, 'w') as csv_file:
+                # Convert formatted data to bytes and write to the CSV in the ZIP
+                buffer = BytesIO()
+                buffer.write('\n'.join(formatted_data).encode('utf-8'))
+                buffer.seek(0)
+                csv_file.write(buffer.read())
+            print(f"Created new ZIP file with updated factor data: {zip_file_path}")
+
     def _update_zip_file(self, symbol, new_data):
         """
-        Updates the existing ZIP file with new data or creates a new one if it doesn't exist.
+        Replaces the existing CSV data in the ZIP file with new data or creates a new ZIP if it doesn't exist.
         """
         zip_file_path = self._get_zip_file_path(symbol)
         csv_file_name = f"{symbol.lower()}.csv"
-        
-        if os.path.exists(zip_file_path):
-            # Update existing CSV inside the ZIP
-            with zipfile.ZipFile(zip_file_path, 'a') as zip_file:
-                # Read existing data
-                with zip_file.open(csv_file_name) as csv_file:
-                    existing_data = pd.read_csv(csv_file, index_col=0, parse_dates=True)
-                
-                # Convert the index to datetime if it's not already
-                if not pd.api.types.is_datetime64_any_dtype(existing_data.index):
-                    existing_data.index = pd.to_datetime(existing_data.index, format='%Y%m%d %H:%M')
-                    
-                if not pd.api.types.is_datetime64_any_dtype(new_data.index):
-                    new_data.index = pd.to_datetime(new_data.index, format='%Y%m%d %H:%M')
 
-                # Combine and remove duplicates
-                combined_data = pd.concat([existing_data, new_data]).drop_duplicates()
-                combined_data = combined_data.sort_index()
-                
-                # Write the combined data back to the CSV file in the ZIP without headers
-                with zip_file.open(csv_file_name, 'w') as csv_file:
-                    combined_data.to_csv(csv_file, header=False)
-        else:
-            # Create a new ZIP file with the CSV without headers
-            with zipfile.ZipFile(zip_file_path, 'w') as zip_file:
-                with zip_file.open(csv_file_name, 'w') as csv_file:
-                    new_data.to_csv(csv_file, header=False)
-    
+        # Ensure the index is in datetime format and in UTC
+        if not pd.api.types.is_datetime64_any_dtype(new_data.index):
+            new_data.index = pd.to_datetime(new_data.index)
+
+        # Set the index to UTC
+        new_data.index = new_data.index.tz_convert('UTC') if new_data.index.tz else new_data.index.tz_localize('UTC')
+
+        # Format the index to the desired format 'YYYYMMDD HH:MM'
+        new_data.index = new_data.index.strftime('%Y%m%d %H:%M')
+
+        # Log the new data for debugging
+        print(f"New data shape for {symbol}: {new_data.shape}")
+
+        # Open the ZIP file in write mode to replace any existing files
+        with zipfile.ZipFile(zip_file_path, 'w') as zip_file:
+            # Write the new data to the ZIP file, replacing any existing CSV file
+            with zip_file.open(csv_file_name, 'w') as csv_file:
+                # Use a buffer to write the DataFrame into the ZIP
+                buffer = BytesIO()
+                # Write only the new data with the formatted dates, excluding headers
+                new_data.to_csv(buffer, header=False, encoding='utf-8')
+                buffer.seek(0)
+                csv_file.write(buffer.read())
+
+        print(f"Successfully replaced the data in the ZIP file for {symbol}.")
+    def _download_factor_file_with_close(self, symbol, start_date, end_date):
+        # Fetch the ticker data using yfinance
+        ticker = yf.Ticker(symbol)
+
+        # Download historical data (including Close prices) within the specified date range
+        hist = ticker.history(start=start_date, end=end_date)
+
+        # Fetch dividends and splits data
+        dividends = ticker.dividends
+        splits = ticker.splits
+
+        # Convert indices to timezone-naive to match the start and end dates
+        dividends.index = dividends.index.tz_localize(None)
+        splits.index = splits.index.tz_localize(None)
+
+        # Filter dividends and splits within the specified date range
+        dividends = dividends[(dividends.index >= pd.to_datetime(start_date)) & (dividends.index <= pd.to_datetime(end_date))]
+        splits = splits[(splits.index >= pd.to_datetime(start_date)) & (splits.index <= pd.to_datetime(end_date))]
+
+        # Calculate price factors using cumulative product (considering dividends)
+        price_factors = (1 - dividends / hist['Close']).fillna(1).cumprod().rename('price_factor')
+
+        # Create split factors (cumulative product of splits, replace 0 with 1)
+        split_factors = splits.cumprod().replace(0, 1).rename('split_factor')
+
+        # Merge factors with the historical data
+        factor_data = pd.DataFrame({
+            'date': hist.index,
+            'close_price': hist['Close']
+        })
+        
+        # Combine price factors and split factors into the data
+        factor_data = factor_data.join(price_factors, on='date').join(split_factors, on='date')
+        factor_data[['price_factor', 'split_factor']] = factor_data[['price_factor', 'split_factor']].fillna(method='ffill').fillna(1)
+
+        # Format date to YYYYMMDD
+        factor_data['date'] = factor_data['date'].dt.strftime('%Y%m%d')
+
+        # Rearrange and format the data as requested
+        factor_data = factor_data[['date', 'price_factor', 'split_factor', 'close_price']]
+
+        # Convert to the required format: YYYYMMDD, Price Factor, Split Factor, Close Price
+        factor_data = factor_data.apply(lambda row: f"{row['date']},{row['price_factor']:.7f},{row['split_factor']:.1f},{row['close_price']:.2f}", axis=1)
+
+        # Return as a list of formatted strings
+        return factor_data.tolist()
+
     def update_data(self):
         """
         Main method to check and update data.
@@ -176,9 +242,6 @@ class QuantConnectDataUpdater:
         end_date = self.parameters["end_date"]
         
         for asset in self.assets:
-            data_available = self.check_data_availability(asset, start_date, end_date)
-            
-            if not data_available:
                 # Download missing data
                 new_data = self._download_data(asset, start_date, end_date)
                 
@@ -189,5 +252,14 @@ class QuantConnectDataUpdater:
                 # Update or create ZIP file with new data
                 self._update_zip_file(asset, new_data)
                 print(f"Data for {asset} from {start_date} to {end_date} has been updated.")
+
+                # new_data_factor_files = self._download_factor_file_with_close(asset, start_date, end_date)
+
+                # if new_data_factor_files.empty:
+                #     print(f"No new data available for {asset} between {start_date} and {end_date}.")
+                #     return
+                # self._update_zip_file_factor_file(asset, new_data_factor_files)
+
+              
         
         
