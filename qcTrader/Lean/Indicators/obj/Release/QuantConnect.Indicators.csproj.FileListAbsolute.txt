@@ -126,3 +126,17 @@ D:\qcTrader-par1\qcTrader\qcTrader\lean\Indicators\obj\Release\QuantConnect.Indi
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Indicators\obj\Release\refint\QuantConnect.Indicators.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Indicators\obj\Release\QuantConnect.Indicators.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Indicators\obj\Release\ref\QuantConnect.Indicators.dll
+D:\Lean\Launcher\composer\AlgorithmImports.py
+D:\Lean\Launcher\composer\PandasMapper.py
+D:\Lean\Launcher\composer\clr.py
+D:\Lean\Launcher\composer\pythonnet\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__main__.py
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.deps.json
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.dll
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.pdb
+D:\Lean\Launcher\composer\pythonnet\util\__init__.py
+D:\Lean\Launcher\composer\QuantConnect.Indicators.deps.json
+D:\Lean\Launcher\composer\QuantConnect.Indicators.dll
+D:\Lean\Launcher\composer\QuantConnect.Indicators.pdb
+D:\Lean\Launcher\composer\QuantConnect.Indicators.xml

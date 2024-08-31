@@ -144,3 +144,17 @@ D:\qcTrader-par1\qcTrader\qcTrader\lean\Queues\obj\Release\QuantConnect.Queues.d
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Queues\obj\Release\refint\QuantConnect.Queues.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Queues\obj\Release\QuantConnect.Queues.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Queues\obj\Release\ref\QuantConnect.Queues.dll
+D:\Lean\Launcher\composer\AlgorithmImports.py
+D:\Lean\Launcher\composer\PandasMapper.py
+D:\Lean\Launcher\composer\clr.py
+D:\Lean\Launcher\composer\pythonnet\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__main__.py
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.deps.json
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.dll
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.pdb
+D:\Lean\Launcher\composer\pythonnet\util\__init__.py
+D:\Lean\Launcher\composer\QuantConnect.Queues.deps.json
+D:\Lean\Launcher\composer\QuantConnect.Queues.dll
+D:\Lean\Launcher\composer\QuantConnect.Queues.pdb
+D:\Lean\Launcher\composer\QuantConnect.Queues.xml

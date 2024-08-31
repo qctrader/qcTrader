@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Mr88ioR/Grs=",
+  "dgSpecHash": "klYQnvtuecA=",
   "success": true,
-  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Compression\\QuantConnect.Compression.csproj",
+  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Compression\\QuantConnect.Compression.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\dotnetzip\\1.16.0\\dotnetzip.1.16.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.1\\microsoft.netcore.platforms.3.1.1.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OSYVFJONS9I=",
+  "dgSpecHash": "2cOFzwCe4Uo=",
   "success": true,
-  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Brokerages\\QuantConnect.Brokerages.csproj",
+  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Brokerages\\QuantConnect.Brokerages.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\cloneextensions\\1.3.0\\cloneextensions.1.3.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\csvhelper\\19.0.0\\csvhelper.19.0.0.nupkg.sha512",

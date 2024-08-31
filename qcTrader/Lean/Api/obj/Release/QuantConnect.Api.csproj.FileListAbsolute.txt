@@ -126,3 +126,17 @@ D:\qcTrader-par1\qcTrader\qcTrader\lean\Api\obj\Release\QuantConnect.Api.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Api\obj\Release\refint\QuantConnect.Api.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Api\obj\Release\QuantConnect.Api.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Api\obj\Release\ref\QuantConnect.Api.dll
+D:\Lean\Launcher\composer\AlgorithmImports.py
+D:\Lean\Launcher\composer\PandasMapper.py
+D:\Lean\Launcher\composer\clr.py
+D:\Lean\Launcher\composer\pythonnet\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__main__.py
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.deps.json
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.dll
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.pdb
+D:\Lean\Launcher\composer\pythonnet\util\__init__.py
+D:\Lean\Launcher\composer\QuantConnect.Api.deps.json
+D:\Lean\Launcher\composer\QuantConnect.Api.dll
+D:\Lean\Launcher\composer\QuantConnect.Api.pdb
+D:\Lean\Launcher\composer\QuantConnect.Api.xml

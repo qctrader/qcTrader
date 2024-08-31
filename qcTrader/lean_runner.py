@@ -13,66 +13,98 @@ class LeanRunner:
         # Dynamically capture the working directory
         current_working_directory = os.getcwd()
         self.is_docker = self.detect_is_docker()
+        self.internal_lean_path = ''
+        self.starter_dll_path = 'qcTrader/Lean/Launcher/composer'
+        self.dll_path = 'qcTrader/Lean/Launcher'
+        self.internal_dll_path = ''
       
         if self.is_docker:
                 # If running inside Docker, use the site-packages path
                 site_packages_path = site.getsitepackages()[0]
                 print(f"site_packages_path----------------->{site_packages_path}")
                 self.internal_lean_path = os.path.join(site_packages_path, lean_path)
+                self.internal_dll_path = os.path.join(site_packages_path, self.dll_path)
         else:
                 # Otherwise, use the default path for non-Docker installations
                 self.internal_lean_path = lean_path
+                self.internal_dll_path = self.dll_path
 
         print(f"current_working_directory----------------->{current_working_directory}")
  
         self.base_config = {
-            "environment": "backtesting",
-            "algorithm-language": "Python",
-            "data-folder": os.path.join(self.internal_lean_path, "Data"),
-            "debugging": False,
-            "debugging-method": "LocalCmdLine",
-            "log-handler": "ConsoleLogHandler",
-            "messaging-handler": "QuantConnect.Messaging.Messaging",
-            "job-queue-handler": "QuantConnect.Queues.JobQueue",
-            "api-handler": "QuantConnect.Api.Api",
-            "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
-            "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
-            "data-provider": "QuantConnect.Lean.Engine.DataFeeds.DefaultDataProvider",
-            "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
-            "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",
-            "symbol-minute-limit": 10000,
-            "symbol-second-limit": 10000,
-            "symbol-tick-limit": 10000,
-            "show-missing-data-logs": True,
-            "maximum-warmup-history-days-look-back": 5,
-            "maximum-data-points-per-chart-series": 1000000,
-            "maximum-chart-series": 30,
-            "force-exchange-always-open": False,
-            "transaction-log": "",
-            "reserved-words-prefix": "@",
-            "job-user-id": "0",
-            "api-access-token": "",
-            "job-organization-id": "",
-            "log-level": "trace",
-            "debug-mode": True,
-            "results-destination-folder": os.path.join(self.internal_lean_path, "Results"),
-            "mute-python-library-logging": "False",
-            "close-automatically": True,
-            "python-additional-paths": [],
-            "environments": {
-                "backtesting": {
-                    "live-mode": False,
-                    "setup-handler": "QuantConnect.Lean.Engine.Setup.BacktestingSetupHandler",
-                    "result-handler": "QuantConnect.Lean.Engine.Results.BacktestingResultHandler",
-                    "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.FileSystemDataFeed",
-                    "real-time-handler": "QuantConnect.Lean.Engine.RealTime.BacktestingRealTimeHandler",
-                    "history-provider": [
-                        "QuantConnect.Lean.Engine.HistoricalData.SubscriptionDataReaderHistoryProvider"
-                    ],
-                    "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BacktestingTransactionHandler",
-                }
-            },
+    "environment": "backtesting",
+    "algorithm-language": "Python",
+    "data-folder": os.path.join(self.internal_lean_path, "Data"),
+    "debugging": False,
+    "debugging-method": "LocalCmdLine",
+    "log-handler": "ConsoleLogHandler",
+    "composer-dll-directory": os.path.join(self.internal_dll_path, "composer"),
+    "log-level": "trace",
+    "messaging-handler": "QuantConnect.Messaging.Messaging",
+    "job-queue-handler": "QuantConnect.Queues.JobQueue",
+    "api-handler": "QuantConnect.Api.Api",
+    "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
+    "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
+    "data-provider": "QuantConnect.Lean.Engine.DataFeeds.DefaultDataProvider",
+    "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
+    "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",
+    "symbol-minute-limit": 10000,
+    "symbol-second-limit": 10000,
+    "symbol-tick-limit": 10000,
+    "show-missing-data-logs": True,
+    "maximum-warmup-history-days-look-back": 5,
+    "maximum-data-points-per-chart-series": 1000000,
+    "maximum-chart-series": 30,
+    "force-exchange-always-open": False,
+    "forward-console-messages": True,
+    "transaction-log": "",
+    "reserved-words-prefix": "@",
+    "debug-mode": True,
+    "results-destination-folder": os.path.join(self.internal_lean_path, "Results"),
+    "mute-python-library-logging": "False",
+    "close-automatically": True,
+    "python-additional-paths": [],
+    "environments": {
+        "backtesting": {
+            "live-mode": False,
+            "setup-handler": "QuantConnect.Lean.Engine.Setup.BacktestingSetupHandler",
+            "result-handler": "QuantConnect.Lean.Engine.Results.BacktestingResultHandler",
+            "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.FileSystemDataFeed",
+            "real-time-handler": "QuantConnect.Lean.Engine.RealTime.BacktestingRealTimeHandler",
+            "history-provider": [
+                "QuantConnect.Lean.Engine.HistoricalData.SubscriptionDataReaderHistoryProvider"
+            ],
+            "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BacktestingTransactionHandler",
         }
+    },
+    # Recommended Additions for Missing Keys:
+    "version-id": "v1.0.0",  # Set the appropriate version
+    "cache-location": os.path.join(self.internal_lean_path, "cache"),  # Path for caching
+    "plugin-directory": os.path.join(self.internal_lean_path, "plugins"),  # Path for plugins
+    "lean-manager-type": "LocalLeanManager",
+    "optimization-id": "",
+    "data-channel": "",
+    "python-venv": "",  # Path to your virtual environment if used
+    "out-of-sample-max-end-date": "",
+    "out-of-sample-days": 0,
+    "data-permission-manager": "DataPermissionManager",
+    "databases-refresh-period": "1.00:00:00",
+    "object-store-root": os.path.join(self.internal_lean_path, "storage"),
+    "security-data-feeds": "",
+    "algorithm-manager-time-loop-maximum": 20,
+    "algorithm-creation-timeout": 90,
+    "data-feed-workers-count": 4,
+    "downloader-data-update-period": 7,
+    "scheduled-event-leaky-bucket-capacity": 120,
+    "scheduled-event-leaky-bucket-time-interval-minutes": 1440,
+    "scheduled-event-leaky-bucket-refill-amount": 18,
+    "storage-limit": 10737418240,  # 10 GB
+    "storage-file-count": 10000,
+    "storage-permissions": 3,
+    # Optional fields based on specific requirements
+    "maximum-runtime": "100.00:00:00",  # Example: Max 100 days
+    "maximum-orders": 2147483647,  # Example: Max orders
+}
     def detect_is_docker(self):
         """Check if the code is running inside a Docker container or WSL environment."""
 
@@ -112,18 +144,23 @@ class LeanRunner:
         # If none of the above conditions are met, return False
         return False
             
-    def set_algorithm_config(self, algorithm_location, algorithm_name, parameters):
+    def set_algorithm_config(self, algorithm_location, algorithm_name, parameters, algorithm_type_name, data_config_paramters):
       
         config = self.base_config.copy()
         config.update({
             "algorithm-type-name": algorithm_name,
             "algorithm-location": algorithm_location,
+            "backtest-name": algorithm_type_name, 
+            "algorithm-id": algorithm_name, 
+            "job-user-id": data_config_paramters["user_id"],
+            "api-access-token": data_config_paramters["api_token"],
+            "job-organization-id": data_config_paramters["job_org_id"],
             "parameters": parameters,
         })
         return config
 
-    def generate_config(self,algorithm_location,  algorithm_name, parameters, config_path=None):
-        config = self.set_algorithm_config(algorithm_location, algorithm_name, parameters)
+    def generate_config(self,algorithm_location,  algorithm_name, parameters,algorithm_type_name, data_config_paramters,  config_path=None):
+        config = self.set_algorithm_config(algorithm_location, algorithm_name, parameters, algorithm_type_name, data_config_paramters)
 
         if not os.path.exists(self.internal_lean_path):
             os.makedirs(self.internal_lean_path)
@@ -146,7 +183,7 @@ class LeanRunner:
         if data_list:
             log_lines = data_list.split('\n')
             for line in log_lines:
-                print(f"log_lines------------------------>{line}")
+                # print(f"log_lines------------------------>{line}")
                 if line.startswith("STATISTICS::"):
                     match = re.search(r'STATISTICS::\s*(.*)', line)
                     if match:
@@ -159,9 +196,9 @@ class LeanRunner:
 
         return statistics
  
-    def run_algorithm(self, algorithm_name, algorithm_type_name, parameters, config_file_path=None):
+    def run_algorithm(self, algorithm_name, algorithm_type_name, parameters, data_config_paramters, config_file_path=None):
         # Initialize the DataManager
-        data_manager = QuantConnectDataUpdater(parameters)
+        data_manager = QuantConnectDataUpdater(data_config_paramters, parameters)
 
 
         data_manager.update_data()
@@ -198,12 +235,14 @@ class LeanRunner:
 
         # Generate the configuration file if none is provided
         if config_file_path is None:
-            config_file_path = self.generate_config(algorithm_location, algorithm_name, parameters)
+            config_file_path = self.generate_config(algorithm_location, algorithm_name, parameters, algorithm_type_name, data_config_paramters)
 
         print(f"Config file path: {config_file_path}")  # Debug statement
 
+        
+
         # Ensure paths are cross-platform compatible
-        dll_path = os.path.join(self.internal_lean_path, 'QuantConnect.Lean.Launcher.dll')
+        dll_path = os.path.join(self.starter_dll_path, 'QuantConnect.Lean.Launcher.dll')
         dll_path = os.path.normpath(dll_path)
         config_file_path = os.path.normpath(config_file_path)
 

@@ -97,3 +97,17 @@ D:\qcTrader-par1\qcTrader\qcTrader\lean\Optimizer\obj\Release\QuantConnect.Optim
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Optimizer\obj\Release\refint\QuantConnect.Optimizer.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Optimizer\obj\Release\QuantConnect.Optimizer.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Optimizer\obj\Release\ref\QuantConnect.Optimizer.dll
+D:\Lean\Launcher\composer\AlgorithmImports.py
+D:\Lean\Launcher\composer\PandasMapper.py
+D:\Lean\Launcher\composer\clr.py
+D:\Lean\Launcher\composer\pythonnet\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__main__.py
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.deps.json
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.dll
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.pdb
+D:\Lean\Launcher\composer\pythonnet\util\__init__.py
+D:\Lean\Launcher\composer\QuantConnect.Optimizer.dll.config
+D:\Lean\Launcher\composer\QuantConnect.Optimizer.deps.json
+D:\Lean\Launcher\composer\QuantConnect.Optimizer.dll
+D:\Lean\Launcher\composer\QuantConnect.Optimizer.pdb

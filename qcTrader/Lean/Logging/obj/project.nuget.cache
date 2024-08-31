@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KXTiogrvkh4=",
+  "dgSpecHash": "idfyN6WNNtM=",
   "success": true,
-  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\lean\\Logging\\QuantConnect.Logging.csproj",
+  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Logging\\QuantConnect.Logging.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\system.componentmodel.composition\\6.0.0\\system.componentmodel.composition.6.0.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",

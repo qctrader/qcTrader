@@ -135,3 +135,17 @@ D:\qcTrader-par1\qcTrader\qcTrader\lean\Brokerages\obj\Release\QuantConnect.Brok
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Brokerages\obj\Release\refint\QuantConnect.Brokerages.dll
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Brokerages\obj\Release\QuantConnect.Brokerages.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\lean\Brokerages\obj\Release\ref\QuantConnect.Brokerages.dll
+D:\Lean\Launcher\composer\AlgorithmImports.py
+D:\Lean\Launcher\composer\PandasMapper.py
+D:\Lean\Launcher\composer\clr.py
+D:\Lean\Launcher\composer\pythonnet\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__init__.py
+D:\Lean\Launcher\composer\pythonnet\find_libpython\__main__.py
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.deps.json
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.dll
+D:\Lean\Launcher\composer\pythonnet\runtime\Python.Runtime.pdb
+D:\Lean\Launcher\composer\pythonnet\util\__init__.py
+D:\Lean\Launcher\composer\QuantConnect.Brokerages.deps.json
+D:\Lean\Launcher\composer\QuantConnect.Brokerages.dll
+D:\Lean\Launcher\composer\QuantConnect.Brokerages.pdb
+D:\Lean\Launcher\composer\QuantConnect.Brokerages.xml
