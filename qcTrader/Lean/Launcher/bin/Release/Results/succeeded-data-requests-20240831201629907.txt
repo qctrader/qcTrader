@@ -1,2 +1,0 @@
-\equity\usa\daily\aapl.zip
-\equity\usa\hour\aapl.zip

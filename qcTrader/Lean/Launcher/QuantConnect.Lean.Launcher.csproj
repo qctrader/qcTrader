@@ -67,7 +67,14 @@
     <ProjectReference Include="..\Messaging\QuantConnect.Messaging.csproj" />
     <ProjectReference Include="..\Queues\QuantConnect.Queues.csproj" />
     <ProjectReference Include="..\ToolBox\QuantConnect.ToolBox.csproj" />
+    <!-- <ProjectReference Include="..\YFinanceDataProvider\YFinanceDataProvider.csproj" /> -->
   </ItemGroup>
+
+  <ItemGroup>
+  <Reference Include="YFinanceDataProvider">
+    <HintPath>composer\yFinanceDataProvider.dll</HintPath>
+  </Reference>
+</ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">
       <Pack>True</Pack>

@@ -12,7 +12,10 @@
     "api-handler": "QuantConnect.Api.Api",
     "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
     "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
-    "data-provider": "QuantConnect.Lean.Engine.DataFeeds.DefaultDataProvider",
+    "data-provider": {
+        "type-name": "YFinanceDataProvider.PythonRunner",
+        "assembly-path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceDataProvider.dll"
+    },
     "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
     "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",
     "symbol-minute-limit": 10000,

@@ -10,7 +10,7 @@ import yfinance as yf
 from zipfile import ZipFile
 from datetime import datetime, timedelta
 from pytz import timezone, utc
-import requests
+
 
 
 
@@ -351,23 +351,36 @@ class QuantConnectDataUpdater:
         """
         Downloads data for the given symbol and date range using yfinance.
         """
-        data = yf.download(symbol, start=start_date, end=end_date + timedelta(days=1), interval='1d', auto_adjust=True)
+        data = yf.download(symbol, start=start_date - timedelta(days=10), end=end_date + timedelta(days=10), interval='1d', auto_adjust=False)
         
         if not data.empty:
+            # Select only the required columns and rename them to match the format expected by Lean
+            formatted_data = data[['Close', 'High', 'Low', 'Open', 'Volume']]
+            formatted_data.columns = ['close', 'high', 'low', 'open', 'volume']
 
+            # Get the local time zone for the exchange
             local_time_zone = self.get_exchange_timezone(symbol, exchange_timezones)
 
-            # Convert index (timestamps) from local time zone to UTC
-            data.index = data.index.tz_localize(local_time_zone).tz_convert(utc)
-            
-            # Format the index to match Lean's expected date format 'YYYYMMDD HH:MM'
-            data.index = data.index.strftime('%Y%m%d %H:%M')
+            # Localize the index to the local time zone of the exchange
+            formatted_data.index = pd.to_datetime(formatted_data.index).tz_localize(local_time_zone)
 
-            # Select only the required columns and rename them to match the format expected by Lean
-            data = data[['Open', 'High', 'Low', 'Close', 'Volume']]
-            data.columns = ['open', 'high', 'low', 'close', 'volume']
-        return data
-    
+            # Convert the localized time to UTC
+            formatted_data.index = formatted_data.index.tz_convert('UTC')
+
+            # Format the datetime index as 'YYYYMMDD HH:MM' in UTC
+            formatted_data.index = formatted_data.index.strftime('%Y%m%d %H:%M')
+
+            # Check and ensure there are no duplicate indices (dates)
+            formatted_data = formatted_data[~formatted_data.index.duplicated(keep='first')]
+
+            # Reorder the columns if necessary
+            formatted_data = formatted_data[['close', 'high', 'low', 'open', 'volume']]
+        else:
+            # Return an empty DataFrame with the correct structure if no data was downloaded
+            formatted_data = pd.DataFrame(columns=['close', 'high', 'low', 'open', 'volume'])
+            
+        return formatted_data
+
     def _update_zip_file_factor_file(self,symbol, formatted_data):
         # Define the path for the ZIP file
         zip_file_path = self.factor_files_path

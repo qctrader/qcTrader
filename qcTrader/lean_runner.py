@@ -17,7 +17,7 @@ class LeanRunner:
         self.starter_dll_path = 'qcTrader/Lean/Launcher/composer'
         self.dll_path = 'qcTrader/Lean/Launcher'
         self.internal_dll_path = ''
-      
+    #   "D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\composer\YFinanceDataProvider.dll"
         if self.is_docker:
                 # If running inside Docker, use the site-packages path
                 site_packages_path = site.getsitepackages()[0]
@@ -34,6 +34,7 @@ class LeanRunner:
         self.base_config = {
     "environment": "backtesting",
     "algorithm-language": "Python",
+    
     "data-folder": os.path.join(self.internal_lean_path, "Data"),
     "debugging": False,
     "debugging-method": "LocalCmdLine",
@@ -45,7 +46,14 @@ class LeanRunner:
     "api-handler": "QuantConnect.Api.Api",
     "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
     "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
-    "data-provider": "QuantConnect.Lean.Engine.DataFeeds.DefaultDataProvider",
+    "data-feed": {
+        "type-name": "CustomDataFeeds.CsvDataFeed",  
+        "assembly-path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\CustomDataFeeds.dll"  
+    },
+    "data-provider": {
+        
+    },
+    # "data-provider": "YFinanceDataProvider.YFinanceCSVDataProvider",
     "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
     "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",
     "symbol-minute-limit": 10000,
@@ -146,11 +154,23 @@ class LeanRunner:
         return False
             
     def set_algorithm_config(self, algorithm_location, algorithm_name, parameters, algorithm_type_name, data_config_paramters):
-      
+        # algorithm= {
+        #         "type": algorithm_name,
+        #         "data": {
+        #             "custom": {
+        #                 "equity": {
+        #                 "symbols": ["MSFT"]
+        #                }
+        #             }
+        #          }
+        #        }
+        
+
         config = self.base_config.copy()
         config.update({
             "algorithm-type-name": algorithm_name,
             "algorithm-location": algorithm_location,
+            #  "algorithm": algorithm,
             "backtest-name": algorithm_type_name, 
             "algorithm-id": algorithm_name, 
             "job-user-id": data_config_paramters["user_id"],

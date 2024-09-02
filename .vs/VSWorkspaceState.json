@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\qcTrader",
+    "\\qcTrader\\Lean",
+    "\\qcTrader\\Lean\\CustomDataFeeds",
+    "\\qcTrader\\Lean\\CustomDataFeeds\\CustomDataFeeds",
+    "\\qcTrader\\Lean\\Launcher\\composer"
+  ],
+  "SelectedNode": "\\qcTrader\\Lean\\CustomDataFeeds\\CustomDataFeeds",
+  "PreviewInSolutionExplorer": false
+}

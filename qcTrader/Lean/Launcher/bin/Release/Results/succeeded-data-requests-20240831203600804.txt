@@ -1,3 +1,0 @@
-\equity\usa\daily\aapl.zip
-\equity\usa\daily\ibm.zip
-\equity\usa\daily\googl.zip

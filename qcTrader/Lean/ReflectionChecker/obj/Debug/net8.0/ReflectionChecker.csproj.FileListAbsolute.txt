@@ -1,0 +1,15 @@
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\bin\Debug\net8.0\ReflectionChecker.exe
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\bin\Debug\net8.0\ReflectionChecker.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\bin\Debug\net8.0\ReflectionChecker.runtimeconfig.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\bin\Debug\net8.0\ReflectionChecker.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\bin\Debug\net8.0\ReflectionChecker.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.GeneratedMSBuildEditorConfig.editorconfig
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.AssemblyInfoInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.AssemblyInfo.cs
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.csproj.CoreCompileInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.sourcelink.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\refint\ReflectionChecker.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ReflectionChecker.genruntimeconfig.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\ReflectionChecker\obj\Debug\net8.0\ref\ReflectionChecker.dll

@@ -1,0 +1,6 @@
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataFeeds\CustomDataFeeds\obj\Debug\net6.0\CustomDataFeeds.csproj.AssemblyReference.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataFeeds\CustomDataFeeds\obj\Debug\net6.0\CustomDataFeeds.GeneratedMSBuildEditorConfig.editorconfig
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataFeeds\CustomDataFeeds\obj\Debug\net6.0\CustomDataFeeds.AssemblyInfoInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataFeeds\CustomDataFeeds\obj\Debug\net6.0\CustomDataFeeds.AssemblyInfo.cs
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataFeeds\CustomDataFeeds\obj\Debug\net6.0\CustomDataFeeds.csproj.CoreCompileInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataFeeds\CustomDataFeeds\obj\Debug\net6.0\CustomDataFeeds.sourcelink.json

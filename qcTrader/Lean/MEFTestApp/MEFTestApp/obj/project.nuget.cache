@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E40kFa6rIIo=",
+  "success": true,
+  "projectFilePath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\MEFTestApp\\MEFTestApp\\MEFTestApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DELL\\.nuget\\packages\\system.componentmodel.composition\\8.0.0\\system.componentmodel.composition.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

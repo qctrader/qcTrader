@@ -18,6 +18,12 @@ def inspect_csv_from_zip(zip_path, csv_name):
             print("Columns:", df.columns.tolist())
             print("Date Format Check:", df['date'].head())
 
+
+            # Check for 0.0 values after saving
+            zero_data = df[(df == 0.0).any(axis=1)]
+            print("Rows with 0.0 values in the saved CSV:")
+            print(zero_data)
+
 # Inspect known good AlgoSeek data
 inspect_csv_from_zip('qcTrader/Lean/Launcher/bin/Release/Data/equity/usa/daily/aapl.zip', 'aapl.csv')
 

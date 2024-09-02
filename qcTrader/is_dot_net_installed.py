@@ -81,7 +81,17 @@ def set_dotnet_root():
             print(f"Added DOTNET_ROOT to {zshrc_path}. Please restart your terminal or run 'source {zshrc_path}' to apply changes.")
         else:
             print(f"No suitable shell configuration file found for setting DOTNET_ROOT permanently.")
+def set_python_path():
+    # Define the path to your Lean environment and custom provider directory
+    lean_root = os.path.abspath("qcTrader/Lean")  # Update to the path where your Lean folder is located
+    custom_provider_path = os.path.join(lean_root, "Algorithm.Python")
 
+        # Update PYTHONPATH to include the custom provider directory
+    current_pythonpath = os.environ.get('PYTHONPATH', '')
+    new_pythonpath = f"{custom_provider_path}{os.pathsep}{current_pythonpath}"
+    os.environ['PYTHONPATH'] = new_pythonpath
+
+    print(f"PYTHONPATH updated: {os.environ['PYTHONPATH']}")
 def install_dotnet():
     """Detect OS and instruct the user to install .NET SDK and Runtime if necessary."""
     logger = setup_logger()
@@ -89,6 +99,7 @@ def install_dotnet():
     if is_dotnet_installed():
         logger.info(".NET is already installed.")
         set_dotnet_root()
+        set_python_path()
         return
     else:
         notify_user_and_exit()

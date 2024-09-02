@@ -1,0 +1,247 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Accord">
+      <HintPath>..\..\Launcher\composer\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Fuzzy">
+      <HintPath>..\..\Launcher\composer\Accord.Fuzzy.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning">
+      <HintPath>..\..\Launcher\composer\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math">
+      <HintPath>..\..\Launcher\composer\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core">
+      <HintPath>..\..\Launcher\composer\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics">
+      <HintPath>..\..\Launcher\composer\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="AsyncIO">
+      <HintPath>..\..\Launcher\composer\AsyncIO.dll</HintPath>
+    </Reference>
+    <Reference Include="CloneExtensions">
+      <HintPath>..\..\Launcher\composer\CloneExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>..\..\Launcher\composer\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip">
+      <HintPath>..\..\Launcher\composer\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicInterop">
+      <HintPath>..\..\Launcher\composer\DynamicInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicObj">
+      <HintPath>..\..\Launcher\composer\DynamicObj.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\Launcher\composer\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\..\Launcher\composer\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Humanizer">
+      <HintPath>..\..\Launcher\composer\Humanizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\Launcher\composer\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\..\Launcher\composer\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="McMaster.Extensions.CommandLineUtils">
+      <HintPath>..\..\Launcher\composer\McMaster.Extensions.CommandLineUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Html.Abstractions">
+      <HintPath>..\..\Launcher\composer\Microsoft.AspNetCore.Html.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>..\..\Launcher\composer\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis">
+      <HintPath>..\..\Launcher\composer\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp">
+      <HintPath>..\..\Launcher\composer\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces">
+      <HintPath>..\..\Launcher\composer\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic">
+      <HintPath>..\..\Launcher\composer\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces">
+      <HintPath>..\..\Launcher\composer\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces">
+      <HintPath>..\..\Launcher\composer\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.Interactive">
+      <HintPath>..\..\Launcher\composer\Microsoft.DotNet.Interactive.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.Interactive.Documents">
+      <HintPath>..\..\Launcher\composer\Microsoft.DotNet.Interactive.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.Interactive.Formatting">
+      <HintPath>..\..\Launcher\composer\Microsoft.DotNet.Interactive.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream">
+      <HintPath>..\..\Launcher\composer\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.SystemEvents">
+      <HintPath>..\..\Launcher\composer\Microsoft.Win32.SystemEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="NaCl">
+      <HintPath>..\..\Launcher\composer\NaCl.dll</HintPath>
+    </Reference>
+    <Reference Include="NetMQ">
+      <HintPath>..\..\Launcher\composer\NetMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Launcher\composer\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\..\Launcher\composer\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="Plotly.NET">
+      <HintPath>..\..\Launcher\composer\Plotly.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Plotly.NET.Interactive">
+      <HintPath>..\..\Launcher\composer\Plotly.NET.Interactive.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\Launcher\composer\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net.Core">
+      <HintPath>..\..\Launcher\composer\protobuf-net.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Python.Runtime">
+      <HintPath>..\..\Launcher\composer\Python.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="QLNet">
+      <HintPath>..\..\Launcher\composer\QLNet.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Algorithm">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Algorithm.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Algorithm.CSharp">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Algorithm.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Algorithm.Framework">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Algorithm.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.AlgorithmFactory">
+      <HintPath>..\..\Launcher\composer\QuantConnect.AlgorithmFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Api">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Brokerages">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Brokerages.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Common">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Compression">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Configuration">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.DownloaderDataProvider.Launcher">
+      <HintPath>..\..\Launcher\composer\QuantConnect.DownloaderDataProvider.Launcher.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Indicators">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Indicators.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Lean.Engine">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Lean.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Lean.Launcher">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Lean.Launcher.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Logging">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Messaging">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Optimizer">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Optimizer.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Optimizer.Launcher">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Optimizer.Launcher.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Queues">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Queues.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Research">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Research.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.ToolBox">
+      <HintPath>..\..\Launcher\composer\QuantConnect.ToolBox.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\Launcher\composer\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CommandLine">
+      <HintPath>..\..\Launcher\composer\System.CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CommandLine.NamingConventionBinder">
+      <HintPath>..\..\Launcher\composer\System.CommandLine.NamingConventionBinder.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>..\..\Launcher\composer\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.AttributedModel">
+      <HintPath>..\..\Launcher\composer\System.Composition.AttributedModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Convention">
+      <HintPath>..\..\Launcher\composer\System.Composition.Convention.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Hosting">
+      <HintPath>..\..\Launcher\composer\System.Composition.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Runtime">
+      <HintPath>..\..\Launcher\composer\System.Composition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts">
+      <HintPath>..\..\Launcher\composer\System.Composition.TypedParts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\Launcher\composer\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines">
+      <HintPath>..\..\Launcher\composer\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WinHttpHandler">
+      <HintPath>..\..\Launcher\composer\System.Net.Http.WinHttpHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive">
+      <HintPath>..\..\Launcher\composer\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions">
+      <HintPath>..\..\Launcher\composer\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Primitives">
+      <HintPath>..\..\Launcher\composer\System.ServiceModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Extensions">
+      <HintPath>..\..\Launcher\composer\System.Windows.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CsvHelper" Version="27.2.1" />
+	</ItemGroup>
+
+</Project>
