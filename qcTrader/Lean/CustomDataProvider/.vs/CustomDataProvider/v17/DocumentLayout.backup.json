@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\CustomDataProvider\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{189838B9-0D0C-4F95-8066-240A01EC1ED4}|CustomDataProvider\\CustomDataProvider.csproj|d:\\qctrader-par1\\qctrader\\qctrader\\lean\\customdataprovider\\customdataprovider\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{189838B9-0D0C-4F95-8066-240A01EC1ED4}|CustomDataProvider\\CustomDataProvider.csproj|solutionrelative:customdataprovider\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\Class1.cs",
+              "RelativeDocumentMoniker": "CustomDataProvider\\Class1.cs",
+              "ToolTip": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\Class1.cs",
+              "RelativeToolTip": "CustomDataProvider\\Class1.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwBIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:02:53.009Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CustomDataFeeds")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f770fdebad0c77a25aa01c2bd1455a1cd04f9b7b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+797147ff81e2959701107094ff4e9ea432de8ea2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CustomDataFeeds")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CustomDataFeeds")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
