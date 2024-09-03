@@ -1,0 +1,15 @@
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\AlgorithmImports.py
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\PandasMapper.py
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\CustomDataProvider.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\CustomDataProvider.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\CustomDataProvider.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.csproj.AssemblyReference.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.GeneratedMSBuildEditorConfig.editorconfig
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.AssemblyInfoInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.AssemblyInfo.cs
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.csproj.CoreCompileInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.sourcelink.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\refint\CustomDataProvider.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\CustomDataProvider.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\obj\Debug\net6.0\ref\CustomDataProvider.dll

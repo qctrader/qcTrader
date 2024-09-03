@@ -5,7 +5,7 @@
     "debugging": false,
     "debugging-method": "LocalCmdLine",
     "log-handler": "ConsoleLogHandler",
-    "composer-dll-directory": "qcTrader/Lean/Launcher\\composer",
+    "composer-dll-directory": "Lean/Launcher\\composer",
     "log-level": "trace",
     "messaging-handler": "QuantConnect.Messaging.Messaging",
     "job-queue-handler": "QuantConnect.Queues.JobQueue",
@@ -13,8 +13,8 @@
     "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
     "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
     "data-provider": {
-        "type-name": "YFinanceDataProvider.PythonRunner",
-        "assembly-path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceDataProvider.dll"
+        "type-name": "CustomDataProvider.CsvDataProvider",
+        "assembly-path": "C:\\Users\\DELL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\qcTrader\\Lean\\Launcher\\composer\\CustomDataProvider.dll"
     },
     "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
     "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",

@@ -15,7 +15,7 @@ class LeanRunner:
         self.is_docker = self.detect_is_docker()
         self.internal_lean_path = ''
         self.starter_dll_path = 'qcTrader/Lean/Launcher/composer'
-        self.dll_path = 'qcTrader/Lean/Launcher'
+        self.dll_path = 'Lean/Launcher'
         self.internal_dll_path = ''
     #   "D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\composer\YFinanceDataProvider.dll"
         if self.is_docker:
@@ -30,7 +30,8 @@ class LeanRunner:
                 self.internal_dll_path = self.dll_path
 
         print(f"current_working_directory----------------->{current_working_directory}")
- 
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        dll_path = os.path.join(current_dir, 'Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
         self.base_config = {
     "environment": "backtesting",
     "algorithm-language": "Python",
@@ -46,14 +47,16 @@ class LeanRunner:
     "api-handler": "QuantConnect.Api.Api",
     "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
     "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
-    "data-feed": {
-        "type-name": "CustomDataFeeds.CsvDataFeed",  
-        "assembly-path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\CustomDataFeeds.dll"  
-    },
+    #"data-feed": {
+     #   "type-name": "CustomDataFeeds.CsvDataFeed",  
+     #   "assembly-path": os.path.join(self.internal_dll_path, "composer", "CustomDataFeeds.dll")  
+    #},
+   ""
     "data-provider": {
+        "type-name": "CustomDataProvider.CsvDataProvider",  
+        "assembly-path": dll_path
         
     },
-    # "data-provider": "YFinanceDataProvider.YFinanceCSVDataProvider",
     "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
     "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",
     "symbol-minute-limit": 10000,

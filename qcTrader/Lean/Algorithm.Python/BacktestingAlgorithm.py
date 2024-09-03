@@ -19,8 +19,8 @@ release_dir = os.path.normpath(release_dir)
 
 print(f"release_dir--------------->{release_dir}")
 
-dll_path = r'D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\composer\YFinanceDataProvider.dll'
-
+dll_path = os.path.join(current_dir, '..', '..',  'composer', 'CustomDataProvider.dll')
+dll_path = os.path.normpath(dll_path)
 if os.path.exists(dll_path):
     clr.AddReference(dll_path)
     print("DLL loaded successfully.")
@@ -31,13 +31,15 @@ else:
 # Add the directory to sys.path if it's not already in sys.path
 if release_dir not in sys.path:
     sys.path.append(release_dir)
-    sys.path.append('D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\composer\YFinanceDataProvider.dll')
+    sys.path.append(dll_path)
     
 
 
 from AlgorithmImports import QCAlgorithm, Resolution, Slice, Market, DateRules, TimeRules
 from QuantConnect.Configuration import Config
-from QuantConnect.Data.Custom import CustomDataFeeds
+# Import the specific class from your namespace
+from CustomDataProvider import CsvDataProvider
+
 class MarketHoursDisplayAlgorithm(QCAlgorithm):
     def Initialize(self):
         self.Debugging = True
@@ -47,11 +49,20 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
         
         # Add MSFT with daily resolution
         self.AddEquity("MSFT", Resolution.DAILY)
-        data_path = "equity/usa/daily/msft.csv"
-        Config.Set("custom-data-path", data_path)
 
-         # Explicitly set your custom data provider
-        self.SetDataProvider(CustomDataFeeds()) 
+        base_directory_path = os.path.join(current_dir, '..', 'Launcher', 'bin', 'Release' , 'Data', 'equity','usa','daily','msft.csv')
+
+        #Config.Set("custom-data-path", data_path_send)
+
+        # Specify the base directory path you want to use
+        base_directory_path = "/path/to/your/csvdata"
+
+        # Instantiate your custom data provider with the base directory
+        provider = CsvDataProvider(base_directory_path)
+
+        # Set your custom data provider
+        self.SetDataProvider(provider)
+ 
 
                 # Request historical data directly to see if it returns results
         history = self.History(["MSFT"], 10, Resolution.DAILY)

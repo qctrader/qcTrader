@@ -3,10 +3,12 @@
     "",
     "\\qcTrader",
     "\\qcTrader\\Lean",
-    "\\qcTrader\\Lean\\CustomDataFeeds",
-    "\\qcTrader\\Lean\\CustomDataFeeds\\CustomDataFeeds",
-    "\\qcTrader\\Lean\\Launcher\\composer"
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\bin",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\bin\\Debug",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\bin\\Debug\\net6.0",
+    "\\qcTrader\\Lean\\Launcher\\bin\\Debug",
+    "\\qcTrader\\Lean\\Launcher\\bin\\Release"
   ],
-  "SelectedNode": "\\qcTrader\\Lean\\CustomDataFeeds\\CustomDataFeeds",
   "PreviewInSolutionExplorer": false
 }
