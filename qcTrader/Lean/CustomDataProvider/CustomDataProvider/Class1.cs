@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using System.IO;
 using QuantConnect.Interfaces;
 using System.ComponentModel.Composition;
 
@@ -8,7 +9,6 @@ namespace CustomDataProvider
     [Export("CustomDataProvider.CsvDataProvider", typeof(IDataProvider))]
     public class CsvDataProvider : IDataProvider
     {
-        // Declare the event as per the interface requirements
         public event EventHandler<QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs>? NewDataRequest;
 
         private readonly string _baseDirectory;
@@ -19,36 +19,16 @@ namespace CustomDataProvider
             _baseDirectory = baseDirectory;
         }
 
-        //public Stream? Fetch(string key)
-        //{
-        //    // Use the base directory directly as the file path
-        //    string filePath = Path.Combine(_baseDirectory, key);
-
-        //    bool fetchedSuccessfully = File.Exists(filePath);
-
-        //    // Use the correct EventArgs from QuantConnect.Interfaces with path and success status
-        //    OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(filePath, fetchedSuccessfully));
-
-        //    // Open and return the file stream if the file exists
-        //    if (fetchedSuccessfully)
-        //    {
-        //        return new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-        //    }
-
-        //    // Return null if the file is not found
-        //    return null;
-        //}
-
         public Stream? Fetch(string key)
         {
-            // Combine the base directory with the key to form the full file path
-            string filePath = Path.Combine(_baseDirectory, key);
-
             bool fetchedSuccessfully = true;
+            string filePath = Path.Combine(_baseDirectory, key); // Combine base directory with key
+
+            Console.WriteLine($"Attempting to open file at: {Path.GetFullPath(filePath)}");
 
             try
             {
-                // Fetch the file stream if the file exists
+                // Attempt to open the file stream
                 return new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             }
             catch (Exception ex)
@@ -56,10 +36,11 @@ namespace CustomDataProvider
                 fetchedSuccessfully = false;
                 if (ex is DirectoryNotFoundException || ex is FileNotFoundException)
                 {
-                    // Return null if the file is not found
+                    Console.WriteLine("File not found or could not be opened.");
                     return null;
                 }
-                // Log or handle other exceptions as needed
+
+                Console.WriteLine($"An error occurred: {ex.Message}");
                 throw;
             }
             finally
@@ -69,10 +50,8 @@ namespace CustomDataProvider
             }
         }
 
-        // Protected method to safely raise the event
         protected virtual void OnNewDataRequest(QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs e)
         {
-            // Safely invoke the event using the correct EventArgs type
             NewDataRequest?.Invoke(this, e);
         }
     }

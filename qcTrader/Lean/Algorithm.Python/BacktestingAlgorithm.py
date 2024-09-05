@@ -57,7 +57,7 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
 
         # Use the SetParameters method to set the custom parameter
         # This will pass the base directory path to the configuration used by Lean Engine
-        self.SetParameters({"BaseDirectory": data_directory_path})
+        self.SetParameters({"BaseDirectory": str(data_directory_path)})
 
         # Request historical data directly to see if it returns results
         history = self.History(["MSFT"], 10, Resolution.Daily)

@@ -72,16 +72,34 @@
     },
     "closedTrades": []
   },
-  "charts": {},
+  "charts": {
+    "Strategy Equity": {
+      "name": "Strategy Equity",
+      "chartType": 0,
+      "series": {
+        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[]},
+        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[],"color":"","scatterMarkerSymbol":"none"}
+      }
+    }
+  },
   "orders": {},
   "profitLoss": {},
   "statistics": {},
-  "runtimeStatistics": {},
+  "runtimeStatistics": {
+    "Equity": "$100,000.00",
+    "Fees": "-$0.00",
+    "Holdings": "$0.00",
+    "Net Profit": "$0.00",
+    "Probabilistic Sharpe Ratio": "0%",
+    "Return": "0.00 %",
+    "Unrealized": "$0.00",
+    "Volume": "$0.00"
+  },
   "state": {
-    "StartTime": "2024-09-01 13:18:29",
-    "EndTime": "2024-09-01 13:18:32",
-    "RuntimeError": "Algorithm.Initialize() Error: During the algorithm initialization, the following exception has occurred: Loader.TryCreatePythonAlgorithm(): Unable to import python module qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py. AlgorithmPythonWrapper(): Unable to find assembly 'D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceCSVDataProvider.dll'.\r\n  at <module>\n    clr.AddReference(os.path.join(data_dll_dir, 'YFinanceCSVDataProvider.dll'))\r\n in BacktestingAlgorithm.py: line 27\r\n Unable to find assembly 'D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceCSVDataProvider.dll'. Stack Trace: During the algorithm initialization, the following exception has occurred: Loader.TryCreatePythonAlgorithm(): Unable to import python module qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py. AlgorithmPythonWrapper(): Unable to find assembly 'D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceCSVDataProvider.dll'.\r\n  at <module>\n    clr.AddReference(os.path.join(data_dll_dir, 'YFinanceCSVDataProvider.dll'))\r\n in BacktestingAlgorithm.py: line 27\r\n Unable to find assembly 'D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceCSVDataProvider.dll'.",
-    "StackTrace": "During the algorithm initialization, the following exception has occurred: Loader.TryCreatePythonAlgorithm(): Unable to import python module qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py. AlgorithmPythonWrapper(): Unable to find assembly 'D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceCSVDataProvider.dll'.\r\n  at <module>\n    clr.AddReference(os.path.join(data_dll_dir, 'YFinanceCSVDataProvider.dll'))\r\n in BacktestingAlgorithm.py: line 27\r\n Unable to find assembly 'D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\composer\\YFinanceCSVDataProvider.dll'.",
+    "StartTime": "2024-09-05 01:37:59",
+    "EndTime": "2024-09-05 01:38:07",
+    "RuntimeError": "During the algorithm initialization, the following exception has occurred: Trying to dynamically access a method that does not exist throws a TypeError exception. To prevent the exception, ensure each parameter type matches those required by the 'dict'>) method. Please checkout the API documentation.\r\n  at Initialize\n    self.SetParameters({\"BaseDirectory\": data_directory_path})\r\n in BacktestingAlgorithm.py: line 60\r\n No method matches given arguments for SetParameters: (<class 'dict'>)",
+    "StackTrace": "Trying to dynamically access a method that does not exist throws a TypeError exception. To prevent the exception, ensure each parameter type matches those required by the 'dict'>) method. Please checkout the API documentation.\r\n  at Initialize\n    self.SetParameters({\"BaseDirectory\": data_directory_path})\r\n in BacktestingAlgorithm.py: line 60\r\n No method matches given arguments for SetParameters: (<class 'dict'>)",
     "LogCount": "1",
     "OrderCount": "0",
     "InsightCount": "0",
@@ -90,15 +108,24 @@
     "Status": "RuntimeError"
   },
   "algorithmConfiguration": {
-    "name": null,
-    "tags": null,
+    "name": "BacktestingAlgorithm",
+    "tags": [],
+    "accountCurrency": "USD",
     "brokerage": 0,
     "accountType": 0,
-    "parameters": null,
+    "parameters": {
+      "start_date": "2020-01-02",
+      "end_date": "2024-08-30",
+      "weighting_scheme": "market_cap",
+      "rebalancing_frequency": "Daily",
+      "market_caps": "{\"MSFT\": 3144993500241, \"AAPL\": 3436202642196, \"GOOGL\": 969430108231, \"IBM\": 131850000000}",
+      "volatilities": "{\"MSFT\": 0.0125, \"AAPL\": 0.0143, \"GOOGL\": 0.0175, \"IBM\": 0.0120}",
+      "portfolio": "{\"initial_capital\": \"2000000.00\", \"assets\": [\"MSFT\", \"AAPL\", \"GOOGL\", \"IBM\"]}"
+    },
     "outOfSampleMaxEndDate": null,
     "outOfSampleDays": 0,
-    "startDate": "0001-01-01 00:00:00",
-    "endDate": "0001-01-01 00:00:00",
+    "startDate": "2024-05-01 00:00:00",
+    "endDate": "2024-05-15 23:59:59",
     "tradingDaysPerYear": 252
   }
 }

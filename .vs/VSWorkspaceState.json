@@ -3,10 +3,13 @@
     "",
     "\\qcTrader",
     "\\qcTrader\\Lean",
-    "\\qcTrader\\Lean\\Meftest\\Meftest\\obj\\Debug",
-    "\\qcTrader\\Lean\\Meftest\\Meftest\\obj\\Debug\\net6.0",
-    "\\qcTrader\\Lean\\Meftest\\Meftest\\obj\\Debug\\net6.0\\refint"
+    "\\qcTrader\\Lean\\CustomDataProvider",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\bin",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\bin\\Debug",
+    "\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\bin\\Debug\\net6.0",
+    "\\qcTrader\\Lean\\Launcher",
+    "\\qcTrader\\Lean\\Launcher\\composer"
   ],
-  "SelectedNode": "\\qcTrader\\Lean\\Meftest",
   "PreviewInSolutionExplorer": false
 }
