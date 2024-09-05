@@ -424,11 +424,12 @@ class QuantConnectDataUpdater:
         # Open the ZIP file in write mode to replace any existing files
         with zipfile.ZipFile(zip_file_path, 'w', compression=zipfile.ZIP_DEFLATED) as zip_file:
             # Write the new data to the ZIP file, replacing any existing CSV file
-            with zip_file.open(csv_file_name, 'w') as csv_file:
+            with zip_file.open(csv_file_name, 'wb') as csv_file:
                 # Use a buffer to write the DataFrame into the ZIP
                 buffer = BytesIO()
                 # Write only the new data with the formatted dates, excluding headers
                 new_data.to_csv(buffer, header=False, encoding='utf-8')
+                buffer.flush()  # Ensure all data is written to the buffer
                 buffer.seek(0)
                 csv_file.write(buffer.read())
 
