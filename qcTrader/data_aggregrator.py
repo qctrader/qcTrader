@@ -4,15 +4,15 @@ import os
 import pandas as pd
 import zipfile
 import pandas as pd
-from io import BytesIO
+from io import BytesIO, TextIOWrapper
 from datetime import timedelta
 import yfinance as yf
 from zipfile import ZipFile
 from datetime import datetime, timedelta
 from pytz import timezone, utc
-
-
-
+import tempfile
+import shutil
+from filelock import FileLock
 
 class AddOnFileManager:
     def __init__(self, symbols, start_date, end_date, corporate_actions_path, factor_file_path, map_file_path):
@@ -420,28 +420,46 @@ class QuantConnectDataUpdater:
 
         # Log the new data for debugging
         print(f"New data shape for {symbol}: {new_data.shape}")
+        temp_zip_file_path = tempfile.mktemp(suffix='.zip')
+        lock_path = f"{zip_file_path}.lock"
+        lock = FileLock(lock_path)
+        try:
+            with lock:
+                # Open the ZIP file in write mode to replace any existing files
+                with zipfile.ZipFile(temp_zip_file_path, 'w', compression=zipfile.ZIP_DEFLATED) as zip_file:
+                    # Write the new data to the ZIP file, replacing any existing CSV file
+                    with zip_file.open(csv_file_name, 'w') as csv_file:
+                        with TextIOWrapper(csv_file, encoding='utf-8') as text_file:
+                            # Write DataFrame directly to the text file
+                            new_data.to_csv(text_file, header=False)
+                        # Use a buffer to write the DataFrame into the ZIP
+                        #buffer = BytesIO()
+                        # Write only the new data with the formatted dates, excluding headers
+                        #new_data.to_csv(buffer, header=False, encoding='utf-8')
+                        #buffer.flush()  # Ensure all data is written to the buffer
+                        #buffer.seek(0)
+                        #csv_file.write(buffer.read())
 
-        # Open the ZIP file in write mode to replace any existing files
-        with zipfile.ZipFile(zip_file_path, 'w', compression=zipfile.ZIP_DEFLATED) as zip_file:
-            # Write the new data to the ZIP file, replacing any existing CSV file
-            with zip_file.open(csv_file_name, 'wb') as csv_file:
-                # Use a buffer to write the DataFrame into the ZIP
-                buffer = BytesIO()
-                # Write only the new data with the formatted dates, excluding headers
-                new_data.to_csv(buffer, header=False, encoding='utf-8')
-                buffer.flush()  # Ensure all data is written to the buffer
-                buffer.seek(0)
-                csv_file.write(buffer.read())
+                print(f"Successfully replaced the data in the ZIP file for {symbol}.")
 
-        print(f"Successfully replaced the data in the ZIP file for {symbol}.")
+                # Validate the ZIP file signature
+                with open(temp_zip_file_path, 'rb') as file:
+                    signature = file.read(4)
+                    if signature == b'PK\x03\x04':
+                       print(f"Valid ZIP file created for {symbol}.")
+                    else:
+                       raise ValueError(f"Invalid ZIP file signature for {symbol}: {signature}")
 
-        # Validate the ZIP file signature
-        with open(zip_file_path, 'rb') as file:
-            signature = file.read(4)
-            if signature == b'PK\x03\x04':
-               print(f"Valid ZIP file created for {symbol}.")
-            else:
-               raise ValueError(f"Invalid ZIP file signature for {symbol}: {signature}")
+                shutil.move(temp_zip_file_path, zip_file_path)
+                print(f"ZIP file {zip_file_path} updated successfully.")
+
+        except Exception as e:
+            # Handle any errors and ensure no partial files are left
+            print(f"Error updating ZIP file: {e}")
+            if os.path.exists(temp_zip_file_path):
+                os.remove(temp_zip_file_path)
+
+
 
 
     def update_data(self):

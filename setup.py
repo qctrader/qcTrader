@@ -24,7 +24,8 @@ setup(
         'pexpect',
         'python-dotenv',
         'wexpect',
-        'yfinance'
+        'yfinance',
+        'filelock'
   
 
         

@@ -71,12 +71,16 @@ namespace QuantConnect.Lean.Engine.DataFeeds
                 try
                 {
                     CachedZipFile existingZip;
+                    Log.Debug($"Checking cache for filename: {filename}");
                     if (!_zipFileCache.TryGetValue(filename, out existingZip))
                     {
+                        Log.Debug($"Filename not found in cache: {filename}");
+                        Log.Debug("Cache miss, creating new entry stream.");
                         stream = CacheAndCreateEntryStream(filename, entryName);
                     }
                     else
                     {
+                        Log.Debug($"Filename found in cache: {filename}");
                         try
                         {
                             lock (existingZip)
@@ -86,11 +90,13 @@ namespace QuantConnect.Lean.Engine.DataFeeds
                                     // bad luck, thread race condition
                                     // it was disposed and removed after we got it
                                     // so lets create it again and add it
+                                    Log.Debug("Cache entry was disposed, recreating.");
                                     stream = CacheAndCreateEntryStream(filename, entryName);
                                 }
                                 else
                                 {
                                     existingZip.Refresh();
+                                    Log.Debug("Refreshing cache entry.");
                                     stream = CreateEntryStream(existingZip, entryName, filename);
                                 }
                             }
@@ -100,6 +106,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
                             if (exception is ZipException || exception is ZlibException)
                             {
                                 Log.Error("ZipDataCacheProvider.Fetch(): Corrupt zip file/entry: " + filename + "#" + entryName + " Error: " + exception);
+                                Log.Error($"Filename: {filename}, EntryName: {entryName}, Disposed: {existingZip?.Disposed}");
                             }
                             else throw;
                         }

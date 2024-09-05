@@ -51,6 +51,7 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
         
         # Add MSFT with daily resolution
         self.AddEquity("MSFT", Resolution.Daily)
+        SetDataProvider(new CustomDataProvider());
 
         self.AddData(CustomDataParser, "MSFT", Resolution.Daily)
         history = self.History(["MSFT"], 10, Resolution.Daily)

@@ -362,18 +362,31 @@
     "closedTrades": []
   },
   "charts": {
-    "Capacity": {
-      "name": "Capacity",
+    "Portfolio Margin": {
+      "name": "Portfolio Margin",
       "chartType": 0,
-      "series": {
-        "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
+      "series": {}
     },
     "Benchmark": {
       "name": "Benchmark",
       "chartType": 0,
       "series": {
         "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Drawdown": {
+      "name": "Drawdown",
+      "chartType": 0,
+      "series": {
+        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Strategy Equity": {
+      "name": "Strategy Equity",
+      "chartType": 0,
+      "series": {
+        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[[1714536000,100000.0,100000.0,100000.0,100000.0]]},
+        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Exposure": {
@@ -386,24 +399,11 @@
         "Base - Short Ratio": {"name":"Base - Short Ratio","unit":"","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
-    "Strategy Equity": {
-      "name": "Strategy Equity",
+    "Capacity": {
+      "name": "Capacity",
       "chartType": 0,
       "series": {
-        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[[1714536000,100000.0,100000.0,100000.0,100000.0]]},
-        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
-    },
-    "Portfolio Margin": {
-      "name": "Portfolio Margin",
-      "chartType": 0,
-      "series": {}
-    },
-    "Drawdown": {
-      "name": "Drawdown",
-      "chartType": 0,
-      "series": {
-        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     }
   },
@@ -448,8 +448,8 @@
     "Volume": "$0.00"
   },
   "state": {
-    "StartTime": "2024-09-05 20:33:29",
-    "EndTime": "2024-09-05 20:33:37",
+    "StartTime": "2024-09-05 21:35:10",
+    "EndTime": "2024-09-05 21:35:24",
     "RuntimeError": "",
     "StackTrace": "",
     "LogCount": "25",
