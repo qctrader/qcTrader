@@ -17,46 +17,41 @@ class LeanRunner:
         self.starter_dll_path = 'qcTrader/Lean/Launcher/composer'
         self.dll_path = 'Lean/Launcher'
         self.internal_dll_path = ''
-    #   "D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\composer\YFinanceDataProvider.dll"
+        self.composer_dir = ''
         if self.is_docker:
                 # If running inside Docker, use the site-packages path
                 site_packages_path = site.getsitepackages()[0]
                 print(f"site_packages_path----------------->{site_packages_path}")
                 self.internal_lean_path = os.path.join(site_packages_path, lean_path)
-                self.internal_dll_path = os.path.join(site_packages_path, self.dll_path)
+                self.composer_dir = os.path.join(site_packages_path, 'qcTrader', 'Lean', 'Launcher', 'composer')
+                self.internal_dll_path = os.path.join(site_packages_path, 'qcTrader', 'Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
+
         else:
                 # Otherwise, use the default path for non-Docker installations
                 self.internal_lean_path = lean_path
-                self.internal_dll_path = self.dll_path
+                print(f"current_working_directory----------------->{current_working_directory}")
+                self.composer_dir = os.path.join(current_working_directory, 'qcTrader', 'Lean', 'Launcher', 'composer')
+                self.internal_dll_path = os.path.join(current_working_directory, 'qcTrader','Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
+                print(f"current dll_path --------> {self.internal_dll_path}")
 
-        print(f"current_working_directory----------------->{current_working_directory}")
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        dll_path = os.path.join(current_dir, 'Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
+      
         self.base_config = {
     "environment": "backtesting",
     "algorithm-language": "Python",
-    
+    "BaseDirectory": os.path.join(os.getcwd(),'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily'),
     "data-folder": os.path.join(self.internal_lean_path, "Data"),
     "debugging": False,
     "debugging-method": "LocalCmdLine",
     "log-handler": "ConsoleLogHandler",
-    "composer-dll-directory": os.path.join(self.internal_dll_path, "composer"),
+    "composer-dll-directory": self.composer_dir
+    ,
     "log-level": "trace",
     "messaging-handler": "QuantConnect.Messaging.Messaging",
     "job-queue-handler": "QuantConnect.Queues.JobQueue",
     "api-handler": "QuantConnect.Api.Api",
     "map-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider",
     "factor-file-provider": "QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider",
-    #"data-feed": {
-     #   "type-name": "CustomDataFeeds.CsvDataFeed",  
-     #   "assembly-path": os.path.join(self.internal_dll_path, "composer", "CustomDataFeeds.dll")  
-    #},
-   ""
-    "data-provider": {
-        "type-name": "CustomDataProvider.CsvDataProvider",  
-        "assembly-path": dll_path
-        
-    },
+    "data-provider": "CustomDataProvider.CsvDataProvider, CustomDataProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "object-store": "QuantConnect.Lean.Engine.Storage.LocalObjectStore",
     "data-aggregator": "QuantConnect.Lean.Engine.DataFeeds.AggregationManager",
     "symbol-minute-limit": 10000,

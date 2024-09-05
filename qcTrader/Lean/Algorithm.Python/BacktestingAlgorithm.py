@@ -19,7 +19,7 @@ release_dir = os.path.normpath(release_dir)
 
 print(f"release_dir--------------->{release_dir}")
 
-dll_path = os.path.join(current_dir, '..', '..',  'composer', 'CustomDataProvider.dll')
+dll_path = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
 dll_path = os.path.normpath(dll_path)
 if os.path.exists(dll_path):
     clr.AddReference(dll_path)
@@ -42,37 +42,29 @@ from CustomDataProvider import CsvDataProvider
 
 class MarketHoursDisplayAlgorithm(QCAlgorithm):
     def Initialize(self):
+        # Set up algorithm dates and initial cash
         self.Debugging = True
         self.SetStartDate(2024, 5, 1)
         self.SetEndDate(2024, 5, 15)
         self.SetCash(100000)
         
         # Add MSFT with daily resolution
-        self.AddEquity("MSFT", Resolution.DAILY)
+        self.AddEquity("MSFT", Resolution.Daily)
 
-        base_directory_path = os.path.join(current_dir, '..', 'Launcher', 'bin', 'Release' , 'Data', 'equity','usa','daily','msft.csv')
+        # Dynamically determine the base directory for data
+        base_dir = os.getcwd()
+        data_directory_path = os.path.join(base_dir,'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily')
 
-        #Config.Set("custom-data-path", data_path_send)
+        # Use the SetParameters method to set the custom parameter
+        # This will pass the base directory path to the configuration used by Lean Engine
+        self.SetParameters({"BaseDirectory": data_directory_path})
 
-        # Specify the base directory path you want to use
-        base_directory_path = "/path/to/your/csvdata"
-
-        # Instantiate your custom data provider with the base directory
-        provider = CsvDataProvider(base_directory_path)
-
-        # Set your custom data provider
-        self.SetDataProvider(provider)
- 
-
-                # Request historical data directly to see if it returns results
-        history = self.History(["MSFT"], 10, Resolution.DAILY)
+        # Request historical data directly to see if it returns results
+        history = self.History(["MSFT"], 10, Resolution.Daily)
         if history.empty:
             self.Debug("No historical data available for MSFT.")
         else:
             self.Debug(f"Historical data for MSFT loaded: {history.head()}")
-        
-               
-        
 
     def OnData(self, data):
         # Example to ensure data is being processed

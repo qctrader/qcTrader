@@ -22,6 +22,9 @@ using QuantConnect.Logging;
 using QuantConnect.Packets;
 using QuantConnect.Python;
 using QuantConnect.Util;
+using System.ComponentModel.Composition; // Added for MEF
+using System.ComponentModel.Composition.Hosting; // Added for MEF
+using QuantConnect.Interfaces; // Added to access IDataProvider interface
 
 namespace QuantConnect.Lean.Launcher
 {
@@ -51,13 +54,38 @@ namespace QuantConnect.Lean.Launcher
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
             }
 
-            // expect first argument to be config file name
+            // MEF Composition Setup for Dynamic Parameters
+            try
+            {
+                // Step 1: Create a catalog and container for MEF
+                var catalog = new AssemblyCatalog(typeof(Program).Assembly);
+                var container = new CompositionContainer(catalog);
+
+                // Step 2: Define the dynamic parameter (BaseDirectory) as required
+                string baseDirectory = Config.Get("BaseDirectory"); // Fetch from config or set a default value
+
+                // Step 3: Use a CompositionBatch to export the BaseDirectory value
+                var batch = new CompositionBatch();
+                batch.AddExportedValue("BaseDirectory", baseDirectory);
+                container.Compose(batch);
+
+                // Step 4: Verify MEF composition of the CsvDataProvider
+                var provider = container.GetExportedValue<IDataProvider>("CustomDataProvider.CsvDataProvider");
+                Log.Trace($"CsvDataProvider loaded successfully with BaseDirectory: {baseDirectory}");
+            }
+            catch (CompositionException ex)
+            {
+                Log.Error($"MEF Composition error: {ex.Message}");
+                Exit(1);  // Exit if composition fails
+            }
+
+            // Expect first argument to be config file name
             if (args.Length > 0)
             {
                 Config.MergeCommandLineArgumentsWithConfiguration(LeanArgumentParser.ParseArguments(args));
             }
 
-            //Name thread for the profiler:
+            // Name thread for the profiler:
             Thread.CurrentThread.Name = "Algorithm Analysis Thread";
 
             Initializer.Start();
@@ -78,13 +106,13 @@ namespace QuantConnect.Lean.Launcher
             // Activate our PythonVirtualEnvironment
             PythonInitializer.ActivatePythonVirtualEnvironment(job.PythonVirtualEnvironment);
 
-            // if the job version doesn't match this instance version then we can't process it
-            // we also don't want to reprocess redelivered jobs
+            // If the job version doesn't match this instance version then we can't process it
+            // We also don't want to reprocess redelivered jobs
             if (job.Redelivered)
             {
                 Log.Error("Engine.Run(): Job Version: " + job.Version + "  Deployed Version: " + Globals.Version + " Redelivered: " + job.Redelivered);
-                //Tiny chance there was an uncontrolled collapse of a server, resulting in an old user task circulating.
-                //In this event kill the old algorithm and leave a message so the user can later review.
+                // Tiny chance there was an uncontrolled collapse of a server, resulting in an old user task circulating.
+                // In this event kill the old algorithm and leave a message so the user can later review.
                 leanEngineSystemHandlers.Api.SetAlgorithmStatus(job.AlgorithmId, AlgorithmStatus.RuntimeError, _collapseMessage);
                 leanEngineSystemHandlers.Notify.SetAuthentication(job);
                 leanEngineSystemHandlers.Notify.Send(new RuntimeErrorPacket(job.UserId, job.AlgorithmId, _collapseMessage));
@@ -127,11 +155,11 @@ namespace QuantConnect.Lean.Launcher
 
         public static void Exit(int exitCode)
         {
-            //Delete the message from the job queue:
+            // Delete the message from the job queue:
             leanEngineSystemHandlers.JobQueue.AcknowledgeJob(job);
             Log.Trace("Engine.Main(): Packet removed from queue: " + job.AlgorithmId);
 
-            // clean up resources
+            // Clean up resources
             leanEngineSystemHandlers.DisposeSafely();
             leanEngineAlgorithmHandlers.DisposeSafely();
             Log.LogHandler.DisposeSafely();

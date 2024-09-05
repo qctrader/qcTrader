@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CustomDataProvider")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+797147ff81e2959701107094ff4e9ea432de8ea2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ca65974bef1282085120a8069a7e0310d897fa3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CustomDataProvider")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CustomDataProvider")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

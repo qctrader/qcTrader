@@ -1,0 +1,15 @@
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\bin\Debug\net6.0\AssemblyCheck.exe
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\bin\Debug\net6.0\AssemblyCheck.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\bin\Debug\net6.0\AssemblyCheck.runtimeconfig.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\bin\Debug\net6.0\AssemblyCheck.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\bin\Debug\net6.0\AssemblyCheck.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.GeneratedMSBuildEditorConfig.editorconfig
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.AssemblyInfoInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.AssemblyInfo.cs
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.csproj.CoreCompileInputs.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.sourcelink.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\refint\AssemblyCheck.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\AssemblyCheck.genruntimeconfig.cache
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\AssemblyCheck\AssemblyCheck\obj\Debug\net6.0\ref\AssemblyCheck.dll
