@@ -162,14 +162,16 @@ class LeanRunner:
         #          }
         #        }
 
-        base_directory = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily')
+        base_directory = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily', 'msft.csv')
         
 
         config = self.base_config.copy()
         config.update({
             "algorithm-type-name": algorithm_name,
             "algorithm-location": algorithm_location,
-            "BaseDirectory": base_directory,
+            "custom-data-provider-parameters": {
+                "data_path":base_directory
+            },
             "backtest-name": algorithm_type_name, 
             "algorithm-id": algorithm_name, 
             "job-user-id": data_config_paramters["user_id"],

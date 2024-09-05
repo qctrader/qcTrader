@@ -70,11 +70,12 @@
     <!-- <ProjectReference Include="..\YFinanceDataProvider\YFinanceDataProvider.csproj" /> -->
   </ItemGroup>
 
-  <ItemGroup>
-  <Reference Include="CustomDataProvider">
-    <HintPath>composer\CustomDataProvider.dll</HintPath>
-  </Reference>
-</ItemGroup>
+	<ItemGroup>
+		<Reference Include="CustomDataProvider">
+			<HintPath>composer\CustomDataProvider.dll</HintPath>
+			<Private>True</Private>
+		</Reference>
+	</ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">
       <Pack>True</Pack>

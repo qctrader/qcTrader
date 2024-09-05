@@ -72,7 +72,9 @@
     "maximum-orders": 2147483647,
     "algorithm-type-name": "BacktestingAlgorithm.py",
     "algorithm-location": "qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py",
-    "BaseDirectory": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\bin\\Release\\Data\\equity\\usa\\daily",
+    "custom-data-provider-parameters": {
+        "data_path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\bin\\Release\\Data\\equity\\usa\\daily\\msft.csv"
+    },
     "backtest-name": "BacktestingAlgorithm",
     "algorithm-id": "BacktestingAlgorithm.py",
     "job-user-id": "305180",

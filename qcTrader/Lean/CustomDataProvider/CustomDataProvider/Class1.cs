@@ -2,6 +2,7 @@
 using System.IO;
 using QuantConnect.Interfaces;
 using System.ComponentModel.Composition;
+using QuantConnect.Configuration;
 
 namespace CustomDataProvider
 {
@@ -13,23 +14,31 @@ namespace CustomDataProvider
 
         private readonly string _baseDirectory;
 
-        [ImportingConstructor]
-        public CsvDataProvider([Import("BaseDirectory")] string baseDirectory)
+        public CsvDataProvider()
         {
-            _baseDirectory = baseDirectory;
+            // This constructor is invoked during Lean engine initialization
+            _baseDirectory = Config.Get("custom-data-provider-parameters.data_path");
+            Console.WriteLine($"Dynamic Data Path: {_baseDirectory}");
         }
+
+        //[ImportingConstructor]
+        //public CsvDataProvider([Import("BaseDirectory")] string baseDirectory)
+        //{
+        //    _baseDirectory = baseDirectory;
+        //}
 
         public Stream? Fetch(string key)
         {
             bool fetchedSuccessfully = true;
+            Console.WriteLine($"Key Received: {key}");
             string filePath = Path.Combine(_baseDirectory, key); // Combine base directory with key
 
-            Console.WriteLine($"Attempting to open file at: {Path.GetFullPath(filePath)}");
+            Console.WriteLine($"Attempting to open file at: {_baseDirectory}");
 
             try
             {
                 // Attempt to open the file stream
-                return new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                return new FileStream(_baseDirectory, FileMode.Open, FileAccess.Read, FileShare.Read);
             }
             catch (Exception ex)
             {

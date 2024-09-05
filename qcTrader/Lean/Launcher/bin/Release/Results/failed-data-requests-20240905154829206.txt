@@ -1,0 +1,3 @@
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.csv\qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\msft.zip
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.csv\qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\msft.zip
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.csv\qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\hour\spy.zip

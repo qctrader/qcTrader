@@ -39,7 +39,7 @@ from AlgorithmImports import QCAlgorithm, Resolution, Slice, Market, DateRules, 
 from QuantConnect.Configuration import Config
 # Import the specific class from your namespace
 from CustomDataProvider import CsvDataProvider
-
+from QuantConnect.Configuration import Config
 class MarketHoursDisplayAlgorithm(QCAlgorithm):
     def Initialize(self):
         # Set up algorithm dates and initial cash
@@ -52,12 +52,11 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
         self.AddEquity("MSFT", Resolution.Daily)
 
         # Dynamically determine the base directory for data
-        base_dir = os.getcwd()
-        data_directory_path = os.path.join(base_dir,'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily')
+        #base_dir = os.getcwd()
+        #data_directory_path = os.path.join(base_dir,'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily')
 
         # Use the SetParameters method to set the custom parameter
-        # This will pass the base directory path to the configuration used by Lean Engine
-        self.SetParameters({"BaseDirectory": str(data_directory_path)})
+        #Config.Set("custom-data-provider-parameters.data_path", str(data_directory_path))
 
         # Request historical data directly to see if it returns results
         history = self.History(["MSFT"], 10, Resolution.Daily)

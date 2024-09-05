@@ -1,5 +1,5 @@
 # Define paths
-$sourceDir = "D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release"  # Update this to your actual build output directory
+$sourceDir = "D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Debug"  # Update this to your actual build output directory
 $targetDir = "D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\composer"  # Update this to your target composer-dll-directory
 
 # Clear the target directory
