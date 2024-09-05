@@ -1,0 +1,2 @@
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip

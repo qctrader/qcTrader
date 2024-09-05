@@ -162,7 +162,7 @@ class LeanRunner:
         #          }
         #        }
 
-        base_directory = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily', 'msft.csv')
+        base_directory = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily', 'msft.zip')
         
 
         config = self.base_config.copy()

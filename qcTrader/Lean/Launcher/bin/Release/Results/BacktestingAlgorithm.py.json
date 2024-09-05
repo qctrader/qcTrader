@@ -362,31 +362,16 @@
     "closedTrades": []
   },
   "charts": {
-    "Drawdown": {
-      "name": "Drawdown",
+    "Portfolio Margin": {
+      "name": "Portfolio Margin",
       "chartType": 0,
-      "series": {
-        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
+      "series": {}
     },
     "Benchmark": {
       "name": "Benchmark",
       "chartType": 0,
       "series": {
         "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
-    },
-    "Portfolio Margin": {
-      "name": "Portfolio Margin",
-      "chartType": 0,
-      "series": {}
-    },
-    "Strategy Equity": {
-      "name": "Strategy Equity",
-      "chartType": 0,
-      "series": {
-        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[[1714536000,100000.0,100000.0,100000.0,100000.0]]},
-        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Capacity": {
@@ -402,6 +387,21 @@
       "series": {
         "Equity - Long Ratio": {"name":"Equity - Long Ratio","unit":"","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"},
         "Equity - Short Ratio": {"name":"Equity - Short Ratio","unit":"","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Drawdown": {
+      "name": "Drawdown",
+      "chartType": 0,
+      "series": {
+        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Strategy Equity": {
+      "name": "Strategy Equity",
+      "chartType": 0,
+      "series": {
+        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[[1714536000,100000.0,100000.0,100000.0,100000.0]]},
+        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     }
   },
@@ -446,11 +446,11 @@
     "Volume": "$0.00"
   },
   "state": {
-    "StartTime": "2024-09-05 15:48:23",
-    "EndTime": "2024-09-05 15:48:32",
+    "StartTime": "2024-09-05 17:49:01",
+    "EndTime": "2024-09-05 17:49:09",
     "RuntimeError": "",
     "StackTrace": "",
-    "LogCount": "14",
+    "LogCount": "20",
     "OrderCount": "0",
     "InsightCount": "0",
     "Name": "BacktestingAlgorithm",

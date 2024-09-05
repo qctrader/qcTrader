@@ -73,7 +73,7 @@
     "algorithm-type-name": "BacktestingAlgorithm.py",
     "algorithm-location": "qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py",
     "custom-data-provider-parameters": {
-        "data_path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\bin\\Release\\Data\\equity\\usa\\daily\\msft.csv"
+        "data_path": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\bin\\Release\\Data\\equity\\usa\\daily\\msft.zip"
     },
     "backtest-name": "BacktestingAlgorithm",
     "algorithm-id": "BacktestingAlgorithm.py",

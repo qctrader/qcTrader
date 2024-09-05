@@ -1,13 +1,19 @@
 2024-05-01 00:00:00 Launching analysis for BacktestingAlgorithm.py with LEAN Engine v2.5.0.0.v1.0.0
 2024-05-01 00:00:00 No historical data available for MSFT.
 2024-05-01 00:00:00 Accurate daily end-times now enabled by default. See more at https://qnt.co/3YHaWHL. To disable it and use legacy daily bars set self.settings.daily_precise_end_time = False.
-2024-05-01 00:00:00 Key Received: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\msft.zip
-2024-05-01 00:00:00 Attempting to open file at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.csv
-2024-05-01 00:00:00 File not found or could not be opened.
-2024-05-01 00:00:00 Key Received: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\spy.csv
-2024-05-01 00:00:00 Attempting to open file at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.csv
-2024-05-01 00:00:00 File not found or could not be opened.
-2024-05-01 00:00:00 Key Received: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\hour\spy.zip
-2024-05-01 00:00:00 Attempting to open file at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.csv
-2024-05-01 00:00:00 File not found or could not be opened.
+2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2024-05-01 00:00:00 Zip file found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2024-05-01 00:00:00 Attempting to open zip file at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2024-05-01 00:00:00 Zip file exists: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2024-05-01 00:00:00 Successfully opened zip file: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2024-05-01 00:00:00 Entering finally block.
+2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.zip
+2024-05-01 00:00:00 Zip file not found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.zip
+2024-05-01 00:00:00 Could not determine zip file path.
+2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+2024-05-01 00:00:00 Zip file found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+2024-05-01 00:00:00 Attempting to open zip file at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+2024-05-01 00:00:00 Zip file exists: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+2024-05-01 00:00:00 Corrupted zip file: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip. Error: End of Central Directory record could not be found.
+2024-05-01 00:00:00 Entering finally block.
 2024-05-01 00:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.12 seconds at 0k data points per second. Processing total of 1 data points.
