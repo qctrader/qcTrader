@@ -1,7 +1,6 @@
 {
     "environment": "backtesting",
     "algorithm-language": "Python",
-    "BaseDirectory": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\bin\\Release\\Data\\equity\\usa\\daily",
     "data-folder": "qcTrader/Lean/Launcher/bin/Release\\Data",
     "debugging": false,
     "debugging-method": "LocalCmdLine",
@@ -73,6 +72,7 @@
     "maximum-orders": 2147483647,
     "algorithm-type-name": "BacktestingAlgorithm.py",
     "algorithm-location": "qcTrader\\Lean\\Algorithm.Python\\BacktestingAlgorithm.py",
+    "BaseDirectory": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Launcher\\bin\\Release\\Data\\equity\\usa\\daily",
     "backtest-name": "BacktestingAlgorithm",
     "algorithm-id": "BacktestingAlgorithm.py",
     "job-user-id": "305180",

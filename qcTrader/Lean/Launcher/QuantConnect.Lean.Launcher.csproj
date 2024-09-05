@@ -71,8 +71,8 @@
   </ItemGroup>
 
   <ItemGroup>
-  <Reference Include="YFinanceDataProvider">
-    <HintPath>composer\yFinanceDataProvider.dll</HintPath>
+  <Reference Include="CustomDataProvider">
+    <HintPath>composer\CustomDataProvider.dll</HintPath>
   </Reference>
 </ItemGroup>
   <ItemGroup>

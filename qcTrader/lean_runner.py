@@ -38,7 +38,6 @@ class LeanRunner:
         self.base_config = {
     "environment": "backtesting",
     "algorithm-language": "Python",
-    "BaseDirectory": os.path.join(os.getcwd(),'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily'),
     "data-folder": os.path.join(self.internal_lean_path, "Data"),
     "debugging": False,
     "debugging-method": "LocalCmdLine",
@@ -162,13 +161,15 @@ class LeanRunner:
         #             }
         #          }
         #        }
+
+        base_directory = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily')
         
 
         config = self.base_config.copy()
         config.update({
             "algorithm-type-name": algorithm_name,
             "algorithm-location": algorithm_location,
-            #  "algorithm": algorithm,
+            "BaseDirectory": base_directory,
             "backtest-name": algorithm_type_name, 
             "algorithm-id": algorithm_name, 
             "job-user-id": data_config_paramters["user_id"],
@@ -176,6 +177,8 @@ class LeanRunner:
             "job-organization-id": data_config_paramters["job_org_id"],
             "parameters": parameters,
         })
+
+        print(f"BaseDirectory set to: {base_directory}")
         return config
 
     def generate_config(self,algorithm_location,  algorithm_name, parameters,algorithm_type_name, data_config_paramters,  config_path=None):

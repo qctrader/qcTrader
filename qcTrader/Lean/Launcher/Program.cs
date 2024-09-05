@@ -25,7 +25,7 @@ using QuantConnect.Util;
 using System.ComponentModel.Composition; // Added for MEF
 using System.ComponentModel.Composition.Hosting; // Added for MEF
 using QuantConnect.Interfaces; // Added to access IDataProvider interface
-
+using CustomDataProvider;
 namespace QuantConnect.Lean.Launcher
 {
     public class Program
@@ -58,20 +58,39 @@ namespace QuantConnect.Lean.Launcher
             try
             {
                 // Step 1: Create a catalog and container for MEF
-                var catalog = new AssemblyCatalog(typeof(Program).Assembly);
+                var catalog = new AggregateCatalog();
+                catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));  // Current assembly
+                catalog.Catalogs.Add(new AssemblyCatalog(typeof(CsvDataProvider).Assembly));  // Specific assembly for CsvDataProvider
                 var container = new CompositionContainer(catalog);
 
                 // Step 2: Define the dynamic parameter (BaseDirectory) as required
-                string baseDirectory = Config.Get("BaseDirectory"); // Fetch from config or set a default value
+                string baseDirectory = Config.Get("BaseDirectory") ?? @"D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily"; ; // Fetch from config or set a default value
 
                 // Step 3: Use a CompositionBatch to export the BaseDirectory value
                 var batch = new CompositionBatch();
                 batch.AddExportedValue("BaseDirectory", baseDirectory);
-                container.Compose(batch);
+                // Compose parts and handle exceptions
+                try
+                {
+                    container.Compose(batch);
+                }
+                catch (CompositionException compEx)
+                {
+                    Log.Error($"MEF Composition error during batch composition: {compEx.Message}");
+                    Exit(1);
+                }
 
                 // Step 4: Verify MEF composition of the CsvDataProvider
-                var provider = container.GetExportedValue<IDataProvider>("CustomDataProvider.CsvDataProvider");
-                Log.Trace($"CsvDataProvider loaded successfully with BaseDirectory: {baseDirectory}");
+                try
+                {
+                    var provider = container.GetExportedValue<IDataProvider>("CustomDataProvider.CsvDataProvider");
+                    Log.Trace($"CsvDataProvider loaded successfully with BaseDirectory: {baseDirectory}");
+                }
+                catch (CompositionException compEx)
+                {
+                    Log.Error($"MEF Composition error: {compEx.Message}");
+                    Exit(1);  // Exit if composition fails
+                }
             }
             catch (CompositionException ex)
             {
