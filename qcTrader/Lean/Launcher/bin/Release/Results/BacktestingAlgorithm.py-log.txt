@@ -6,6 +6,8 @@
 2024-05-01 00:00:00 Attempting to open zip file at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
 2024-05-01 00:00:00 Zip file exists: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
 2024-05-01 00:00:00 Successfully opened zip file: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2024-05-01 00:00:00 CSV file found in zip: msft.csv
+2024-05-01 00:00:00 Data successfully read from CSV.
 2024-05-01 00:00:00 Entering finally block.
 2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.zip
 2024-05-01 00:00:00 Zip file not found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.zip
@@ -16,4 +18,4 @@
 2024-05-01 00:00:00 Zip file exists: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
 2024-05-01 00:00:00 Corrupted zip file: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip. Error: End of Central Directory record could not be found.
 2024-05-01 00:00:00 Entering finally block.
-2024-05-01 00:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.12 seconds at 0k data points per second. Processing total of 1 data points.
+2024-05-01 00:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.10 seconds at 0k data points per second. Processing total of 1 data points.

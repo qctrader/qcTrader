@@ -355,8 +355,8 @@ class QuantConnectDataUpdater:
         
         if not data.empty:
             # Select only the required columns and rename them to match the format expected by Lean
-            formatted_data = data[['Close', 'High', 'Low', 'Open', 'Volume']]
-            formatted_data.columns = ['close', 'high', 'low', 'open', 'volume']
+            formatted_data = data[['Open', 'High', 'Low', 'Close', 'Volume']]
+            formatted_data.columns = ['open', 'high', 'low', 'close', 'volume']
 
             # Get the local time zone for the exchange
             local_time_zone = self.get_exchange_timezone(symbol, exchange_timezones)

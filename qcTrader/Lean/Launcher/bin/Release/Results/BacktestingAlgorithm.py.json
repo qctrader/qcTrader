@@ -362,23 +362,11 @@
     "closedTrades": []
   },
   "charts": {
-    "Portfolio Margin": {
-      "name": "Portfolio Margin",
-      "chartType": 0,
-      "series": {}
-    },
-    "Benchmark": {
-      "name": "Benchmark",
+    "Drawdown": {
+      "name": "Drawdown",
       "chartType": 0,
       "series": {
-        "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
-    },
-    "Capacity": {
-      "name": "Capacity",
-      "chartType": 0,
-      "series": {
-        "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Exposure": {
@@ -389,11 +377,23 @@
         "Equity - Short Ratio": {"name":"Equity - Short Ratio","unit":"","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
-    "Drawdown": {
-      "name": "Drawdown",
+    "Benchmark": {
+      "name": "Benchmark",
       "chartType": 0,
       "series": {
-        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Portfolio Margin": {
+      "name": "Portfolio Margin",
+      "chartType": 0,
+      "series": {}
+    },
+    "Capacity": {
+      "name": "Capacity",
+      "chartType": 0,
+      "series": {
+        "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Strategy Equity": {
@@ -446,11 +446,11 @@
     "Volume": "$0.00"
   },
   "state": {
-    "StartTime": "2024-09-05 17:49:01",
-    "EndTime": "2024-09-05 17:49:09",
+    "StartTime": "2024-09-05 18:02:04",
+    "EndTime": "2024-09-05 18:02:17",
     "RuntimeError": "",
     "StackTrace": "",
-    "LogCount": "20",
+    "LogCount": "22",
     "OrderCount": "0",
     "InsightCount": "0",
     "Name": "BacktestingAlgorithm",

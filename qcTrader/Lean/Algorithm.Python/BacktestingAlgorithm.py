@@ -37,9 +37,10 @@ if release_dir not in sys.path:
 
 from AlgorithmImports import QCAlgorithm, Resolution, Slice, Market, DateRules, TimeRules
 from QuantConnect.Configuration import Config
-# Import the specific class from your namespace
 from CustomDataProvider import CsvDataProvider
 from QuantConnect.Configuration import Config
+from CustomData import CustomDataParser
+
 class MarketHoursDisplayAlgorithm(QCAlgorithm):
     def Initialize(self):
         # Set up algorithm dates and initial cash
@@ -51,25 +52,20 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
         # Add MSFT with daily resolution
         self.AddEquity("MSFT", Resolution.Daily)
 
-        # Dynamically determine the base directory for data
-        #base_dir = os.getcwd()
-        #data_directory_path = os.path.join(base_dir,'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily')
-
-        # Use the SetParameters method to set the custom parameter
-        #Config.Set("custom-data-provider-parameters.data_path", str(data_directory_path))
-
-        # Request historical data directly to see if it returns results
+        self.AddData(CustomDataParser, "MSFT", Resolution.Daily)
         history = self.History(["MSFT"], 10, Resolution.Daily)
         if history.empty:
             self.Debug("No historical data available for MSFT.")
         else:
             self.Debug(f"Historical data for MSFT loaded: {history.head()}")
 
-    def OnData(self, data):
-        # Example to ensure data is being processed
-        if "MSFT" in data.Bars:
-            msft_data = data["MSFT"]
-            self.Debug(f"MSFT data received: {msft_data}")
+    def OnData(self, slice):
+        # Access the custom data using the symbol
+
+        msft_data = slice.Get(CustomData, "MSFT")
+        if msft_data is not None:
+            self.Log(f"Custom Data - {msft_data.Time}: {msft_data.Value}")
+
 # class BacktestingAlgorithm(QCAlgorithm):
 #     def Initialize(self):
 #         try:
