@@ -422,7 +422,7 @@ class QuantConnectDataUpdater:
         print(f"New data shape for {symbol}: {new_data.shape}")
 
         # Open the ZIP file in write mode to replace any existing files
-        with zipfile.ZipFile(zip_file_path, 'w') as zip_file:
+        with zipfile.ZipFile(zip_file_path, 'w', compression=zipfile.ZIP_DEFLATED) as zip_file:
             # Write the new data to the ZIP file, replacing any existing CSV file
             with zip_file.open(csv_file_name, 'w') as csv_file:
                 # Use a buffer to write the DataFrame into the ZIP
@@ -433,6 +433,14 @@ class QuantConnectDataUpdater:
                 csv_file.write(buffer.read())
 
         print(f"Successfully replaced the data in the ZIP file for {symbol}.")
+
+        # Validate the ZIP file signature
+        with open(zip_file_path, 'rb') as file:
+            signature = file.read(4)
+            if signature == b'PK\x03\x04':
+               print(f"Valid ZIP file created for {symbol}.")
+            else:
+               raise ValueError(f"Invalid ZIP file signature for {symbol}: {signature}")
 
 
     def update_data(self):
