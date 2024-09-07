@@ -26,7 +26,8 @@ using QuantConnect.Util;
 using System.ComponentModel.Composition; // Added for MEF
 using System.ComponentModel.Composition.Hosting; // Added for MEF
 using QuantConnect.Interfaces; // Added to access IDataProvider interface
-using CustomDataProvider;
+
+
 namespace QuantConnect.Lean.Launcher
 {
     public class Program
@@ -54,98 +55,6 @@ namespace QuantConnect.Lean.Launcher
             {
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
             }
-
-            //// Using statements ensure IDisposable objects are disposed of correctly
-            //using (var aggregateCatalog = new AggregateCatalog()) // Fixed CA2000
-            //using (var programCatalog = new AssemblyCatalog(typeof(Program).Assembly)) // Fixed CA2000
-            //using (var customCatalog = new AssemblyCatalog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CustomDataProvider.dll"))) // Fixed CA2000
-            //using (var container = new CompositionContainer(aggregateCatalog)) // Fixed CA2000
-            //{
-            //    try
-            //    {
-            //        // Add catalogs to aggregate
-            //        aggregateCatalog.Catalogs.Add(programCatalog);
-            //        aggregateCatalog.Catalogs.Add(customCatalog);
-
-            //        // Step 2: Define the dynamic parameter (BaseDirectory) as required
-            //        string baseDirectory = Config.Get("BaseDirectory") ?? @"D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily";
-            //        Log.Trace($"Exporting BaseDirectory: {baseDirectory}");
-            //        // Step 3: Use a CompositionBatch to export the BaseDirectory value
-            //        var batch = new CompositionBatch();
-            //        batch.AddExportedValue("BaseDirectory", baseDirectory);
-            //        Log.Trace("Exported BaseDirectory value added to batch.");
-            //        // Compose parts to ensure dependencies are set before use
-
-            //        container.Compose(batch);
-            //        Log.Trace("Composition batch successfully composed.");
-
-            //        // Step 4: Verify MEF composition of the CsvDataProvider
-            //        var provider = container.GetExportedValue<IDataProvider>("CustomDataProvider.CsvDataProvider");
-            //        Log.Trace($"CsvDataProvider loaded successfully with BaseDirectory: {baseDirectory}");
-            //    }
-            //    catch (CompositionException compEx)
-            //    {
-            //        Log.Error($"MEF Composition error: {compEx.Message}");
-            //        Exit(1);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Log.Error($"Unexpected error in MEF setup: {ex.Message}");
-            //        Exit(1);
-            //    }
-            //}
-
-            // MEF Composition Setup for Dynamic Parameters
-            //try
-            //{
-            //    string customProviderAssemblyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "composer", "CustomDataProvider.dll");
-
-            //    // Check if the file exists to avoid runtime errors
-            //    if (!File.Exists(customProviderAssemblyPath))
-            //    {
-            //        Log.Error($"Assembly not found at {customProviderAssemblyPath}");
-            //        Exit(1);
-            //    }
-            //    // Step 1: Create a catalog and container for MEF
-            //    var catalog = new AggregateCatalog();
-            //    catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));  // Current assembly
-            //    catalog.Catalogs.Add(new AssemblyCatalog(customProviderAssemblyPath));  // Specific assembly for CsvDataProvider
-            //    var container = new CompositionContainer(catalog);
-
-            //    // Step 2: Define the dynamic parameter (BaseDirectory) as required
-            //    string baseDirectory = Config.Get("BaseDirectory") ?? @"D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily"; ; // Fetch from config or set a default value
-
-            //    // Step 3: Use a CompositionBatch to export the BaseDirectory value
-            //    var batch = new CompositionBatch();
-            //    batch.AddExportedValue("BaseDirectory", baseDirectory);
-            //    // Compose parts and handle exceptions
-            //    try
-            //    {
-            //        container.Compose(batch);
-            //    }
-            //    catch (CompositionException compEx)
-            //    {
-            //        Log.Error($"MEF Composition error during batch composition: {compEx.Message}");
-            //        Exit(1);
-            //    }
-
-            //    // Step 4: Verify MEF composition of the CsvDataProvider
-            //    try
-            //    {
-            //        var provider = container.GetExportedValue<IDataProvider>("CustomDataProvider.CsvDataProvider");
-            //        Log.Trace($"CsvDataProvider loaded successfully with BaseDirectory: {baseDirectory}");
-            //    }
-            //    catch (CompositionException compEx)
-            //    {
-            //        Log.Error($"MEF Composition error: {compEx.Message}");
-            //        Exit(1);  // Exit if composition fails
-            //    }
-            //}
-            //catch (CompositionException ex)
-            //{
-            //    Log.Error($"MEF Composition error: {ex.Message}");
-            //    Exit(1);  // Exit if composition fails
-            //}
 
             // Expect first argument to be config file name
             if (args.Length > 0)
@@ -197,7 +106,6 @@ namespace QuantConnect.Lean.Launcher
                 algorithmManager = new AlgorithmManager(Globals.LiveMode, job);
 
                 leanEngineSystemHandlers.LeanManager.Initialize(leanEngineSystemHandlers, leanEngineAlgorithmHandlers, job, algorithmManager);
-
                 OS.Initialize();
 
                 var engine = new Engine.Engine(leanEngineSystemHandlers, leanEngineAlgorithmHandlers, Globals.LiveMode);

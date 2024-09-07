@@ -14,6 +14,10 @@ D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.dll
 D:\qctrader\qcTrader\Lean\Compression\obj\Debug\refint\QuantConnect.Compression.dll
 D:\qctrader\qcTrader\Lean\Compression\obj\Debug\QuantConnect.Compression.pdb
 D:\qctrader\qcTrader\Lean\Compression\obj\Debug\ref\QuantConnect.Compression.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Compression.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Compression.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Compression.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Compression.xml
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.xml
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.deps.json
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Compression\bin\Debug\QuantConnect.Compression.dll

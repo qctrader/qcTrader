@@ -63,3 +63,11 @@ D:\Lean\Launcher\composer\QuantConnect.Configuration.deps.json
 D:\Lean\Launcher\composer\QuantConnect.Configuration.dll
 D:\Lean\Launcher\composer\QuantConnect.Configuration.pdb
 D:\Lean\Launcher\composer\QuantConnect.Configuration.xml
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Configuration.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Configuration.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Configuration.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Configuration.xml
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Configuration.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Configuration.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Configuration.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Configuration.xml

@@ -107,7 +107,7 @@ class LeanRunner:
     "storage-limit": 10737418240,  # 10 GB
     "storage-file-count": 10000,
     "storage-permissions": 3,
-    # Optional fields based on specific requirements
+    "data-cache-provider": "",
     "maximum-runtime": "100.00:00:00",  # Example: Max 100 days
     "maximum-orders": 2147483647,  # Example: Max orders
 }

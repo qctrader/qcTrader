@@ -63,3 +63,11 @@ D:\Lean\Launcher\composer\QuantConnect.Compression.deps.json
 D:\Lean\Launcher\composer\QuantConnect.Compression.dll
 D:\Lean\Launcher\composer\QuantConnect.Compression.pdb
 D:\Lean\Launcher\composer\QuantConnect.Compression.xml
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Compression.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Compression.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Compression.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\QuantConnect.Compression.xml
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Compression.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Compression.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Compression.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\QuantConnect.Compression.xml

@@ -6,6 +6,7 @@ using QuantConnect.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO.Compression;
+using QuantConnect.Lean.Engine.DataFeeds;
 
 
 namespace CustomDataProvider
@@ -15,14 +16,18 @@ namespace CustomDataProvider
     public class CsvDataProvider : IDataProvider
     {
         public event EventHandler<QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs>? NewDataRequest;
-
+        private readonly ZipDataCacheProvider _zipCacheProvider;
         private readonly string _baseDirectory;
+        
 
         public CsvDataProvider()
         {
             // This constructor is invoked during Lean engine initialization
             _baseDirectory = Config.Get("custom-data-provider-parameters.data_path");
             Console.WriteLine($"Dynamic Data Path: {_baseDirectory}");
+           
+            
+            _zipCacheProvider = new ZipDataCacheProvider(new DefaultDataProvider());
         }
 
         //[ImportingConstructor]
@@ -48,72 +53,111 @@ namespace CustomDataProvider
                 return null;
             }
 
-            Console.WriteLine($"Attempting to open zip file at: {zipFilePath}");
+            Stream? dataStream = _zipCacheProvider.Fetch(zipFilePath);
 
-            try
+            if (dataStream != null)
             {
-                // Add logging to confirm the zip file existence check
-                if (File.Exists(zipFilePath))
-                {
-                    Console.WriteLine($"Zip file exists: {zipFilePath}");
-                    try
-                    {
-                        using (ZipArchive archive = ZipFile.OpenRead(zipFilePath))
-                        {
-                            Console.WriteLine($"Successfully opened zip file: {zipFilePath}");
-                            var csvEntry = archive.Entries.FirstOrDefault(entry => entry.Name.EndsWith(".csv", StringComparison.OrdinalIgnoreCase));
-                            if (csvEntry != null)
-                            {
-                                Console.WriteLine($"CSV file found in zip: {csvEntry.Name}");
-                                using (Stream csvStream = csvEntry.Open())
-                                {
-                                    // Reading and parsing the CSV
-                                    using (StreamReader reader = new StreamReader(csvStream))
-                                    {
-                                        var data = ParseCsv(reader);
-                                        if (!string.IsNullOrEmpty(data))
-                                        {
-                                            fetchedSuccessfully = true;
-                                            Console.WriteLine("Data successfully read from CSV.");
-                                            return new MemoryStream(System.Text.Encoding.UTF8.GetBytes(data));
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("CSV file was read but contained no usable data.");
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("CSV file not found in the zip archive.");
-                            }
-                        }
-                    }
-                    catch (InvalidDataException ex)
-                    {
-                        Console.WriteLine($"Corrupted zip file: {zipFilePath}. Error: {ex.Message}");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Zip file not found at expected location.");
-                }
+                fetchedSuccessfully = true;
+                Console.WriteLine("Data successfully fetched from ZipCacheProvider.");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"An error occurred while opening or reading the zip file: {ex.Message}");
-                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
-            }
-            finally
-            {
-                Console.WriteLine("Entering finally block.");
-                OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
+                Console.WriteLine("Data could not be fetched from ZipCacheProvider.");
             }
 
-            return null;
+            // Trigger event to notify of new data request
+            OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
+
+            return dataStream;
+
+            //// Check if data is already cached
+            //if (_cache.TryGetValue(zipFilePath, out var cachedData))
+            //{
+            //    Console.WriteLine($"Serving data from cache for: {zipFilePath}");
+            //    return new MemoryStream(cachedData);  // Return cached data as a stream
+            //}
+
+            //// Directly fetch from the source without relying on external cache
+            //Console.WriteLine($"Attempting to open zip file at: {zipFilePath}");
+
+            //try
+            //{
+            //    // Add logging to confirm the zip file existence check
+            //    if (File.Exists(zipFilePath))
+            //    {
+            //        Console.WriteLine($"Zip file exists: {zipFilePath}");
+            //        try
+            //        {
+            //            using (ZipArchive archive = ZipFile.OpenRead(zipFilePath))
+            //            {
+            //                Console.WriteLine($"Successfully opened zip file: {zipFilePath}");
+            //                var csvEntry = archive.Entries.FirstOrDefault(entry => entry.Name.EndsWith(".csv", StringComparison.OrdinalIgnoreCase));
+            //                if (csvEntry != null)
+            //                {
+            //                    Console.WriteLine($"CSV file found in zip: {csvEntry.Name}");
+            //                    using (Stream csvStream = csvEntry.Open())
+            //                    {
+            //                        // Reading and parsing the CSV
+            //                        using (StreamReader reader = new StreamReader(csvStream))
+            //                        {
+            //                            var data = ParseCsv(reader);
+            //                            if (!string.IsNullOrEmpty(data))
+            //                            {
+            //                                fetchedSuccessfully = true;
+            //                                Console.WriteLine("Data successfully read from CSV.");
+            //                                var byteData = System.Text.Encoding.UTF8.GetBytes(data);
+
+            //                                // Optional: Add data to internal cache if caching is desired
+            //                                AddToCache(zipFilePath, byteData);
+
+            //                                return new MemoryStream(byteData);
+
+            //                            }
+            //                            else
+            //                            {
+            //                                Console.WriteLine("CSV file was read but contained no usable data.");
+            //                            }
+            //                        }
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    Console.WriteLine("CSV file not found in the zip archive.");
+            //                }
+            //            }
+            //        }
+            //        catch (InvalidDataException ex)
+            //        {
+            //            Console.WriteLine($"Corrupted zip file: {zipFilePath}. Error: {ex.Message}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Zip file not found at expected location.");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"An error occurred while opening or reading the zip file: {ex.Message}");
+            //    Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("Entering finally block.");
+            //    OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
+            //}
+
+            //return null;
         }
-
+        //private void AddToCache(string key, byte[] data)
+        //{
+        //    // Implement caching logic if desired, otherwise skip caching
+        //    if (!_cache.ContainsKey(key))
+        //    {
+        //        _cache[key] = data;  // Add data to cache
+        //        Console.WriteLine($"Data cached for key: {key}");
+        //    }
+        //}
 
         private string GetZipFilePath(string mapFilePath)
         {

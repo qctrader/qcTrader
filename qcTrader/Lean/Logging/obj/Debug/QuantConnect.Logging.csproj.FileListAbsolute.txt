@@ -10,6 +10,10 @@ D:\qctrader\qcTrader\Lean\Logging\obj\Debug\QuantConnect.Logging.dll
 D:\qctrader\qcTrader\Lean\Logging\obj\Debug\refint\QuantConnect.Logging.dll
 D:\qctrader\qcTrader\Lean\Logging\obj\Debug\QuantConnect.Logging.pdb
 D:\qctrader\qcTrader\Lean\Logging\obj\Debug\ref\QuantConnect.Logging.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Logging.deps.json
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Logging.dll
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Logging.pdb
+D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Logging.xml
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Logging\bin\Debug\QuantConnect.Logging.xml
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Logging\bin\Debug\QuantConnect.Logging.deps.json
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Logging\bin\Debug\QuantConnect.Logging.dll

@@ -87,4 +87,8 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CustomDataProvider\CustomDataProvider\CustomDataProvider.csproj" />
+	</ItemGroup>
 </Project>

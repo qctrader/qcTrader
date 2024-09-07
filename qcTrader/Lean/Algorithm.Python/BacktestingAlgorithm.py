@@ -51,9 +51,9 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
         
         # Add MSFT with daily resolution
         self.AddEquity("MSFT", Resolution.Daily)
-        SetDataProvider(new CustomDataProvider());
+        
 
-        self.AddData(CustomDataParser, "MSFT", Resolution.Daily)
+        #self.AddData(CustomDataParser, "MSFT", Resolution.Daily)
         history = self.History(["MSFT"], 10, Resolution.Daily)
         if history.empty:
             self.Debug("No historical data available for MSFT.")
@@ -66,6 +66,8 @@ class MarketHoursDisplayAlgorithm(QCAlgorithm):
         msft_data = slice.Get(CustomData, "MSFT")
         if msft_data is not None:
             self.Log(f"Custom Data - {msft_data.Time}: {msft_data.Value}")
+
+
 
 # class BacktestingAlgorithm(QCAlgorithm):
 #     def Initialize(self):

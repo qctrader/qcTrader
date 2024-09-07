@@ -71,4 +71,8 @@
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
   </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CustomDataProvider\CustomDataProvider\CustomDataProvider.csproj" />
+	</ItemGroup>
 </Project>

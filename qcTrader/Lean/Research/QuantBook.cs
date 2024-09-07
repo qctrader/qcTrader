@@ -187,7 +187,7 @@ namespace QuantConnect.Research
                         null,
                         null,
                         algorithmHandlers.DataProvider,
-                        _dataCacheProvider,
+                        null,
                         mapFileProvider,
                         algorithmHandlers.FactorFileProvider,
                         null,
@@ -197,7 +197,7 @@ namespace QuantConnect.Research
                         Settings
                     )
                 );
-
+                //_dataCacheProvider was there in place of null
                 SetOptionChainProvider(new CachingOptionChainProvider(new BacktestingOptionChainProvider(_dataCacheProvider, mapFileProvider)));
                 SetFutureChainProvider(new CachingFutureChainProvider(new BacktestingFutureChainProvider(_dataCacheProvider)));
 

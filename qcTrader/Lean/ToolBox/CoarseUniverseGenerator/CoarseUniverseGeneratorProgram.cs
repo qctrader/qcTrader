@@ -32,6 +32,7 @@ using Log = QuantConnect.Logging.Log;
 using QuantConnect.Data.UniverseSelection;
 using static QuantConnect.Data.UniverseSelection.CoarseFundamentalDataProvider;
 using QuantConnect.Data.Fundamental;
+using CustomDataProvider;
 
 namespace QuantConnect.ToolBox.CoarseUniverseGenerator
 {
@@ -62,7 +63,7 @@ namespace QuantConnect.ToolBox.CoarseUniverseGenerator
             var destinationFolder = new DirectoryInfo(Path.Combine(Globals.DataFolder, SecurityType.Equity.SecurityTypeToLower(), Market.USA, "fundamental", "coarse"));
             var blackListedTickersFile = new FileInfo("blacklisted-tickers.txt");
             var reservedWordPrefix = Config.Get("reserved-words-prefix", "quantconnect-");
-            var dataProvider = new DefaultDataProvider();
+            var dataProvider = new CustomDataProvider.CsvDataProvider();
             var mapFileProvider = new LocalDiskMapFileProvider();
             mapFileProvider.Initialize(dataProvider);
             var factorFileProvider = new LocalDiskFactorFileProvider();

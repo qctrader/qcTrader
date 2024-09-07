@@ -176,6 +176,7 @@ namespace QuantConnect.Lean.Engine
             DataProvider = dataProvider;
             ObjectStore = objectStore;
             DataPermissionsManager = dataPermissionsManager;
+            //new ZipDataCacheProvider(DataProvider, isDataEphemeral: liveMode)
             DataCacheProvider = new ZipDataCacheProvider(DataProvider, isDataEphemeral: liveMode);
             DataMonitor = new DataMonitor();
 
@@ -201,7 +202,7 @@ namespace QuantConnect.Lean.Engine
             var resultHandlerTypeName = Config.Get("result-handler", "BacktestingResultHandler");
             var mapFileProviderTypeName = Config.Get("map-file-provider", "LocalDiskMapFileProvider");
             var factorFileProviderTypeName = Config.Get("factor-file-provider", "LocalDiskFactorFileProvider");
-            var dataProviderTypeName = Config.Get("data-provider", "DefaultDataProvider");
+            var dataProviderTypeName = Config.Get("data-provider", "CustomDataProvider.CsvDataProvider");
             var objectStoreTypeName = Config.Get("object-store", "LocalObjectStore");
             var dataPermissionManager = Config.Get("data-permission-manager", "DataPermissionManager");
 

@@ -35,6 +35,7 @@ using QuantConnect.Packets;
 using QuantConnect.Securities;
 using QuantConnect.Util;
 using static QuantConnect.StringExtensions;
+//using CustomDataProvider
 
 namespace QuantConnect.Lean.Engine
 {
@@ -153,18 +154,24 @@ namespace QuantConnect.Lean.Engine
 
                     algorithm.Securities.SetSecurityService(securityService);
 
+                    //var customDataProvider = new CustomDataProvider.CsvDataProvider();
+
+
                     dataManager = new DataManager(AlgorithmHandlers.DataFeed,
                         new UniverseSelection(
                             algorithm,
                             securityService,
                             AlgorithmHandlers.DataPermissionsManager,
-                            AlgorithmHandlers.DataProvider),
+                            AlgorithmHandlers.DataProvider
+                            
+                            ),
                         algorithm,
                         algorithm.TimeKeeper,
                         marketHoursDatabase,
                         _liveMode,
                         registeredTypesProvider,
-                        AlgorithmHandlers.DataPermissionsManager);
+                        AlgorithmHandlers.DataPermissionsManager
+                        );
 
                     algorithm.SubscriptionManager.SetDataManager(dataManager);
 

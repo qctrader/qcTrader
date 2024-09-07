@@ -82,7 +82,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
                 _factorFileProvider,
                 _cacheProvider,
                 algorithm,
-                enablePriceScaling: false);
+                enablePriceScaling:false);
 
             IsActive = true;
             _marketHoursDatabase = MarketHoursDatabase.FromDataFolder();

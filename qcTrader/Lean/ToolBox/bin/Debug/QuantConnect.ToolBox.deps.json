@@ -9,6 +9,7 @@
       "QuantConnect.ToolBox/1.0.0": {
         "dependencies": {
           "QuantConnect.Lean.Engine": "1.0.0",
+          "CustomDataProvider": "1.0.0.0",
           "QuantConnect.Common.Reference": "2.5.0.0"
         },
         "runtime": {
@@ -542,6 +543,14 @@
           }
         }
       },
+      "CustomDataProvider/1.0.0.0": {
+        "runtime": {
+          "CustomDataProvider.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "QuantConnect.Common.Reference/2.5.0.0": {
         "runtime": {
           "QuantConnect.Common.dll": {
@@ -860,6 +869,11 @@
     },
     "QuantConnect.Logging/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CustomDataProvider/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

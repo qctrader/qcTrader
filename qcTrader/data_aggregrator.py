@@ -156,10 +156,11 @@ class QuantConnectDataUpdater:
     def __init__(self, data_config_paramters, parameters):
         self.parameters = parameters
         self.data_config_paramters = data_config_paramters
+        self.base_path_data = self.data_folder = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"])
         self.data_folder = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"],self.data_config_paramters["resolution"])
-        self.map_files_path = os.path.join(self.data_folder, "map_files" )
-        self.factor_files_path = os.path.join(self.data_folder,"factor_files" )
-        
+        self.map_files_path = os.path.join(self.base_path_data, "map_files" )
+        self.factor_files_path = os.path.join(self.base_path_data,"factor_files" )
+        self.corporate_actions_path = os.path.join(self.base_path_data,"corporate_actions" )
         # Parse the JSON string
         portfolio_dict = json.loads(self.parameters['portfolio'])
 
@@ -469,21 +470,6 @@ class QuantConnectDataUpdater:
         # Ensure dates are in the correct format
         start_date = self.parameters["start_date"]
         end_date = self.parameters["end_date"]
-
-
-        # # Create a date object
-        # start_date_obj = start_date
-
-        # # Convert the date object to a string in the format 'YYYY-MM-DD'
-        # start_date_str = start_date_obj.strftime('%Y-%m-%d')
-
-
-        #         # Create a date object
-        # end_date_obj = end_date
-
-        # # Convert the date object to a string in the format 'YYYY-MM-DD'
-        # end_date_str = end_date_obj.strftime('%Y-%m-%d')
-        
         for asset in self.assets:
                 # Download missing data
 
@@ -502,9 +488,22 @@ class QuantConnectDataUpdater:
                 self._update_zip_file(asset, new_data)
                 print(f"Data for {asset} from {start_date} to {end_date} has been updated.")
 
+         # # Create a date object
+        start_date_obj = start_date
 
-        # file_manager = AddOnFileManager(self.assets, start_date_str, end_date_str)
-        # file_manager.create_files_for_all_symbols()
+        # # Convert the date object to a string in the format 'YYYY-MM-DD'
+        start_date_str = start_date_obj.strftime('%Y-%m-%d')
+
+
+        #         # Create a date object
+        end_date_obj = end_date
+
+        # # Convert the date object to a string in the format 'YYYY-MM-DD'
+        end_date_str = end_date_obj.strftime('%Y-%m-%d')
+
+        
+        file_manager = AddOnFileManager(self.assets, start_date_str, end_date_str, self.corporate_actions_path, self.factor_files_path, self.map_files_path)
+        file_manager.create_files_for_all_symbols()
 
                 
               

@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using QuantConnect.Lean.Engine.HistoricalData;
+using CustomDataProvider;
 
 namespace QuantConnect.Report
 {
@@ -72,12 +73,12 @@ namespace QuantConnect.Report
             // Initialize the providers that the HistoryProvider requires
             var factorFileProvider = Composer.Instance.GetExportedValueByTypeName<IFactorFileProvider>("LocalDiskFactorFileProvider");
             var mapFileProvider = Composer.Instance.GetExportedValueByTypeName<IMapFileProvider>("LocalDiskMapFileProvider");
-            _cacheProvider = new ZipDataCacheProvider(new DefaultDataProvider(), false);
+            _cacheProvider = new ZipDataCacheProvider(new CustomDataProvider.CsvDataProvider(), false);
             var historyProvider = new SubscriptionDataReaderHistoryProvider();
 
             Algorithm = new PortfolioLooperAlgorithm((decimal)startingCash, orders, algorithmConfiguration);
             var dataPermissionManager = new DataPermissionManager();
-            historyProvider.Initialize(new HistoryProviderInitializeParameters(null, null, null, _cacheProvider, mapFileProvider, factorFileProvider, (_) => { }, false, dataPermissionManager, Algorithm.ObjectStore, Algorithm.Settings));
+            historyProvider.Initialize(new HistoryProviderInitializeParameters(null, null, null, null, mapFileProvider, factorFileProvider, (_) => { }, false, dataPermissionManager, Algorithm.ObjectStore, Algorithm.Settings));
             Algorithm.SetHistoryProvider(historyProvider);
 
             // Dummy LEAN datafeed classes and initializations that essentially do nothing
@@ -98,7 +99,7 @@ namespace QuantConnect.Report
                         new SecurityCacheProvider(Algorithm.Portfolio),
                         algorithm: Algorithm),
                     dataPermissionManager,
-                    new DefaultDataProvider()),
+                    new CustomDataProvider.CsvDataProvider()),
                 Algorithm,
                 Algorithm.TimeKeeper,
                 marketHoursDatabase,

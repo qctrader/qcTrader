@@ -21,6 +21,9 @@
     <Reference Include="QuantConnect.Lean.Engine">
       <HintPath>..\..\Launcher\composer\QuantConnect.Lean.Engine.dll</HintPath>
     </Reference>
+    <Reference Include="QuantConnect.ToolBox">
+      <HintPath>..\..\Launcher\composer\QuantConnect.ToolBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

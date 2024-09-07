@@ -1,146 +1,218 @@
-/*
- * QUANTCONNECT.COM - Democratizing Finance, Empowering Individuals.
- * Lean Algorithmic Trading Engine v2.0. Copyright 2014 QuantConnect Corporation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
-*/
-
 using System;
-using System.Threading;
+using System.IO;
+using QuantConnect.Interfaces;
+using System.ComponentModel.Composition;
 using QuantConnect.Configuration;
-using QuantConnect.Lean.Engine;
-using QuantConnect.Logging;
-using QuantConnect.Packets;
-using QuantConnect.Python;
-using QuantConnect.Util;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO.Compression;
 
-namespace QuantConnect.Lean.Launcher
+
+namespace CustomDataProvider
 {
-    public class Program
+    [Export(typeof(IDataProvider))]
+    [Export("CustomDataProvider.CsvDataProvider", typeof(IDataProvider))]
+    public class CsvDataProvider : IDataProvider
     {
-        private const string _collapseMessage = "Unhandled exception breaking past controls and causing collapse of algorithm node. This is likely a memory leak of an external dependency or the underlying OS terminating the LEAN engine.";
-        private static LeanEngineSystemHandlers leanEngineSystemHandlers;
-        private static LeanEngineAlgorithmHandlers leanEngineAlgorithmHandlers;
-        private static AlgorithmNodePacket job;
-        private static AlgorithmManager algorithmManager;
+        public event EventHandler<QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs>? NewDataRequest;
 
-        static Program()
+        private readonly string _baseDirectory;
+        private readonly Dictionary<string, byte[]> _cache;
+
+        public CsvDataProvider()
         {
-            AppDomain.CurrentDomain.AssemblyLoad += (sender, e) =>
-            {
-                if (e.LoadedAssembly.FullName.ToLowerInvariant().Contains("python"))
-                {
-                    Log.Trace($"Python for .NET Assembly: {e.LoadedAssembly.GetName()}");
-                }
-            };
+            // This constructor is invoked during Lean engine initialization
+            _baseDirectory = Config.Get("custom-data-provider-parameters.data_path");
+            _cache = new Dictionary<string, byte[]>();  // Initialize cache if needed
+            Console.WriteLine($"Dynamic Data Path: {_baseDirectory}");
         }
 
-        static void Main(string[] args)
+        //[ImportingConstructor]
+        //public CsvDataProvider([Import("BaseDirectory")] string baseDirectory)
+        //{
+        //    _baseDirectory = baseDirectory;
+        //}
+
+        public Stream? Fetch(string key)
         {
-            if (OS.IsWindows)
+            bool fetchedSuccessfully = false;
+
+            // Normalize the key path to ensure consistent separators
+            string normalizedKey = key.Replace('\\', Path.DirectorySeparatorChar).Replace('/', Path.DirectorySeparatorChar);
+            string mapFilePath = normalizedKey;
+
+            // Determine the zip file path from the map file or factor file key
+            string zipFilePath = GetZipFilePath(mapFilePath);
+
+            if (string.IsNullOrEmpty(zipFilePath))
             {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                Console.WriteLine("Could not determine zip file path.");
+                return null;
             }
 
-            // expect first argument to be config file name
-            if (args.Length > 0)
+            // Check if data is already cached
+            if (_cache.TryGetValue(zipFilePath, out var cachedData))
             {
-                Config.MergeCommandLineArgumentsWithConfiguration(LeanArgumentParser.ParseArguments(args));
+                Console.WriteLine($"Serving data from cache for: {zipFilePath}");
+                return new MemoryStream(cachedData);  // Return cached data as a stream
             }
 
-            //Name thread for the profiler:
-            Thread.CurrentThread.Name = "Algorithm Analysis Thread";
-
-            Initializer.Start();
-            leanEngineSystemHandlers = Initializer.GetSystemHandlers();
-
-            //-> Pull job from QuantConnect job queue, or, pull local build:
-            job = leanEngineSystemHandlers.JobQueue.NextJob(out var assemblyPath);
-
-            leanEngineAlgorithmHandlers = Initializer.GetAlgorithmHandlers();
-
-            if (job == null)
-            {
-                const string jobNullMessage = "Engine.Main(): Sorry we could not process this algorithm request.";
-                Log.Error(jobNullMessage);
-                throw new ArgumentException(jobNullMessage);
-            }
-
-            // Activate our PythonVirtualEnvironment
-            PythonInitializer.ActivatePythonVirtualEnvironment(job.PythonVirtualEnvironment);
-
-            // if the job version doesn't match this instance version then we can't process it
-            // we also don't want to reprocess redelivered jobs
-            if (job.Redelivered)
-            {
-                Log.Error("Engine.Run(): Job Version: " + job.Version + "  Deployed Version: " + Globals.Version + " Redelivered: " + job.Redelivered);
-                //Tiny chance there was an uncontrolled collapse of a server, resulting in an old user task circulating.
-                //In this event kill the old algorithm and leave a message so the user can later review.
-                leanEngineSystemHandlers.Api.SetAlgorithmStatus(job.AlgorithmId, AlgorithmStatus.RuntimeError, _collapseMessage);
-                leanEngineSystemHandlers.Notify.SetAuthentication(job);
-                leanEngineSystemHandlers.Notify.Send(new RuntimeErrorPacket(job.UserId, job.AlgorithmId, _collapseMessage));
-                leanEngineSystemHandlers.JobQueue.AcknowledgeJob(job);
-                Exit(1);
-            }
+            // Directly fetch from the source without relying on external cache
+            Console.WriteLine($"Attempting to open zip file at: {zipFilePath}");
 
             try
             {
-                // Set our exit handler for the algorithm
-                Console.CancelKeyPress += new ConsoleCancelEventHandler(ExitKeyPress);
+                // Add logging to confirm the zip file existence check
+                if (File.Exists(zipFilePath))
+                {
+                    Console.WriteLine($"Zip file exists: {zipFilePath}");
+                    try
+                    {
+                        using (ZipArchive archive = ZipFile.OpenRead(zipFilePath))
+                        {
+                            Console.WriteLine($"Successfully opened zip file: {zipFilePath}");
+                            var csvEntry = archive.Entries.FirstOrDefault(entry => entry.Name.EndsWith(".csv", StringComparison.OrdinalIgnoreCase));
+                            if (csvEntry != null)
+                            {
+                                Console.WriteLine($"CSV file found in zip: {csvEntry.Name}");
+                                using (Stream csvStream = csvEntry.Open())
+                                {
+                                    // Reading and parsing the CSV
+                                    using (StreamReader reader = new StreamReader(csvStream))
+                                    {
+                                        var data = ParseCsv(reader);
+                                        if (!string.IsNullOrEmpty(data))
+                                        {
+                                            fetchedSuccessfully = true;
+                                            Console.WriteLine("Data successfully read from CSV.");
+                                            var byteData = System.Text.Encoding.UTF8.GetBytes(data);
 
-                // Create the algorithm manager and start our engine
-                algorithmManager = new AlgorithmManager(Globals.LiveMode, job);
+                                            // Optional: Add data to internal cache if caching is desired
+                                            AddToCache(zipFilePath, byteData);
 
-                leanEngineSystemHandlers.LeanManager.Initialize(leanEngineSystemHandlers, leanEngineAlgorithmHandlers, job, algorithmManager);
+                                            return new MemoryStream(byteData);
 
-                OS.Initialize();
-
-                var engine = new Engine.Engine(leanEngineSystemHandlers, leanEngineAlgorithmHandlers, Globals.LiveMode);
-                engine.Run(job, algorithmManager, assemblyPath, WorkerThread.Instance);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("CSV file was read but contained no usable data.");
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("CSV file not found in the zip archive.");
+                            }
+                        }
+                    }
+                    catch (InvalidDataException ex)
+                    {
+                        Console.WriteLine($"Corrupted zip file: {zipFilePath}. Error: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Zip file not found at expected location.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while opening or reading the zip file: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
             }
             finally
             {
-                var algorithmStatus = algorithmManager?.State ?? AlgorithmStatus.DeployError;
+                Console.WriteLine("Entering finally block.");
+                OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
+            }
 
-                Exit(algorithmStatus != AlgorithmStatus.Completed ? 1 : 0);
+            return null;
+        }
+        private void AddToCache(string key, byte[] data)
+        {
+            // Implement caching logic if desired, otherwise skip caching
+            if (!_cache.ContainsKey(key))
+            {
+                _cache[key] = data;  // Add data to cache
+                Console.WriteLine($"Data cached for key: {key}");
             }
         }
 
-        public static void ExitKeyPress(object sender, ConsoleCancelEventArgs args)
+        private string GetZipFilePath(string mapFilePath)
         {
-            // Allow our process to resume after this event
-            args.Cancel = true;
+            // Normalize path separators and replace "map_files" with "daily"
+            string normalizedPath = mapFilePath.Replace('\\', Path.DirectorySeparatorChar)
+                                               .Replace('/', Path.DirectorySeparatorChar);
 
-            // Stop the algorithm
-            algorithmManager.SetStatus(AlgorithmStatus.Stopped);
-            Log.Trace("Program.ExitKeyPress(): Lean instance has been cancelled, shutting down safely now");
+            // Replace "map_files" with "daily" to point to the correct directory
+            string directory = Path.GetDirectoryName(normalizedPath) ?? string.Empty;
+            directory = directory.Replace("map_files", "daily");
+
+            // Construct the zip file name using the map file name
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(normalizedPath);
+            string zipFileName = fileNameWithoutExtension + ".zip";
+
+            // Combine the modified directory with the zip file name
+            string zipFilePath = Path.Combine(directory, zipFileName);
+
+            // Log the constructed zip path and verify its existence
+            Console.WriteLine($"Constructed Zip Path: {zipFilePath}");
+            if (File.Exists(zipFilePath))
+            {
+                Console.WriteLine($"Zip file found at: {zipFilePath}");
+                return zipFilePath;
+            }
+            else
+            {
+                Console.WriteLine($"Zip file not found at: {zipFilePath}");
+                return string.Empty;
+            }
+        }
+        private string ParseCsv(StreamReader reader)
+        {
+            var result = new List<string>();
+
+            string? line;
+
+            // Assuming the CSV follows a consistent order and the columns are:
+            // 0: Open, 1: High, 2: Low, 3: Close, 4: Volume
+            // Adjust indices if the order is different
+            int openIndex = 0;
+            int highIndex = 1;
+            int lowIndex = 2;
+            int closeIndex = 3;
+            int volumeIndex = 4;
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                var columns = line.Split(',');
+
+                // Ensure there are enough columns in the line
+                if (columns.Length > Math.Max(Math.Max(closeIndex, highIndex), Math.Max(lowIndex, Math.Max(openIndex, volumeIndex))))
+                {
+                    // Extract the required values by position
+                    var open = columns[openIndex];
+                    var high = columns[highIndex];
+                    var low = columns[lowIndex];
+                    var close = columns[closeIndex];
+                    var volume = columns[volumeIndex];
+
+                    result.Add($"{close},{high},{low},{open},{volume}");
+                }
+                else
+                {
+                    Console.WriteLine("Incomplete row encountered in CSV.");
+                }
+            }
+
+            // Join all rows into a single string
+            return string.Join(Environment.NewLine, result);
         }
 
-        public static void Exit(int exitCode)
+        protected virtual void OnNewDataRequest(QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs e)
         {
-            //Delete the message from the job queue:
-            leanEngineSystemHandlers.JobQueue.AcknowledgeJob(job);
-            Log.Trace("Engine.Main(): Packet removed from queue: " + job.AlgorithmId);
-
-            // clean up resources
-            leanEngineSystemHandlers.DisposeSafely();
-            leanEngineAlgorithmHandlers.DisposeSafely();
-            Log.LogHandler.DisposeSafely();
-            OS.Dispose();
-
-            PythonInitializer.Shutdown();
-
-            Log.Trace("Program.Main(): Exiting Lean...");
-            Environment.Exit(exitCode);
+            NewDataRequest?.Invoke(this, e);
         }
     }
 }

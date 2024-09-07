@@ -54,4 +54,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Engine\QuantConnect.Lean.Engine.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CustomDataProvider\CustomDataProvider\CustomDataProvider.csproj" />
+	</ItemGroup>
 </Project>
