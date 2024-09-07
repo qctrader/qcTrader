@@ -23,6 +23,8 @@
     "maximum-data-points-per-chart-series": 1000000,
     "maximum-chart-series": 30,
     "force-exchange-always-open": false,
+    "live-mode-data-feed": "QuantConnect.ToolBox.LiveData.LiveTradingDataFeed",
+    "brokerage": "InteractiveBrokersBrokerage",
     "forward-console-messages": true,
     "transaction-log": "",
     "reserved-words-prefix": "@",
@@ -31,6 +33,8 @@
     "mute-python-library-logging": "False",
     "close-automatically": true,
     "python-additional-paths": [],
+    "benchmark": "SPY",
+    "benchmark-resolution": "daily",
     "environments": {
         "backtesting": {
             "live-mode": false,

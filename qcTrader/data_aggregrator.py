@@ -3,6 +3,7 @@ import yfinance as yf
 import os
 import pandas as pd
 import zipfile
+import csv
 import pandas as pd
 from io import BytesIO, TextIOWrapper
 from datetime import timedelta
@@ -26,15 +27,23 @@ class AddOnFileManager:
         self.factor_file_path = factor_file_path
         self.map_file_path = map_file_path
 
+
     def download_corporate_actions(self, symbol):
         """
-        Downloads splits and dividends for the given symbol and date range using yfinance.
+        Downloads splits, dividends, and previous close prices for the given symbol and date range using yfinance.
         """
         ticker = yf.Ticker(symbol)
 
         # Download splits and dividends with date range filtering
         splits = ticker.splits.loc[self.start_date:self.end_date]
         dividends = ticker.dividends.loc[self.start_date:self.end_date]
+
+        # Download historical data to get adjusted close prices for previous close
+        historical_data = ticker.history(start=self.start_date, end=self.end_date)
+
+        # Ensure 'Date' is a column for merging purposes
+        historical_data = historical_data.reset_index()
+        historical_data['Date'] = historical_data['Date'].dt.strftime('%Y%m%d')
 
         # Format splits data
         if not splits.empty:
@@ -59,7 +68,21 @@ class AddOnFileManager:
         # Combine splits and dividends
         corporate_actions = pd.concat([splits_df, dividends_df]).sort_values(by='Date')
 
+        # Merge with historical data to get the 'PreviousClose' price
+        if not corporate_actions.empty and not historical_data.empty:
+            # Add the previous close price for each action based on the date
+            corporate_actions = pd.merge(
+                corporate_actions, 
+                historical_data[['Date', 'Close']], 
+                on='Date', 
+                how='left'
+            )
+            corporate_actions = corporate_actions.rename(columns={'Close': 'PreviousClose'})
+        else:
+            corporate_actions['PreviousClose'] = 0  # If no data, set as None
+
         return corporate_actions
+
 
     def save_corporate_actions_to_lean_format(self, data, symbol):
         """
@@ -84,6 +107,7 @@ class AddOnFileManager:
     def save_factor_file(self, symbol, corporate_actions):
         """
         Generates and saves a factor file for Lean using splits and dividends data.
+        The factor file will have four columns: Date, Split Factor, Price Factor, and Reference Price.
         """
         directory = self.factor_file_path
         filename = f"{symbol.lower()}.csv"
@@ -91,31 +115,41 @@ class AddOnFileManager:
         file_path = os.path.join(directory, filename)
 
         if not corporate_actions.empty:
+            corporate_actions['Date'] = pd.to_datetime(corporate_actions['Date'])
             factors = []
-            cumulative_factor = 1.0
-            
+            cumulative_split_factor = 1.0
+            cumulative_price_factor = 1.0
+
             for _, row in corporate_actions.iterrows():
-                date = row['Date']
+                date = row['Date'].strftime('%Y%m%d')  # Format the date as YYYYMMDD
                 if row['EventType'] == 'Split':
                     # Calculate split adjustment factor
-                    factor = 1 / row['Value']
-                    cumulative_factor *= factor
-                    factors.append([date, cumulative_factor])
+                    split_factor = 1 / row['Value']  # Assuming 'Value' holds the split ratio
+                    cumulative_split_factor *= split_factor
+                    factors.append([date, cumulative_split_factor, cumulative_price_factor, 1])  # Placeholder for reference price
                 elif row['EventType'] == 'Dividend':
                     # Placeholder for dividend handling logic
-                    factor = 1.0  # Adjust if dividends affect factors
-                    factors.append([date, cumulative_factor])
+                    # Adjust the price factor to account for dividends if applicable
+                    price_adjustment = 1 - (row['Value'] / row['PreviousClose'])  # Adjust based on dividend value
+                    cumulative_price_factor *= price_adjustment
+                    factors.append([date, cumulative_split_factor, cumulative_price_factor, row['Value']])  # Reference price as dividend value
+
+            # Ensure factors are sorted by date to maintain chronological order
+            factors.sort(key=lambda x: x[0])
 
             if factors:
-                factors_df = pd.DataFrame(factors, columns=['Date', 'Factor'])
+                # Convert the list to a DataFrame with the appropriate columns
+                factors_df = pd.DataFrame(factors, columns=['Date', 'Split Factor', 'Price Factor', 'Reference Price'])
                 factors_df.to_csv(file_path, index=False, header=False)
                 print(f"Saved factor file for {symbol} to {file_path}")
             else:
-                print(f"No split or significant dividend data for {symbol}. Creating default factor file.")
-                pd.DataFrame([[f"20200101,1.0"]]).to_csv(file_path, index=False, header=False)
+                # Creating a default factor file if no valid corporate actions are found
+                print(f"No valid split or dividend data for {symbol}. Creating default factor file.")
+                pd.DataFrame([["20200101", 1, 1, 1]]).to_csv(file_path, index=False, header=False)
         else:
+            # Creating a default factor file when corporate actions data is empty
             print(f"No corporate actions data to create factor file for {symbol}. Creating default factor file.")
-            pd.DataFrame([[f"20200101,1.0"]]).to_csv(file_path, index=False, header=False)
+            pd.DataFrame([["20200101", 1, 1, 1]]).to_csv(file_path, index=False, header=False)
 
     def save_map_file(self, symbol):
         """
@@ -126,8 +160,15 @@ class AddOnFileManager:
         os.makedirs(directory, exist_ok=True)
         file_path = os.path.join(directory, filename)
 
-        # Create a basic map file with current ticker only
-        pd.DataFrame([[f"{datetime.now().strftime('%Y%m%d')},{symbol}"]]).to_csv(file_path, index=False, header=False)
+        stock = yf.Ticker(symbol)
+        data = stock.history(period="max")
+
+        with open(file_path, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                # Assuming no ticker changes for simplicity
+                for index, row in data.iterrows():
+                    date = index.strftime('%Y%m%d')
+                    writer.writerow([date, symbol, symbol])
         print(f"Saved map file for {symbol} to {file_path}")
 
     def create_files_for_all_symbols(self):

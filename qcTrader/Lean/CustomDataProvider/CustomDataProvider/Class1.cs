@@ -17,27 +17,17 @@ namespace CustomDataProvider
     {
         public event EventHandler<QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs>? NewDataRequest;
         private readonly ZipDataCacheProvider _zipCacheProvider;
-        private readonly string _baseDirectory;
         
-
         public CsvDataProvider()
         {
-            // This constructor is invoked during Lean engine initialization
-            _baseDirectory = Config.Get("custom-data-provider-parameters.data_path");
-            Console.WriteLine($"Dynamic Data Path: {_baseDirectory}");
-           
-            
             _zipCacheProvider = new ZipDataCacheProvider(new DefaultDataProvider());
+            //_downloaderDataProvider = new DownloaderDataProvider();
         }
 
-        //[ImportingConstructor]
-        //public CsvDataProvider([Import("BaseDirectory")] string baseDirectory)
-        //{
-        //    _baseDirectory = baseDirectory;
-        //}
-
+        
         public Stream? Fetch(string key)
         {
+            Console.WriteLine($"The keys fetched found at: {key}");
             bool fetchedSuccessfully = false;
 
             // Normalize the key path to ensure consistent separators
@@ -45,191 +35,82 @@ namespace CustomDataProvider
             string mapFilePath = normalizedKey;
 
             // Determine the zip file path from the map file or factor file key
-            string zipFilePath = GetZipFilePath(mapFilePath);
+            string zipFilePath = GetZipFilePath(mapFilePath, "daily");
 
-            if (string.IsNullOrEmpty(zipFilePath))
+            // Check if the daily zip file exists and try fetching it using ZipDataCacheProvider
+            if (!string.IsNullOrEmpty(zipFilePath) && File.Exists(zipFilePath))
             {
-                Console.WriteLine("Could not determine zip file path.");
-                return null;
+                Stream? dataStream = _zipCacheProvider.Fetch(zipFilePath);
+
+                if (dataStream != null)
+                {
+                    fetchedSuccessfully = true;
+                    Console.WriteLine("Data successfully fetched from ZipCacheProvider for daily frequency.");
+                    OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
+                    return dataStream;
+                }
             }
 
-            Stream? dataStream = _zipCacheProvider.Fetch(zipFilePath);
-
-            if (dataStream != null)
-            {
-                fetchedSuccessfully = true;
-                Console.WriteLine("Data successfully fetched from ZipCacheProvider.");
-            }
-            else
-            {
-                Console.WriteLine("Data could not be fetched from ZipCacheProvider.");
-            }
-
-            // Trigger event to notify of new data request
-            OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
-
-            return dataStream;
-
-            //// Check if data is already cached
-            //if (_cache.TryGetValue(zipFilePath, out var cachedData))
-            //{
-            //    Console.WriteLine($"Serving data from cache for: {zipFilePath}");
-            //    return new MemoryStream(cachedData);  // Return cached data as a stream
-            //}
-
-            //// Directly fetch from the source without relying on external cache
-            //Console.WriteLine($"Attempting to open zip file at: {zipFilePath}");
-
-            //try
-            //{
-            //    // Add logging to confirm the zip file existence check
-            //    if (File.Exists(zipFilePath))
-            //    {
-            //        Console.WriteLine($"Zip file exists: {zipFilePath}");
-            //        try
-            //        {
-            //            using (ZipArchive archive = ZipFile.OpenRead(zipFilePath))
-            //            {
-            //                Console.WriteLine($"Successfully opened zip file: {zipFilePath}");
-            //                var csvEntry = archive.Entries.FirstOrDefault(entry => entry.Name.EndsWith(".csv", StringComparison.OrdinalIgnoreCase));
-            //                if (csvEntry != null)
-            //                {
-            //                    Console.WriteLine($"CSV file found in zip: {csvEntry.Name}");
-            //                    using (Stream csvStream = csvEntry.Open())
-            //                    {
-            //                        // Reading and parsing the CSV
-            //                        using (StreamReader reader = new StreamReader(csvStream))
-            //                        {
-            //                            var data = ParseCsv(reader);
-            //                            if (!string.IsNullOrEmpty(data))
-            //                            {
-            //                                fetchedSuccessfully = true;
-            //                                Console.WriteLine("Data successfully read from CSV.");
-            //                                var byteData = System.Text.Encoding.UTF8.GetBytes(data);
-
-            //                                // Optional: Add data to internal cache if caching is desired
-            //                                AddToCache(zipFilePath, byteData);
-
-            //                                return new MemoryStream(byteData);
-
-            //                            }
-            //                            else
-            //                            {
-            //                                Console.WriteLine("CSV file was read but contained no usable data.");
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    Console.WriteLine("CSV file not found in the zip archive.");
-            //                }
-            //            }
-            //        }
-            //        catch (InvalidDataException ex)
-            //        {
-            //            Console.WriteLine($"Corrupted zip file: {zipFilePath}. Error: {ex.Message}");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Zip file not found at expected location.");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred while opening or reading the zip file: {ex.Message}");
-            //    Console.WriteLine($"Stack Trace: {ex.StackTrace}");
-            //}
-            //finally
-            //{
-            //    Console.WriteLine("Entering finally block.");
-            //    OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(zipFilePath, fetchedSuccessfully));
-            //}
-
-            //return null;
+            //Trigger event to notify of new data request, even if unsuccessful
+           OnNewDataRequest(new QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs(key, fetchedSuccessfully));
+            return null;
         }
-        //private void AddToCache(string key, byte[] data)
-        //{
-        //    // Implement caching logic if desired, otherwise skip caching
-        //    if (!_cache.ContainsKey(key))
-        //    {
-        //        _cache[key] = data;  // Add data to cache
-        //        Console.WriteLine($"Data cached for key: {key}");
-        //    }
-        //}
 
-        private string GetZipFilePath(string mapFilePath)
+
+        public string GetZipFilePath(string key, string frequency = "daily")
         {
-            // Normalize path separators and replace "map_files" with "daily"
-            string normalizedPath = mapFilePath.Replace('\\', Path.DirectorySeparatorChar)
-                                               .Replace('/', Path.DirectorySeparatorChar);
+            // Normalize path separators to ensure consistency across platforms
+            string normalizedKey = key.Replace('\\', Path.DirectorySeparatorChar)
+                                      .Replace('/', Path.DirectorySeparatorChar);
 
-            // Replace "map_files" with "daily" to point to the correct directory
-            string directory = Path.GetDirectoryName(normalizedPath) ?? string.Empty;
-            directory = directory.Replace("map_files", "daily");
+            // Determine the directory based on the content type
+            string directory = Path.GetDirectoryName(normalizedKey) ?? string.Empty;
 
-            // Construct the zip file name using the map file name
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(normalizedPath);
-            string zipFileName = fileNameWithoutExtension + ".zip";
+            // Initialize the file name and extension
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(normalizedKey);
+            string fileName = string.Empty;
+            string fileExtension = ".zip";  // Default to .zip for price data
 
-            // Combine the modified directory with the zip file name
-            string zipFilePath = Path.Combine(directory, zipFileName);
-
-            // Log the constructed zip path and verify its existence
-            Console.WriteLine($"Constructed Zip Path: {zipFilePath}");
-            if (File.Exists(zipFilePath))
+            // Check if the key corresponds to map files or factor files
+            if (directory.Contains("map_files", StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine($"Zip file found at: {zipFilePath}");
-                return zipFilePath;
+                // Map files are CSV format
+                directory = directory.Replace("map_files", "map_files");
+                fileExtension = ".csv";  // Use .csv extension for map files
+            }
+            else if (directory.Contains("factor_files", StringComparison.OrdinalIgnoreCase))
+            {
+                // Factor files are also in CSV format
+                directory = directory.Replace("factor_files", "factor_files");
+                fileExtension = ".csv";  // Use .csv extension for factor files
             }
             else
             {
-                Console.WriteLine($"Zip file not found at: {zipFilePath}");
+                // Default replacement for other frequency-based needs (e.g., daily price data)
+                directory = directory.Replace("map_files", frequency);
+            }
+
+            // Construct the full file name with the appropriate extension
+            fileName = fileNameWithoutExtension + fileExtension;
+
+            // Combine the modified directory with the constructed file name
+            string filePath = Path.Combine(directory, fileName);
+
+            // Log the constructed path for verification
+            Console.WriteLine($"Constructed File Path: {filePath}");
+
+            // Check the existence of the constructed file path
+            if (File.Exists(filePath))
+            {
+                Console.WriteLine($"File found at: {filePath}");
+                return filePath;
+            }
+            else
+            {
+                Console.WriteLine($"File not found at: {filePath}");
                 return string.Empty;
             }
         }
-        private string ParseCsv(StreamReader reader)
-        {
-            var result = new List<string>();
-
-            string? line;
-
-            // Assuming the CSV follows a consistent order and the columns are:
-            // 0: Open, 1: High, 2: Low, 3: Close, 4: Volume
-            // Adjust indices if the order is different
-            int openIndex = 0;
-            int highIndex = 1;
-            int lowIndex = 2;
-            int closeIndex = 3;
-            int volumeIndex = 4;
-
-            while ((line = reader.ReadLine()) != null)
-            {
-                var columns = line.Split(',');
-
-                // Ensure there are enough columns in the line
-                if (columns.Length > Math.Max(Math.Max(closeIndex, highIndex), Math.Max(lowIndex, Math.Max(openIndex, volumeIndex))))
-                {
-                    // Extract the required values by position
-                    var open = columns[openIndex];
-                    var high = columns[highIndex];
-                    var low = columns[lowIndex];
-                    var close = columns[closeIndex];
-                    var volume = columns[volumeIndex];
-
-                    result.Add($"{close},{high},{low},{open},{volume}");
-                }
-                else
-                {
-                    Console.WriteLine("Incomplete row encountered in CSV.");
-                }
-            }
-
-            // Join all rows into a single string
-            return string.Join(Environment.NewLine, result);
-        }
-
         protected virtual void OnNewDataRequest(QuantConnect.Interfaces.DataProviderNewDataRequestEventArgs e)
         {
             NewDataRequest?.Invoke(this, e);

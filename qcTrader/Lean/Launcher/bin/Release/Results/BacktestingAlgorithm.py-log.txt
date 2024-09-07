@@ -1,13 +1,15 @@
-2024-05-01 00:00:00 Launching analysis for BacktestingAlgorithm.py with LEAN Engine v2.5.0.0.v1.0.0
-2024-05-01 00:00:00 No historical data available for MSFT.
-2024-05-01 00:00:00 Accurate daily end-times now enabled by default. See more at https://qnt.co/3YHaWHL. To disable it and use legacy daily bars set self.settings.daily_precise_end_time = False.
-2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
-2024-05-01 00:00:00 Zip file found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
-2024-05-01 00:00:00 Data successfully fetched from ZipCacheProvider.
-2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.zip
-2024-05-01 00:00:00 Zip file not found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.zip
-2024-05-01 00:00:00 Could not determine zip file path.
-2024-05-01 00:00:00 Constructed Zip Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
-2024-05-01 00:00:00 Zip file found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
-2024-05-01 00:00:00 Data successfully fetched from ZipCacheProvider.
-2024-05-01 00:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.17 seconds at 0k data points per second. Processing total of 1 data points.
+1997-12-31 19:00:00 Launching analysis for BacktestingAlgorithm.py with LEAN Engine v2.5.0.0.v1.0.0
+1997-12-31 19:00:00 Accurate daily end-times now enabled by default. See more at https://qnt.co/3YHaWHL. To disable it and use legacy daily bars set self.settings.daily_precise_end_time = False.
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\spy.csv
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+1997-12-31 19:00:00 Data successfully fetched from ZipCacheProvider for daily frequency.
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\hour\spy.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+1997-12-31 19:00:00 Data successfully fetched from ZipCacheProvider for daily frequency.
+1997-12-31 19:00:00 fetched 'portfolio' parameter: {"initial_capital": "2000000.00", "assets": ["MSFT", "AAPL", "GOOGL", "IBM", "SPY"]}
+1997-12-31 19:00:00 assets: ['MSFT', 'AAPL', 'GOOGL', 'IBM', 'SPY']
+1997-12-31 19:00:00 unexpected exception during initialize: type object 'Resolution' has no attribute 'daily'
+1997-12-31 19:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.30 seconds at 0k data points per second. Processing total of 0 data points.
+1997-12-31 19:00:00 Due to numerical precision issues in the factor file, data for the following symbols was adjust to a later starting date: [SPY, 19-03-2020]

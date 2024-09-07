@@ -61,6 +61,10 @@ class LeanRunner:
     "maximum-data-points-per-chart-series": 1000000,
     "maximum-chart-series": 30,
     "force-exchange-always-open": False,
+   #"data-downloader":"QuantConnect.ToolBox.AlphaVantageDownloader",
+    "live-mode-data-feed": "QuantConnect.ToolBox.LiveData.LiveTradingDataFeed",
+    "brokerage": "InteractiveBrokersBrokerage",
+    # "alpha-vantage-api-key": "PABPI0LK96G0RMFI",
     "forward-console-messages": True,
     "transaction-log": "",
     "reserved-words-prefix": "@",
@@ -69,6 +73,8 @@ class LeanRunner:
     "mute-python-library-logging": "False",
     "close-automatically": True,
     "python-additional-paths": [],
+    "benchmark": "SPY",
+    "benchmark-resolution": "daily", 
     "environments": {
         "backtesting": {
             "live-mode": False,

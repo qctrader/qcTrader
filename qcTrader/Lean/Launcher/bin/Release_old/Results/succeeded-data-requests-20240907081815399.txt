@@ -1,0 +1,8 @@
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip

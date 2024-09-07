@@ -1,6 +1,6 @@
 {
   "rollingWindow": {
-    "M1_20240501": {
+    "M1_19980101": {
       "tradeStatistics": {
         "startDateTime": null,
         "endDateTime": null,
@@ -72,7 +72,7 @@
       },
       "closedTrades": []
     },
-    "M3_20240501": {
+    "M3_19980101": {
       "tradeStatistics": {
         "startDateTime": null,
         "endDateTime": null,
@@ -144,7 +144,7 @@
       },
       "closedTrades": []
     },
-    "M6_20240501": {
+    "M6_19980101": {
       "tradeStatistics": {
         "startDateTime": null,
         "endDateTime": null,
@@ -216,7 +216,7 @@
       },
       "closedTrades": []
     },
-    "M12_20240501": {
+    "M12_19980101": {
       "tradeStatistics": {
         "startDateTime": null,
         "endDateTime": null,
@@ -362,46 +362,45 @@
     "closedTrades": []
   },
   "charts": {
+    "Portfolio Margin": {
+      "name": "Portfolio Margin",
+      "chartType": 0,
+      "series": {}
+    },
+    "Drawdown": {
+      "name": "Drawdown",
+      "chartType": 0,
+      "series": {
+        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
     "Capacity": {
       "name": "Capacity",
       "chartType": 0,
       "series": {
-        "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Strategy Equity": {
       "name": "Strategy Equity",
       "chartType": 0,
       "series": {
-        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[[1714536000,100000.0,100000.0,100000.0,100000.0]]},
-        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Equity": {"name":"Equity","unit":"$","index":0,"seriesType":2,"values":[[883612800,100000.0,100000.0,100000.0,100000.0]]},
+        "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Portfolio Turnover": {
+      "name": "Portfolio Turnover",
+      "chartType": 0,
+      "series": {
+        "Portfolio Turnover": {"name":"Portfolio Turnover","unit":"%","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Benchmark": {
       "name": "Benchmark",
       "chartType": 0,
       "series": {
-        "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
-    },
-    "Drawdown": {
-      "name": "Drawdown",
-      "chartType": 0,
-      "series": {
-        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
-    },
-    "Portfolio Margin": {
-      "name": "Portfolio Margin",
-      "chartType": 0,
-      "series": {}
-    },
-    "Exposure": {
-      "name": "Exposure",
-      "chartType": 0,
-      "series": {
-        "Equity - Long Ratio": {"name":"Equity - Long Ratio","unit":"","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"},
-        "Equity - Short Ratio": {"name":"Equity - Short Ratio","unit":"","index":0,"seriesType":0,"values":[[1714536000,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     }
   },
@@ -446,11 +445,11 @@
     "Volume": "$0.00"
   },
   "state": {
-    "StartTime": "2024-09-07 07:28:34",
-    "EndTime": "2024-09-07 07:28:42",
+    "StartTime": "2024-09-07 17:48:22",
+    "EndTime": "2024-09-07 17:48:32",
     "RuntimeError": "",
     "StackTrace": "",
-    "LogCount": "14",
+    "LogCount": "16",
     "OrderCount": "0",
     "InsightCount": "0",
     "Name": "BacktestingAlgorithm",
@@ -474,8 +473,8 @@
     },
     "outOfSampleMaxEndDate": null,
     "outOfSampleDays": 0,
-    "startDate": "2024-05-01 00:00:00",
-    "endDate": "2024-05-15 23:59:59",
+    "startDate": "1998-01-01 00:00:00",
+    "endDate": "2024-09-06 23:59:59",
     "tradingDaysPerYear": 252
   }
 }
