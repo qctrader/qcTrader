@@ -18,8 +18,32 @@
     <Reference Include="QuantConnect.Configuration">
       <HintPath>..\..\Launcher\composer\QuantConnect.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="QuantConnect.Indicators">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Indicators.dll</HintPath>
+    </Reference>
     <Reference Include="QuantConnect.Lean.Engine">
       <HintPath>..\..\Launcher\composer\QuantConnect.Lean.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Lean.Launcher">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Lean.Launcher.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Logging">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Messaging">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Optimizer">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Optimizer.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Optimizer.Launcher">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Optimizer.Launcher.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Queues">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Queues.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Research">
+      <HintPath>..\..\Launcher\composer\QuantConnect.Research.dll</HintPath>
     </Reference>
     <Reference Include="QuantConnect.ToolBox">
       <HintPath>..\..\Launcher\composer\QuantConnect.ToolBox.dll</HintPath>

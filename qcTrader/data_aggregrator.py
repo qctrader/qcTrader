@@ -202,11 +202,44 @@ class QuantConnectDataUpdater:
         self.map_files_path = os.path.join(self.base_path_data, "map_files" )
         self.factor_files_path = os.path.join(self.base_path_data,"factor_files" )
         self.corporate_actions_path = os.path.join(self.base_path_data,"corporate_actions" )
+        self.interest_rate_file_path = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data" , "alternative", "interest-rate", self.data_config_paramters["market"], "interest-rate.csv")
         # Parse the JSON string
         portfolio_dict = json.loads(self.parameters['portfolio'])
 
         # Extract the assets
         self.assets = portfolio_dict.get("assets", [])
+
+
+
+
+    def update_interest_rate_data(self,file_path):
+        """
+        Updates the interest rate data using yFinance by removing the existing file and fetching the latest data.
+        """
+        # Define the ticker for U.S. 10-Year Treasury Yield
+        ticker = "^TNX"  # CBOE 10-Year Treasury Note Yield Index
+
+        # Remove the existing interest rate CSV file if it exists
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print(f"Removed existing interest rate data file: {file_path}")
+
+        # Fetch the latest interest rate data from Yahoo Finance
+        start_date = '2000-01-01'  
+        new_data = yf.download(ticker, start=start_date, end=pd.Timestamp.today().strftime('%Y-%m-%d'))
+
+        if not new_data.empty:
+            # Extract the relevant data (closing price as the interest rate value)
+            new_data = new_data.reset_index()[['Date', 'Close']]
+            new_data.rename(columns={'Close': 'Value'}, inplace=True)
+
+            # Save the new data to the CSV file
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure the directory exists
+            new_data.to_csv(file_path, index=False)
+
+            print(f"Interest rate data updated successfully and saved to {file_path}.")
+        else:
+            print("No new interest rate data available to update.")
 
 
     def _get_zip_file_path(self, symbol):
@@ -545,6 +578,10 @@ class QuantConnectDataUpdater:
         
         file_manager = AddOnFileManager(self.assets, start_date_str, end_date_str, self.corporate_actions_path, self.factor_files_path, self.map_files_path)
         file_manager.create_files_for_all_symbols()
+        self.update_interest_rate_data(self.interest_rate_file_path)
+
+
+
 
                 
               

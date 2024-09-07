@@ -1,15 +1,64 @@
 1997-12-31 19:00:00 Launching analysis for BacktestingAlgorithm.py with LEAN Engine v2.5.0.0.v1.0.0
 1997-12-31 19:00:00 Accurate daily end-times now enabled by default. See more at https://qnt.co/3YHaWHL. To disable it and use legacy daily bars set self.settings.daily_precise_end_time = False.
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\msft.csv
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\aapl.csv
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\msft.csv
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\ibm.csv
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\msft.csv
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\googl.csv
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+1997-12-31 19:00:00 Data successfully fetched from ZipCacheProvider for daily frequency.
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\msft.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\googl.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\aapl.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\ibm.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+1997-12-31 19:00:00 Data successfully fetched from ZipCacheProvider for daily frequency.
 1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity/usa/factor_files\spy.csv
 1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
 1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
 1997-12-31 19:00:00 Data successfully fetched from ZipCacheProvider for daily frequency.
-1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\hour\spy.zip
-1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
-1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\daily\spy.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+1997-12-31 19:00:00 File found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
 1997-12-31 19:00:00 Data successfully fetched from ZipCacheProvider for daily frequency.
+1997-12-31 19:00:00 The keys fetched found at: qcTrader/Lean/Launcher/bin/Release\Data\equity\usa\hour\msft.zip
+1997-12-31 19:00:00 Constructed File Path: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
+1997-12-31 19:00:00 File not found at: qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
 1997-12-31 19:00:00 fetched 'portfolio' parameter: {"initial_capital": "2000000.00", "assets": ["MSFT", "AAPL", "GOOGL", "IBM", "SPY"]}
 1997-12-31 19:00:00 assets: ['MSFT', 'AAPL', 'GOOGL', 'IBM', 'SPY']
-1997-12-31 19:00:00 unexpected exception during initialize: No method matches given arguments for AddEquity: (<class 'str'>, <class 'int'>)
-1997-12-31 19:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.37 seconds at 0k data points per second. Processing total of 0 data points.
-1997-12-31 19:00:00 Due to numerical precision issues in the factor file, data for the following symbols was adjust to a later starting date: [SPY, 19-03-2020]
+1997-12-31 19:00:00 security added: MSFT
+1997-12-31 19:00:00 currently subscribed symbols: ['MSFT']
+1997-12-31 19:00:00 AAPL is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 GOOGL is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 IBM is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 security added: AAPL
+1997-12-31 19:00:00 currently subscribed symbols: ['MSFT', 'AAPL']
+1997-12-31 19:00:00 GOOGL is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 IBM is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 security added: GOOGL
+1997-12-31 19:00:00 currently subscribed symbols: ['MSFT', 'AAPL', 'GOOGL']
+1997-12-31 19:00:00 IBM is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 security added: IBM
+1997-12-31 19:00:00 currently subscribed symbols: ['MSFT', 'AAPL', 'GOOGL', 'IBM']
+1997-12-31 19:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+1997-12-31 19:00:00 security added: SPY
+1997-12-31 19:00:00 currently subscribed symbols: ['MSFT', 'AAPL', 'GOOGL', 'IBM', 'SPY']
+1997-12-31 19:00:00 unexpected exception during initialize: time data '2020-01-02' does not match format '%y-%m-%d'
+2024-09-06 00:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 1.01 seconds at 0k data points per second. Processing total of 152 data points.
+2024-09-06 00:00:00 Due to numerical precision issues in the factor file, data for the following symbols was adjust to a later starting date: [MSFT, 18-02-2020], [IBM, 06-02-2020], [SPY, 19-03-2020], [AAPL, 06-02-2020], [GOOGL, 17-07-2022]

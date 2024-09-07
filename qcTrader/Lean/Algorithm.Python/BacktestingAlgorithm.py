@@ -132,11 +132,12 @@ class BacktestingAlgorithm(QCAlgorithm):
             self.validateassetdata()
             self.security_store = []
             # add an example security
-            self.Securities["MSFT"] = self.AddEquity("MSFT", Resolution.Daily, datanormalizationmode=DataNormalizationMode.ADJUSTED)
+            self.securities["MSFT"] = self.AddEquity('MSFT', Resolution.Daily, dataNormalizationMode=DataNormalizationMode.ADJUSTED)
+
             self.addsecurities()
             
             # set the benchmark with a specified resolution
-            self.SetBenchmark(self.AddEquity("MSFT", Resolution.Daily).symbol)
+            self.SetBenchmark('MSFT')
 
             # if using universes, ensure to set the resolution in universesettings
             self.UniverseSettings.Resolution = Resolution.Daily
@@ -352,8 +353,9 @@ class BacktestingAlgorithm(QCAlgorithm):
                 if symbol is not None:
                     try:
                         # add the security to the portfolio
-                        security = self.AddEquity(symbol, Resolution.Daily, datanormalizationmode=DataNormalizationMode.ADJUSTED)
-                        self.Securities[symbol] = security
+                        security = self.AddEquity(symbol, Resolution.Daily, dataNormalizationMode=DataNormalizationMode.ADJUSTED)
+
+                        self.securities[symbol] = security
                         # self.security_store.append(security.symbol)
                         self.log(f"security added: {symbol}")
 
