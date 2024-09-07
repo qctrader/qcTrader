@@ -132,11 +132,11 @@ class BacktestingAlgorithm(QCAlgorithm):
             self.validateassetdata()
             self.security_store = []
             # add an example security
-            self.Securities["msft"] = self.AddEquity("msft", Resolution.Daily, datanormalizationmode=DataNormalizationMode.ADJUSTED)
+            self.Securities["MSFT"] = self.AddEquity("MSFT", Resolution.Daily, datanormalizationmode=DataNormalizationMode.ADJUSTED)
             self.addsecurities()
             
             # set the benchmark with a specified resolution
-            self.SetBenchmark(self.AddEquity("msft", Resolution.Daily).symbol)
+            self.SetBenchmark(self.AddEquity("MSFT", Resolution.Daily).symbol)
 
             # if using universes, ensure to set the resolution in universesettings
             self.UniverseSettings.Resolution = Resolution.Daily
@@ -250,27 +250,27 @@ class BacktestingAlgorithm(QCAlgorithm):
   
     def logcorporateactions(self):
         # fetch recent historical data to observe if prices are correctly adjusted
-        history = self.History(["msft"], 15, Resolution.Daily)
+        history = self.History(["MSFT"], 15, Resolution.Daily)
         if history.empty:
-            self.log("historical data for msft is missing or empty.")
+            self.log("historical data for MSFT is missing or empty.")
         else:
             # log the historical data to see adjusted prices
-            self.log(f"recent historical data for msft:\n{history}")
+            self.log(f"recent historical data for MSFT:\n{history}")
 
         # access the security object for more detailed information
-        security = self.Securities["msft"]
-        self.log(f"current msft price: {security.price}, istradable: {security.istradable}")
+        security = self.Securities["MSFT"]
+        self.log(f"current MSFT price: {security.price}, istradable: {security.istradable}")
 
             # check for corporate actions applied
         if security.IsTradable and security.Price > 0:
             next_market_open = security.Exchange.Hours.GetNextMarketOpen(self.Time, extendedMarket=False)
             next_market_close = security.Exchange.Hours.GetNextMarketClose(self.Time, extendedMarket=False)
-            self.log(f"msft details - price: {security.Price}, next market open: {next_market_open}, "
+            self.log(f"MSFT details - price: {security.Price}, next market open: {next_market_open}, "
                     f"next market close: {next_market_close}, current time: {self.Time}")
         else:
             # log additional market status details
             market_is_open = security.Exchange.Hours.GetNextMarketOpen(self.Time, extendedMarket=False)
-            self.log(f"msft has an invalid price or is not tradable at {self.Time}. "
+            self.log(f"MSFT has an invalid price or is not tradable at {self.Time}. "
                     f"market open: {market_is_open}, next market open: {next_market_open if security else 'n/a'}, "
                     f"next market close: {next_market_close if security else 'n/a'}.")
             
@@ -480,7 +480,7 @@ class BacktestingAlgorithm(QCAlgorithm):
             self.log(f"unexpected exception during riskparityweighting: {str(e)}")
 
     def ondata(self, data: slice):
-        """process incoming data and handle invalid prices for assets like msft."""
+        """process incoming data and handle invalid prices for assets like MSFT."""
         try:
             if self.IsWarmingUp:
                 self.log("currently warming up, not processing data.")

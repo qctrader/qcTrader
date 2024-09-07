@@ -362,23 +362,30 @@
     "closedTrades": []
   },
   "charts": {
+    "Portfolio Turnover": {
+      "name": "Portfolio Turnover",
+      "chartType": 0,
+      "series": {
+        "Portfolio Turnover": {"name":"Portfolio Turnover","unit":"%","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
     "Portfolio Margin": {
       "name": "Portfolio Margin",
       "chartType": 0,
       "series": {}
-    },
-    "Drawdown": {
-      "name": "Drawdown",
-      "chartType": 0,
-      "series": {
-        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
     },
     "Capacity": {
       "name": "Capacity",
       "chartType": 0,
       "series": {
         "Strategy Capacity": {"name":"Strategy Capacity","unit":"$","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
+      }
+    },
+    "Benchmark": {
+      "name": "Benchmark",
+      "chartType": 0,
+      "series": {
+        "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
     "Strategy Equity": {
@@ -389,18 +396,11 @@
         "Return": {"name":"Return","unit":"%","index":1,"seriesType":3,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     },
-    "Portfolio Turnover": {
-      "name": "Portfolio Turnover",
+    "Drawdown": {
+      "name": "Drawdown",
       "chartType": 0,
       "series": {
-        "Portfolio Turnover": {"name":"Portfolio Turnover","unit":"%","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
-      }
-    },
-    "Benchmark": {
-      "name": "Benchmark",
-      "chartType": 0,
-      "series": {
-        "Benchmark": {"name":"Benchmark","unit":"$","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
+        "Equity Drawdown": {"name":"Equity Drawdown","unit":"%","index":0,"seriesType":0,"values":[[883612800,0.0]],"color":"","scatterMarkerSymbol":"none"}
       }
     }
   },
@@ -445,8 +445,8 @@
     "Volume": "$0.00"
   },
   "state": {
-    "StartTime": "2024-09-07 17:48:22",
-    "EndTime": "2024-09-07 17:48:32",
+    "StartTime": "2024-09-07 18:38:16",
+    "EndTime": "2024-09-07 18:38:26",
     "RuntimeError": "",
     "StackTrace": "",
     "LogCount": "16",
