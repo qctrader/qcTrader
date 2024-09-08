@@ -297,7 +297,7 @@ class BacktestingAlgorithm(QCAlgorithm):
 
     def parsedate(self, date_str):
         """helper method to parse a date string into a datetime object."""
-        return datetime.strptime(date_str, "%y-%m-%d")
+        return datetime.strptime(date_str, "%Y-%m-%d")
 
     def validatedaterange(self, start_date, end_date):
         """validate the provided start and end dates against available data for assets."""

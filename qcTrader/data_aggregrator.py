@@ -231,7 +231,10 @@ class QuantConnectDataUpdater:
         if not new_data.empty:
             # Extract the relevant data (closing price as the interest rate value)
             new_data = new_data.reset_index()[['Date', 'Close']]
-            new_data.rename(columns={'Close': 'Value'}, inplace=True)
+            new_data.rename(columns={'Close': 'PCREDIT8'}, inplace=True)
+
+            # Convert date format to DD-MM-YYYY to match the provided format
+            new_data['Date'] = pd.to_datetime(new_data['Date']).dt.strftime('%Y-%m-%d')
 
             # Save the new data to the CSV file
             os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure the directory exists
@@ -449,10 +452,10 @@ class QuantConnectDataUpdater:
             formatted_data = formatted_data[~formatted_data.index.duplicated(keep='first')]
 
             # Reorder the columns if necessary
-            formatted_data = formatted_data[['close', 'high', 'low', 'open', 'volume']]
+            formatted_data = formatted_data[['open', 'high', 'low', 'close', 'volume']]
         else:
             # Return an empty DataFrame with the correct structure if no data was downloaded
-            formatted_data = pd.DataFrame(columns=['close', 'high', 'low', 'open', 'volume'])
+            formatted_data = pd.DataFrame(columns=['open', 'high', 'low', 'close', 'volume'])
             
         return formatted_data
 
@@ -499,22 +502,16 @@ class QuantConnectDataUpdater:
         lock_path = f"{zip_file_path}.lock"
         lock = FileLock(lock_path)
         try:
+            info = zipfile.ZipInfo(csv_file_name)
+            info.date_time = datetime.now().timetuple()[:6]  # Normalize timestamps
+            info.external_attr = 0o644 << 16                # Set permissions to 644
             with lock:
                 # Open the ZIP file in write mode to replace any existing files
                 with zipfile.ZipFile(temp_zip_file_path, 'w', compression=zipfile.ZIP_DEFLATED) as zip_file:
                     # Write the new data to the ZIP file, replacing any existing CSV file
-                    with zip_file.open(csv_file_name, 'w') as csv_file:
-                        with TextIOWrapper(csv_file, encoding='utf-8') as text_file:
-                            # Write DataFrame directly to the text file
-                            new_data.to_csv(text_file, header=False)
-                        # Use a buffer to write the DataFrame into the ZIP
-                        #buffer = BytesIO()
-                        # Write only the new data with the formatted dates, excluding headers
-                        #new_data.to_csv(buffer, header=False, encoding='utf-8')
-                        #buffer.flush()  # Ensure all data is written to the buffer
-                        #buffer.seek(0)
-                        #csv_file.write(buffer.read())
-
+                    with zip_file.open(info, 'w') as csv_file:
+                        new_data.to_csv(csv_file, header=False)
+  
                 print(f"Successfully replaced the data in the ZIP file for {symbol}.")
 
                 # Validate the ZIP file signature
