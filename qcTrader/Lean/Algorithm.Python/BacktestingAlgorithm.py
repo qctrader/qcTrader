@@ -260,7 +260,7 @@ class BacktestingAlgorithm(QCAlgorithm):
 
         # access the security object for more detailed information
         security = self.Securities["MSFT"]
-        self.log(f"current MSFT price: {security.price}, istradable: {security.istradable}")
+        self.log(f"current MSFT price: {security.price}, IsTradable: {security.IsTradable}")
 
             # check for corporate actions applied
         if security.IsTradable and security.Price > 0:
@@ -417,7 +417,7 @@ class BacktestingAlgorithm(QCAlgorithm):
                 next_market_close = security.Exchange.Hours.GetNextMarketClose(self.Time, False)
                 
                 # log detailed information about the security
-                self.log(f"processing {symbol}: price = {security.Price}, istradable = {security.istradable}, "
+                self.log(f"processing {symbol}: price = {security.Price}, IsTradable = {security.IsTradable}, "
                         f"next market open = {next_market_open}, next market close = {next_market_close}, "
                         f"current time = {self.Time}")
 

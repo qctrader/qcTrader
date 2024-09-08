@@ -197,12 +197,12 @@ class QuantConnectDataUpdater:
     def __init__(self, data_config_paramters, parameters):
         self.parameters = parameters
         self.data_config_paramters = data_config_paramters
-        self.base_path_data = self.data_folder = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"])
-        self.data_folder = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"],self.data_config_paramters["resolution"])
-        self.map_files_path = os.path.join(self.base_path_data, "map_files" )
-        self.factor_files_path = os.path.join(self.base_path_data,"factor_files" )
-        self.corporate_actions_path = os.path.join(self.base_path_data,"corporate_actions" )
-        self.interest_rate_file_path = os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data" , "alternative", "interest-rate", self.data_config_paramters["market"], "interest-rate.csv")
+        self.base_path_data = os.path.normpath(os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"]))
+        self.data_folder = os.path.normpath(os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data",self.data_config_paramters["asset_class"],self.data_config_paramters["market"],self.data_config_paramters["resolution"]))
+        self.map_files_path = os.path.normpath(os.path.join(self.base_path_data, "map_files" ))
+        self.factor_files_path = os.path.normpath(os.path.join(self.base_path_data,"factor_files" ))
+        self.corporate_actions_path = os.path.normpath(os.path.join(self.base_path_data,"corporate_actions" ))
+        self.interest_rate_file_path = os.path.normpath(os.path.join(os.getcwd(), "qcTrader", "Lean", "Launcher", "bin", "Release",  "Data" , "alternative", "interest-rate", self.data_config_paramters["market"], "interest-rate.csv"))
         # Parse the JSON string
         portfolio_dict = json.loads(self.parameters['portfolio'])
 

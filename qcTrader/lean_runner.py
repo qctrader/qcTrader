@@ -1,6 +1,7 @@
 import json
 import os
 import platform
+from posixpath import normpath
 import re
 import site
 import subprocess
@@ -8,37 +9,37 @@ from qcTrader.data_aggregrator import QuantConnectDataUpdater
 
 
 class LeanRunner:
-    def __init__(self, lean_path='qcTrader/Lean/Launcher/bin/Release'):
+    def __init__(self, lean_path=os.path.normpath('qcTrader/Lean/Launcher/bin/Release')):
 
         # Dynamically capture the working directory
         current_working_directory = os.getcwd()
         self.is_docker = self.detect_is_docker()
         self.internal_lean_path = ''
-        self.starter_dll_path = 'qcTrader/Lean/Launcher/composer'
-        self.dll_path = 'Lean/Launcher'
+        self.starter_dll_path = os.path.normpath('qcTrader/Lean/Launcher/composer')
+        self.dll_path = os.path.normpath('Lean/Launcher')
         self.internal_dll_path = ''
         self.composer_dir = ''
         if self.is_docker:
                 # If running inside Docker, use the site-packages path
                 site_packages_path = site.getsitepackages()[0]
                 print(f"site_packages_path----------------->{site_packages_path}")
-                self.internal_lean_path = os.path.join(site_packages_path, lean_path)
-                self.composer_dir = os.path.join(site_packages_path, 'qcTrader', 'Lean', 'Launcher', 'composer')
-                self.internal_dll_path = os.path.join(site_packages_path, 'qcTrader', 'Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
+                self.internal_lean_path = os.path.normpath(os.path.join(site_packages_path, lean_path))
+                self.composer_dir = os.path.normpath(os.path.join(site_packages_path, 'qcTrader', 'Lean', 'Launcher', 'composer'))
+                self.internal_dll_path = os.path.normpath(os.path.join(site_packages_path, 'qcTrader', 'Lean', 'Launcher', 'composer', 'CustomDataProvider.dll'))
 
         else:
                 # Otherwise, use the default path for non-Docker installations
                 self.internal_lean_path = lean_path
                 print(f"current_working_directory----------------->{current_working_directory}")
-                self.composer_dir = os.path.join(current_working_directory, 'qcTrader', 'Lean', 'Launcher', 'composer')
-                self.internal_dll_path = os.path.join(current_working_directory, 'qcTrader','Lean', 'Launcher', 'composer', 'CustomDataProvider.dll')
+                self.composer_dir = os.path.normpath(os.path.join(current_working_directory, 'qcTrader', 'Lean', 'Launcher', 'composer'))
+                self.internal_dll_path = os.path.normpath(os.path.join(current_working_directory, 'qcTrader','Lean', 'Launcher', 'composer', 'CustomDataProvider.dll'))
                 print(f"current dll_path --------> {self.internal_dll_path}")
 
       
         self.base_config = {
     "environment": "backtesting",
     "algorithm-language": "Python",
-    "data-folder": os.path.join(self.internal_lean_path, "Data"),
+    "data-folder": os.path.normpath(os.path.join(self.internal_lean_path, "Data")),
     "debugging": False,
     "debugging-method": "LocalCmdLine",
     "log-handler": "ConsoleLogHandler",
@@ -69,7 +70,7 @@ class LeanRunner:
     "transaction-log": "",
     "reserved-words-prefix": "@",
     "debug-mode": True,
-    "results-destination-folder": os.path.join(self.internal_lean_path, "Results"),
+    "results-destination-folder": os.path.normpath(os.path.join(self.internal_lean_path, "Results")),
     "mute-python-library-logging": "False",
     "close-automatically": True,
     "python-additional-paths": [],
@@ -91,8 +92,8 @@ class LeanRunner:
     # Recommended Additions for Missing Keys:
     "settings.daily_precise_end_time":True,
     "version-id": "v1.0.0",  # Set the appropriate version
-    "cache-location": os.path.join(self.internal_lean_path, "cache"),  # Path for caching
-    "plugin-directory": os.path.join(self.internal_lean_path, "plugins"),  # Path for plugins
+    "cache-location": os.path.normpath(os.path.join(self.internal_lean_path, "cache")),  # Path for caching
+    "plugin-directory": os.path.normpath(os.path.join(self.internal_lean_path, "plugins")),  # Path for plugins
     "lean-manager-type": "LocalLeanManager",
     "optimization-id": "",
     "data-channel": "",
@@ -168,7 +169,7 @@ class LeanRunner:
         #          }
         #        }
 
-        base_directory = os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily', 'msft.zip')
+        base_directory = os.path.normpath(os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily', 'msft.zip'))
         
 
         config = self.base_config.copy()
@@ -253,7 +254,7 @@ class LeanRunner:
                 # If running inside Docker, use the site-packages path
                 site_packages_path = site.getsitepackages()[0]
                 print(f"site_packages_path----------------->{site_packages_path}")
-                algorithm_location = os.path.join(site_packages_path, 'qcTrader/Lean/Algorithm.Python' , algorithm_name)
+                algorithm_location = os.path.normpath(os.path.join(site_packages_path, 'qcTrader/Lean/Algorithm.Python' , algorithm_name))
         else:
                 algorithm_location = os.path.join('qcTrader', 'Lean', 'Algorithm.Python', algorithm_name)
                 # Normalize the path to ensure it works on both Windows and macOS/Linux
