@@ -8,21 +8,20 @@
     ".NETCoreApp,Version=v6.0": {
       "QuantConnect.Research/1.0.0": {
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "NodaTime": "3.0.5",
           "Plotly.NET": "3.0.1",
           "Plotly.NET.Interactive": "3.0.2",
           "QuantConnect.Algorithm": "1.0.0",
           "QuantConnect.Algorithm.Framework": "1.0.0",
           "QuantConnect.Api": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Indicators": "1.0.0",
-          "QuantConnect.Lean.Engine": "1.0.0",
+          "QuantConnect.Lean.Engine": "2.5.16603",
           "QuantConnect.Logging": "1.0.0",
           "QuantConnect.Queues": "1.0.0",
-          "QuantConnect.pythonnet": "2.0.38",
-          "CustomDataProvider": "1.0.0.0",
-          "QuantConnect.Common.Reference": "2.5.0.0"
+          "QuantConnect.pythonnet": "2.0.38"
         },
         "runtime": {
           "QuantConnect.Research.dll": {}
@@ -789,6 +788,54 @@
           "lib/netstandard2.0/QLNet.dll": {
             "assemblyVersion": "1.13.0.0",
             "fileVersion": "1.13.0.0"
+          }
+        }
+      },
+      "QuantConnect.Common/2.5.16603": {
+        "dependencies": {
+          "CloneExtensions": "1.3.0",
+          "MathNet.Numerics": "5.0.0",
+          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QLNet": "1.13.0",
+          "QuantConnect.Compression": "1.0.0",
+          "QuantConnect.Configuration": "1.0.0",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38",
+          "fasterflect": "3.0.0",
+          "protobuf-net": "3.1.33"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Common.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.Lean.Engine/2.5.16603": {
+        "dependencies": {
+          "MathNet.Numerics": "5.0.0",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QuantConnect.Algorithm": "1.0.0",
+          "QuantConnect.Algorithm.CSharp": "1.0.0",
+          "QuantConnect.AlgorithmFactory": "1.0.0",
+          "QuantConnect.Api": "1.0.0",
+          "QuantConnect.Brokerages": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Compression": "1.0.0",
+          "QuantConnect.Configuration": "1.0.0",
+          "QuantConnect.Indicators": "1.0.0",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38",
+          "RestSharp": "106.12.0",
+          "fasterflect": "3.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Lean.Engine.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
           }
         }
       },
@@ -1653,12 +1700,24 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "CustomDataProvider/1.0.0": {
+        "dependencies": {
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Lean.Engine": "2.5.16603"
+        },
+        "runtime": {
+          "CustomDataProvider.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "QuantConnect.Algorithm/1.0.0": {
         "dependencies": {
           "MathNet.Numerics": "5.0.0",
           "Newtonsoft.Json": "13.0.2",
           "NodaTime": "3.0.5",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Indicators": "1.0.0",
           "QuantConnect.Logging": "1.0.0",
@@ -1684,7 +1743,7 @@
           "NodaTime": "3.0.5",
           "QuantConnect.Algorithm": "1.0.0",
           "QuantConnect.Algorithm.Framework": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Indicators": "1.0.0",
           "QuantConnect.pythonnet": "2.0.38"
         },
@@ -1703,7 +1762,7 @@
           "MathNet.Numerics": "5.0.0",
           "NodaTime": "3.0.5",
           "QuantConnect.Algorithm": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Indicators": "1.0.0",
           "QuantConnect.pythonnet": "2.0.38"
         },
@@ -1718,7 +1777,7 @@
         "dependencies": {
           "NodaTime": "3.0.5",
           "QuantConnect.Algorithm": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Logging": "1.0.0",
           "QuantConnect.pythonnet": "2.0.38"
@@ -1734,7 +1793,7 @@
         "dependencies": {
           "Newtonsoft.Json": "13.0.2",
           "NodaTime": "3.0.5",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Logging": "1.0.0",
           "RestSharp": "106.12.0"
@@ -1751,7 +1810,7 @@
           "CsvHelper": "19.0.0",
           "Newtonsoft.Json": "13.0.2",
           "QuantConnect.Api": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Compression": "1.0.0",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Logging": "1.0.0",
@@ -1761,28 +1820,6 @@
           "QuantConnect.Brokerages.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "2.5.0.0"
-          }
-        }
-      },
-      "QuantConnect.Common/1.0.0": {
-        "dependencies": {
-          "CloneExtensions": "1.3.0",
-          "MathNet.Numerics": "5.0.0",
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
-          "Newtonsoft.Json": "13.0.2",
-          "NodaTime": "3.0.5",
-          "QLNet": "1.13.0",
-          "QuantConnect.Compression": "1.0.0",
-          "QuantConnect.Configuration": "1.0.0",
-          "QuantConnect.Logging": "1.0.0",
-          "QuantConnect.pythonnet": "2.0.38",
-          "fasterflect": "3.0.0",
-          "protobuf-net": "3.1.33"
-        },
-        "runtime": {
-          "QuantConnect.Common.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": ""
           }
         }
       },
@@ -1815,38 +1852,12 @@
       "QuantConnect.Indicators/1.0.0": {
         "dependencies": {
           "MathNet.Numerics": "5.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Logging": "1.0.0",
           "QuantConnect.pythonnet": "2.0.38"
         },
         "runtime": {
           "QuantConnect.Indicators.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
-      },
-      "QuantConnect.Lean.Engine/1.0.0": {
-        "dependencies": {
-          "MathNet.Numerics": "5.0.0",
-          "Newtonsoft.Json": "13.0.2",
-          "NodaTime": "3.0.5",
-          "QuantConnect.Algorithm": "1.0.0",
-          "QuantConnect.Algorithm.CSharp": "1.0.0",
-          "QuantConnect.AlgorithmFactory": "1.0.0",
-          "QuantConnect.Api": "1.0.0",
-          "QuantConnect.Brokerages": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
-          "QuantConnect.Compression": "1.0.0",
-          "QuantConnect.Configuration": "1.0.0",
-          "QuantConnect.Indicators": "1.0.0",
-          "QuantConnect.Logging": "1.0.0",
-          "QuantConnect.pythonnet": "2.0.38",
-          "RestSharp": "106.12.0",
-          "fasterflect": "3.0.0"
-        },
-        "runtime": {
-          "QuantConnect.Lean.Engine.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "2.5.0.0"
           }
@@ -1865,31 +1876,16 @@
       },
       "QuantConnect.Queues/1.0.0": {
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "Newtonsoft.Json": "13.0.2",
           "QuantConnect.Brokerages": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Logging": "1.0.0"
         },
         "runtime": {
           "QuantConnect.Queues.dll": {
             "assemblyVersion": "1.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
-      },
-      "CustomDataProvider/1.0.0.0": {
-        "runtime": {
-          "CustomDataProvider.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "QuantConnect.Common.Reference/2.5.0.0": {
-        "runtime": {
-          "QuantConnect.Common.dll": {
-            "assemblyVersion": "2.5.0.0",
             "fileVersion": "2.5.0.0"
           }
         }
@@ -2195,6 +2191,20 @@
       "sha512": "sha512-SX0SbUrnx7PErZlw8fUniM0nmAyy1dtYBnxH5peYXTuvGreUO2PFlgf1OMbnD781ZriYCiIHgGrWF3uyPxC55A==",
       "path": "qlnet/1.13.0",
       "hashPath": "qlnet.1.13.0.nupkg.sha512"
+    },
+    "QuantConnect.Common/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uZ1/BOaMo7Bsm1j72uyTr9q2Mr80ldJW4GfyAFCTYLkii2AETUU4qXPoGdKT3x/+kuNEbcXxaLyGpI9oMa4NRA==",
+      "path": "quantconnect.common/2.5.16603",
+      "hashPath": "quantconnect.common.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.Lean.Engine/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fQKO3zOPL6TyZiueVfSdAyqHG+IdwCJUKlXKKIqIHyV0EZrPbW6ofYE9ShBzud3A08HYLpLMwowe2HIIJ2ud0Q==",
+      "path": "quantconnect.lean.engine/2.5.16603",
+      "hashPath": "quantconnect.lean.engine.2.5.16603.nupkg.sha512"
     },
     "QuantConnect.pythonnet/2.0.38": {
       "type": "package",
@@ -2875,6 +2885,11 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
+    "CustomDataProvider/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "QuantConnect.Algorithm/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -2905,11 +2920,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "QuantConnect.Common/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "QuantConnect.Compression/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -2925,11 +2935,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "QuantConnect.Lean.Engine/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "QuantConnect.Logging/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -2937,16 +2942,6 @@
     },
     "QuantConnect.Queues/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CustomDataProvider/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "QuantConnect.Common.Reference/2.5.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

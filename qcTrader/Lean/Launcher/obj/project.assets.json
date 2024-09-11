@@ -3138,6 +3138,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "Newtonsoft.Json": "13.0.2",
           "QuantConnect.Brokerages": "1.0.0",
           "QuantConnect.Common": "1.0.0",
@@ -3155,6 +3156,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "NodaTime": "3.0.5",
           "Plotly.NET": "3.0.1",
           "Plotly.NET.Interactive": "3.0.2",
@@ -3180,6 +3182,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "QuantConnect.Lean.Engine": "1.0.0"
         },
         "compile": {
@@ -8956,7 +8959,6 @@
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\.nuget\\NuGet.Config",
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -8966,7 +8968,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\LocalPackages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

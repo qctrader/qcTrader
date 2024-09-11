@@ -120,6 +120,8 @@ namespace QuantConnect.Data
             });
         }
 
+
+
         /// <summary>
         /// Returns a list of zip entries in a provided zip file
         /// </summary>
@@ -131,6 +133,10 @@ namespace QuantConnect.Data
                 return Compression.GetZipEntryFileNames(stream).ToList();
             });
         }
+
+
+     
+
 
         /// <summary>
         /// Dispose for this class

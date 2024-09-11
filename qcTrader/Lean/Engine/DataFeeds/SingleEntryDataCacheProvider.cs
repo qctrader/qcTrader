@@ -82,6 +82,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
             return stream;
         }
 
+       
         /// <summary>
         /// Not implemented
         /// </summary>

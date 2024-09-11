@@ -1,1 +1,0 @@
-qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\spy.zip

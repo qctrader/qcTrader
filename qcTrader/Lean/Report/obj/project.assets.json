@@ -439,6 +439,78 @@
           "lib/netstandard2.0/QLNet.dll": {}
         }
       },
+      "QuantConnect.Common/2.5.16603": {
+        "type": "package",
+        "dependencies": {
+          "CloneExtensions": "1.3.0",
+          "MathNet.Numerics": "5.0.0",
+          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QLNet": "1.13.0",
+          "QuantConnect.Compression": "2.5.16603",
+          "QuantConnect.Configuration": "2.5.16603",
+          "QuantConnect.Logging": "2.5.16603",
+          "QuantConnect.pythonnet": "2.0.38",
+          "fasterflect": "3.0.0",
+          "protobuf-net": "3.1.33"
+        },
+        "compile": {
+          "lib/net6.0/QuantConnect.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Common.dll": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/net6.0/AlgorithmImports.py": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "AlgorithmImports.py"
+          },
+          "contentFiles/any/net6.0/PandasMapper.py": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "PandasMapper.py"
+          }
+        }
+      },
+      "QuantConnect.Lean.Engine/2.5.16603": {
+        "type": "package",
+        "dependencies": {
+          "MathNet.Numerics": "5.0.0",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QuantConnect.Algorithm": "2.5.16603",
+          "QuantConnect.Algorithm.CSharp": "2.5.16603",
+          "QuantConnect.AlgorithmFactory": "2.5.16603",
+          "QuantConnect.Api": "2.5.16603",
+          "QuantConnect.Brokerages": "2.5.16603",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Compression": "2.5.16603",
+          "QuantConnect.Configuration": "2.5.16603",
+          "QuantConnect.Indicators": "2.5.16603",
+          "QuantConnect.Logging": "2.5.16603",
+          "QuantConnect.pythonnet": "2.0.38",
+          "RestSharp": "106.12.0",
+          "fasterflect": "3.0.0"
+        },
+        "compile": {
+          "lib/net6.0/QuantConnect.Lean.Engine.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Lean.Engine.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "QuantConnect.pythonnet/2.0.38": {
         "type": "package",
         "dependencies": {
@@ -788,6 +860,20 @@
           }
         }
       },
+      "CustomDataProvider/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Lean.Engine": "2.5.16603"
+        },
+        "compile": {
+          "bin/placeholder/CustomDataProvider.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomDataProvider.dll": {}
+        }
+      },
       "QuantConnect.Algorithm/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -911,30 +997,6 @@
           "bin/placeholder/QuantConnect.Brokerages.dll": {}
         }
       },
-      "QuantConnect.Common/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "CloneExtensions": "1.3.0",
-          "MathNet.Numerics": "5.0.0",
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
-          "Newtonsoft.Json": "13.0.2",
-          "NodaTime": "3.0.5",
-          "QLNet": "1.13.0",
-          "QuantConnect.Compression": "1.0.0",
-          "QuantConnect.Configuration": "1.0.0",
-          "QuantConnect.Logging": "1.0.0",
-          "QuantConnect.pythonnet": "2.0.38",
-          "fasterflect": "3.0.0",
-          "protobuf-net": "3.1.33"
-        },
-        "compile": {
-          "bin/placeholder/QuantConnect.Common.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/QuantConnect.Common.dll": {}
-        }
-      },
       "QuantConnect.Compression/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -981,34 +1043,6 @@
           "bin/placeholder/QuantConnect.Indicators.dll": {}
         }
       },
-      "QuantConnect.Lean.Engine/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "MathNet.Numerics": "5.0.0",
-          "Newtonsoft.Json": "13.0.2",
-          "NodaTime": "3.0.5",
-          "QuantConnect.Algorithm": "1.0.0",
-          "QuantConnect.Algorithm.CSharp": "1.0.0",
-          "QuantConnect.AlgorithmFactory": "1.0.0",
-          "QuantConnect.Api": "1.0.0",
-          "QuantConnect.Brokerages": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
-          "QuantConnect.Compression": "1.0.0",
-          "QuantConnect.Configuration": "1.0.0",
-          "QuantConnect.Indicators": "1.0.0",
-          "QuantConnect.Logging": "1.0.0",
-          "QuantConnect.pythonnet": "2.0.38",
-          "RestSharp": "106.12.0",
-          "fasterflect": "3.0.0"
-        },
-        "compile": {
-          "bin/placeholder/QuantConnect.Lean.Engine.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/QuantConnect.Lean.Engine.dll": {}
-        }
-      },
       "QuantConnect.Logging/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1044,6 +1078,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "QuantConnect.Lean.Engine": "1.0.0"
         },
         "compile": {
@@ -1669,6 +1704,38 @@
         "lib/netstandard2.0/QLNet.dll",
         "qlnet.1.13.0.nupkg.sha512",
         "qlnet.nuspec"
+      ]
+    },
+    "QuantConnect.Common/2.5.16603": {
+      "sha512": "uZ1/BOaMo7Bsm1j72uyTr9q2Mr80ldJW4GfyAFCTYLkii2AETUU4qXPoGdKT3x/+kuNEbcXxaLyGpI9oMa4NRA==",
+      "type": "package",
+      "path": "quantconnect.common/2.5.16603",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "content/AlgorithmImports.py",
+        "content/PandasMapper.py",
+        "contentFiles/any/net6.0/AlgorithmImports.py",
+        "contentFiles/any/net6.0/PandasMapper.py",
+        "lib/net6.0/QuantConnect.Common.dll",
+        "lib/net6.0/QuantConnect.Common.xml",
+        "quantconnect.common.2.5.16603.nupkg.sha512",
+        "quantconnect.common.nuspec"
+      ]
+    },
+    "QuantConnect.Lean.Engine/2.5.16603": {
+      "sha512": "fQKO3zOPL6TyZiueVfSdAyqHG+IdwCJUKlXKKIqIHyV0EZrPbW6ofYE9ShBzud3A08HYLpLMwowe2HIIJ2ud0Q==",
+      "type": "package",
+      "path": "quantconnect.lean.engine/2.5.16603",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net6.0/QuantConnect.Lean.Engine.dll",
+        "lib/net6.0/QuantConnect.Lean.Engine.xml",
+        "quantconnect.lean.engine.2.5.16603.nupkg.sha512",
+        "quantconnect.lean.engine.nuspec"
       ]
     },
     "QuantConnect.pythonnet/2.0.38": {
@@ -2410,6 +2477,11 @@
         "version.txt"
       ]
     },
+    "CustomDataProvider/1.0.0": {
+      "type": "project",
+      "path": "../CustomDataProvider/CustomDataProvider/CustomDataProvider.csproj",
+      "msbuildProject": "../CustomDataProvider/CustomDataProvider/CustomDataProvider.csproj"
+    },
     "QuantConnect.Algorithm/1.0.0": {
       "type": "project",
       "path": "../Algorithm/QuantConnect.Algorithm.csproj",
@@ -2440,11 +2512,6 @@
       "path": "../Brokerages/QuantConnect.Brokerages.csproj",
       "msbuildProject": "../Brokerages/QuantConnect.Brokerages.csproj"
     },
-    "QuantConnect.Common/1.0.0": {
-      "type": "project",
-      "path": "../Common/QuantConnect.csproj",
-      "msbuildProject": "../Common/QuantConnect.csproj"
-    },
     "QuantConnect.Compression/1.0.0": {
       "type": "project",
       "path": "../Compression/QuantConnect.Compression.csproj",
@@ -2459,11 +2526,6 @@
       "type": "project",
       "path": "../Indicators/QuantConnect.Indicators.csproj",
       "msbuildProject": "../Indicators/QuantConnect.Indicators.csproj"
-    },
-    "QuantConnect.Lean.Engine/1.0.0": {
-      "type": "project",
-      "path": "../Engine/QuantConnect.Lean.Engine.csproj",
-      "msbuildProject": "../Engine/QuantConnect.Lean.Engine.csproj"
     },
     "QuantConnect.Logging/1.0.0": {
       "type": "project",
@@ -2483,6 +2545,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "CustomDataProvider >= 1.0.0",
       "Deedle >= 2.1.0",
       "MathNet.Numerics >= 5.0.0",
       "Newtonsoft.Json >= 13.0.2",
@@ -2516,7 +2579,6 @@
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\.nuget\\NuGet.Config",
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -2526,7 +2588,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\LocalPackages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2547,6 +2608,9 @@
             },
             "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Configuration\\QuantConnect.Configuration.csproj": {
               "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Configuration\\QuantConnect.Configuration.csproj"
+            },
+            "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\CustomDataProvider.csproj": {
+              "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\CustomDataProvider\\CustomDataProvider\\CustomDataProvider.csproj"
             },
             "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Engine\\QuantConnect.Lean.Engine.csproj": {
               "projectPath": "D:\\qcTrader-par1\\qcTrader\\qcTrader\\Lean\\Engine\\QuantConnect.Lean.Engine.csproj"

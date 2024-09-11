@@ -2021,6 +2021,7 @@
       },
       "QuantConnect.Queues/1.0.0": {
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "Newtonsoft.Json": "13.0.2",
           "QuantConnect.Brokerages": "1.0.0",
           "QuantConnect.Common": "2.5.16603",
@@ -2036,6 +2037,7 @@
       },
       "QuantConnect.Research/1.0.0": {
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "NodaTime": "3.0.5",
           "Plotly.NET": "3.0.1",
           "Plotly.NET.Interactive": "3.0.2",
@@ -2059,6 +2061,7 @@
       },
       "QuantConnect.ToolBox/1.0.0": {
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "QuantConnect.Lean.Engine": "2.5.16603"
         },
         "runtime": {

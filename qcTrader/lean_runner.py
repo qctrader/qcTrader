@@ -100,6 +100,10 @@ class LeanRunner:
     "python-venv": "",  # Path to your virtual environment if used
     "out-of-sample-max-end-date": "",
     "out-of-sample-days": 0,
+     "portfolio": {
+    "initial_capital": "2000000.00",
+    "assets": ["MSFT", "AAPL", "GOOGL", "IBM", "SPY"]
+  },
     "data-permission-manager": "DataPermissionManager",
     "databases-refresh-period": "1.00:00:00",
     "object-store-root": os.path.join(self.internal_lean_path, "storage"),
@@ -184,7 +188,8 @@ class LeanRunner:
             "job-user-id": data_config_paramters["user_id"],
             "api-access-token": data_config_paramters["api_token"],
             "job-organization-id": data_config_paramters["job_org_id"],
-            "parameters": parameters,
+            "parameters": parameters
+           
         })
 
         print(f"BaseDirectory set to: {base_directory}")

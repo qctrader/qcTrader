@@ -25,7 +25,6 @@ using QuantConnect.Data.Market;
 using System.Collections.Generic;
 using Timer = System.Timers.Timer;
 using QuantConnect.Lean.Engine.HistoricalData;
-using CustomDataProvider;
 
 namespace QuantConnect.Lean.Engine.DataFeeds.Queues
 {
@@ -37,8 +36,6 @@ namespace QuantConnect.Lean.Engine.DataFeeds.Queues
         private int _count;
         private readonly Random _random = new Random();
         private int _dataPointsPerSecondPerSymbol;
-        private readonly CustomDataProvider.CsvDataProvider _customDataProvider = new CustomDataProvider.CsvDataProvider();
-        
 
         private readonly Timer _timer;
         private readonly IDataCacheProvider _dataCacheProvider;
@@ -68,10 +65,9 @@ namespace QuantConnect.Lean.Engine.DataFeeds.Queues
         /// </summary>
         public FakeDataQueue(IDataAggregator dataAggregator, int dataPointsPerSecondPerSymbol = 500000)
         {
-            
             _aggregator = dataAggregator;
             _dataPointsPerSecondPerSymbol = dataPointsPerSecondPerSymbol;
-            _dataCacheProvider = new ZipDataCacheProvider(_customDataProvider, true);
+            _dataCacheProvider = new ZipDataCacheProvider(new DefaultDataProvider(), true);
             var mapFileProvider = Composer.Instance.GetPart<IMapFileProvider>();
             _optionChainProvider = new LiveOptionChainProvider(_dataCacheProvider, mapFileProvider);
             _marketHoursDatabase = MarketHoursDatabase.FromDataFolder();

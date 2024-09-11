@@ -56,16 +56,23 @@ namespace QuantConnect.Lean.Engine.DataFeeds
             _cacheCleaner = new Timer(state => CleanCache(), null, TimeSpan.FromSeconds(_cacheSeconds), Timeout.InfiniteTimeSpan);
         }
 
+
+
+
         /// <summary>
         /// Does not attempt to retrieve any data
         /// </summary>
         public Stream Fetch(string key)
         {
             LeanData.ParseKey(key, out var filename, out var entryName);
+            Console.WriteLine($"Attempting to fetch entry '{entryName}' from ZIP file '{filename}'");
+            
 
             // handles zip files
             if (filename.EndsWith(".zip", StringComparison.InvariantCulture))
             {
+
+                Console.WriteLine($"This is zipfile so entering the if part");
                 Stream stream = null;
 
                 try
@@ -73,6 +80,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
                     CachedZipFile existingZip;
                     if (!_zipFileCache.TryGetValue(filename, out existingZip))
                     {
+                        Console.WriteLine($"Creating the stream with exsitingZip");
                         stream = CacheAndCreateEntryStream(filename, entryName);
                     }
                     else
@@ -120,6 +128,8 @@ namespace QuantConnect.Lean.Engine.DataFeeds
                 return _dataProvider.Fetch(filename);
             }
         }
+
+
 
         /// <summary>
         /// Store the data in the cache.
@@ -265,6 +275,7 @@ namespace QuantConnect.Lean.Engine.DataFeeds
             }
         }
 
+        
         private Stream CacheAndCreateEntryStream(string filename, string entryName)
         {
             Stream stream = null;
@@ -425,6 +436,8 @@ namespace QuantConnect.Lean.Engine.DataFeeds
             return false;
         }
 
+       
+
 
         /// <summary>
         /// Type for storing zipfile in cache
@@ -552,5 +565,13 @@ namespace QuantConnect.Lean.Engine.DataFeeds
             public ZipEntry Entry { get; set; }
             public bool Modified { get; set; }
         }
+
+        //public Stream CustomDataProviderInterface(Stream dataStream)
+        //{
+        //    cachedZip = new CachedZipFile(dataStream, DateTime.UtcNow, filename);
+        //    return dataStream;
+        //}
+
+
     }
 }

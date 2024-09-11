@@ -8,15 +8,76 @@
     ".NETCoreApp,Version=v6.0": {
       "QuantConnect.Queues/1.0.0": {
         "dependencies": {
+          "CustomDataProvider": "1.0.0",
           "Newtonsoft.Json": "13.0.2",
           "QuantConnect.Brokerages": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
-          "QuantConnect.Logging": "1.0.0",
-          "QuantConnect.Common.Reference": "2.5.0.0"
+          "QuantConnect.Logging": "1.0.0"
         },
         "runtime": {
           "QuantConnect.Queues.dll": {}
+        }
+      },
+      "Accord/3.6.0": {
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.6031"
+          }
+        }
+      },
+      "Accord.Fuzzy/3.6.0": {
+        "dependencies": {
+          "Accord": "3.6.0",
+          "Accord.Math": "3.6.0",
+          "Accord.Statistics": "3.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Fuzzy.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.6031"
+          }
+        }
+      },
+      "Accord.MachineLearning/3.6.0": {
+        "dependencies": {
+          "Accord": "3.6.0",
+          "Accord.Math": "3.6.0",
+          "Accord.Statistics": "3.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.MachineLearning.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.6031"
+          }
+        }
+      },
+      "Accord.Math/3.6.0": {
+        "dependencies": {
+          "Accord": "3.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.6031"
+          },
+          "lib/netstandard2.0/Accord.Math.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.6031"
+          }
+        }
+      },
+      "Accord.Statistics/3.6.0": {
+        "dependencies": {
+          "Accord": "3.6.0",
+          "Accord.Math": "3.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Statistics.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.6031"
+          }
         }
       },
       "CloneExtensions/1.3.0": {
@@ -47,6 +108,14 @@
           "lib/netstandard2.0/DotNetZip.dll": {
             "assemblyVersion": "1.16.0.0",
             "fileVersion": "1.16.0.0"
+          }
+        }
+      },
+      "DynamicInterop/0.9.1": {
+        "runtime": {
+          "lib/netstandard2.0/DynamicInterop.dll": {
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
           }
         }
       },
@@ -159,6 +228,145 @@
           }
         }
       },
+      "QuantConnect.Algorithm/2.5.16603": {
+        "dependencies": {
+          "MathNet.Numerics": "5.0.0",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Configuration": "1.0.0",
+          "QuantConnect.Indicators": "2.5.16603",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Algorithm.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.Algorithm.CSharp/2.5.16603": {
+        "dependencies": {
+          "Accord": "3.6.0",
+          "Accord.Fuzzy": "3.6.0",
+          "Accord.MachineLearning": "3.6.0",
+          "Accord.Math": "3.6.0",
+          "Accord.Statistics": "3.6.0",
+          "DynamicInterop": "0.9.1",
+          "MathNet.Numerics": "5.0.0",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QuantConnect.Algorithm": "2.5.16603",
+          "QuantConnect.Algorithm.Framework": "2.5.16603",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Indicators": "2.5.16603",
+          "QuantConnect.pythonnet": "2.0.38"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Algorithm.CSharp.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.Algorithm.Framework/2.5.16603": {
+        "dependencies": {
+          "Accord": "3.6.0",
+          "Accord.Math": "3.6.0",
+          "Accord.Statistics": "3.6.0",
+          "MathNet.Numerics": "5.0.0",
+          "NodaTime": "3.0.5",
+          "QuantConnect.Algorithm": "2.5.16603",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Indicators": "2.5.16603",
+          "QuantConnect.pythonnet": "2.0.38"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Algorithm.Framework.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.AlgorithmFactory/2.5.16603": {
+        "dependencies": {
+          "NodaTime": "3.0.5",
+          "QuantConnect.Algorithm": "2.5.16603",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Configuration": "1.0.0",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.AlgorithmFactory.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.Common/2.5.16603": {
+        "dependencies": {
+          "CloneExtensions": "1.3.0",
+          "MathNet.Numerics": "5.0.0",
+          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QLNet": "1.13.0",
+          "QuantConnect.Compression": "1.0.0",
+          "QuantConnect.Configuration": "1.0.0",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38",
+          "fasterflect": "3.0.0",
+          "protobuf-net": "3.1.33"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Common.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.Indicators/2.5.16603": {
+        "dependencies": {
+          "MathNet.Numerics": "5.0.0",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Indicators.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
+      "QuantConnect.Lean.Engine/2.5.16603": {
+        "dependencies": {
+          "MathNet.Numerics": "5.0.0",
+          "Newtonsoft.Json": "13.0.2",
+          "NodaTime": "3.0.5",
+          "QuantConnect.Algorithm": "2.5.16603",
+          "QuantConnect.Algorithm.CSharp": "2.5.16603",
+          "QuantConnect.AlgorithmFactory": "2.5.16603",
+          "QuantConnect.Api": "1.0.0",
+          "QuantConnect.Brokerages": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Compression": "1.0.0",
+          "QuantConnect.Configuration": "1.0.0",
+          "QuantConnect.Indicators": "2.5.16603",
+          "QuantConnect.Logging": "1.0.0",
+          "QuantConnect.pythonnet": "2.0.38",
+          "RestSharp": "106.12.0",
+          "fasterflect": "3.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/QuantConnect.Lean.Engine.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.0.0"
+          }
+        }
+      },
       "QuantConnect.pythonnet/2.0.38": {
         "dependencies": {
           "fasterflect": "3.0.0"
@@ -267,11 +475,23 @@
           }
         }
       },
+      "CustomDataProvider/1.0.0": {
+        "dependencies": {
+          "QuantConnect.Common": "2.5.16603",
+          "QuantConnect.Lean.Engine": "2.5.16603"
+        },
+        "runtime": {
+          "CustomDataProvider.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "QuantConnect.Api/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.2",
           "NodaTime": "3.0.5",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Logging": "1.0.0",
           "RestSharp": "106.12.0"
@@ -288,7 +508,7 @@
           "CsvHelper": "19.0.0",
           "Newtonsoft.Json": "13.0.2",
           "QuantConnect.Api": "1.0.0",
-          "QuantConnect.Common": "1.0.0",
+          "QuantConnect.Common": "2.5.16603",
           "QuantConnect.Compression": "1.0.0",
           "QuantConnect.Configuration": "1.0.0",
           "QuantConnect.Logging": "1.0.0",
@@ -298,28 +518,6 @@
           "QuantConnect.Brokerages.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "2.5.0.0"
-          }
-        }
-      },
-      "QuantConnect.Common/1.0.0": {
-        "dependencies": {
-          "CloneExtensions": "1.3.0",
-          "MathNet.Numerics": "5.0.0",
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
-          "Newtonsoft.Json": "13.0.2",
-          "NodaTime": "3.0.5",
-          "QLNet": "1.13.0",
-          "QuantConnect.Compression": "1.0.0",
-          "QuantConnect.Configuration": "1.0.0",
-          "QuantConnect.Logging": "1.0.0",
-          "QuantConnect.pythonnet": "2.0.38",
-          "fasterflect": "3.0.0",
-          "protobuf-net": "3.1.33"
-        },
-        "runtime": {
-          "QuantConnect.Common.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": ""
           }
         }
       },
@@ -359,14 +557,6 @@
             "fileVersion": "2.5.0.0"
           }
         }
-      },
-      "QuantConnect.Common.Reference/2.5.0.0": {
-        "runtime": {
-          "QuantConnect.Common.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
       }
     }
   },
@@ -375,6 +565,41 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Accord/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xJyL8zhWcfb7eYp4EiXamEkUo3dAvAriOQTWTgulP31wH7BCZqp/rI62+mPn29xcCH8a0iCKRxjEh6p0NsIG1w==",
+      "path": "accord/3.6.0",
+      "hashPath": "accord.3.6.0.nupkg.sha512"
+    },
+    "Accord.Fuzzy/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jQGcuUBReN7odJA4OTixVyVJujNW4w7VUZbEqWb9KZ7mYDJDdZUoE+FS1Kx89pIboFQQK7WFxGWSrKwE96g3vw==",
+      "path": "accord.fuzzy/3.6.0",
+      "hashPath": "accord.fuzzy.3.6.0.nupkg.sha512"
+    },
+    "Accord.MachineLearning/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R9iqbkXy4vqXgbJtHV2eW79i7pi8HjZVyG+0WEbbHvNft/rkExN7/o6I53w0GlKQEUPVu12Gr1e6XLBEqw7rLw==",
+      "path": "accord.machinelearning/3.6.0",
+      "hashPath": "accord.machinelearning.3.6.0.nupkg.sha512"
+    },
+    "Accord.Math/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mGhAp+ItUEFI/HUb8krKEwo2tB4SpVpTvZI5U9X+a5WKm8OSSW4Ern1fGq1jm6PXFbhFfhvLWC1WANc3fjrg0Q==",
+      "path": "accord.math/3.6.0",
+      "hashPath": "accord.math.3.6.0.nupkg.sha512"
+    },
+    "Accord.Statistics/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x5ZlX4bkC+OBPGG1cWt7lAWh5YeNadJ3vkfEgNv39EptsBr9Jj3ddRbfSce3oO5vQ6Q2RrtQyekNAL5d7pOkzA==",
+      "path": "accord.statistics/3.6.0",
+      "hashPath": "accord.statistics.3.6.0.nupkg.sha512"
     },
     "CloneExtensions/1.3.0": {
       "type": "package",
@@ -396,6 +621,13 @@
       "sha512": "sha512-CS9sjjXF23FLIbwlLT5k/jXBYxVnLMn01lyAvN/hxFM+UDvSicjTPB9ZMA+Wp/QlvBPbD2pzkAXUp1O50gP/Lw==",
       "path": "dotnetzip/1.16.0",
       "hashPath": "dotnetzip.1.16.0.nupkg.sha512"
+    },
+    "DynamicInterop/0.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n21+Hd+tceX8lgaOosPV+Pne+YqnZUd5RLW3OhnsVxWRzYXiAIAKmKweHIePYeY+fmcn3N5tjkJyQUccFuL3bg==",
+      "path": "dynamicinterop/0.9.1",
+      "hashPath": "dynamicinterop.0.9.1.nupkg.sha512"
     },
     "fasterflect/3.0.0": {
       "type": "package",
@@ -480,6 +712,55 @@
       "sha512": "sha512-SX0SbUrnx7PErZlw8fUniM0nmAyy1dtYBnxH5peYXTuvGreUO2PFlgf1OMbnD781ZriYCiIHgGrWF3uyPxC55A==",
       "path": "qlnet/1.13.0",
       "hashPath": "qlnet.1.13.0.nupkg.sha512"
+    },
+    "QuantConnect.Algorithm/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jRAYn6lvAdPzTmZNMItH6FxuRYNoWg+a8GhIM07ujkrkzYgr6EWSZMF58WznXjqWiED82tYHsENoU3+oFdPViw==",
+      "path": "quantconnect.algorithm/2.5.16603",
+      "hashPath": "quantconnect.algorithm.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.Algorithm.CSharp/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-urWux5ipMwU4KBwp73uWcMt7gI13s0DXoV3kQMV7fSG2OxsujM9hzjomp+T91HKoHofBtN/j/xTEEQhzfbbHDA==",
+      "path": "quantconnect.algorithm.csharp/2.5.16603",
+      "hashPath": "quantconnect.algorithm.csharp.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.Algorithm.Framework/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cc1hEpNDsGyMikx0YQvYs6961Os2yi7djt18v5tviE7AYAMgr6yWmtG4TKVqR/HH+ZaJz2NrgPdyyzshqMFK+A==",
+      "path": "quantconnect.algorithm.framework/2.5.16603",
+      "hashPath": "quantconnect.algorithm.framework.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.AlgorithmFactory/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Lrni+4XHigCDhYR38ZZul7eJvKRBb2e0RUxGwRGXZIAQCZ+ghQxo1WOGZG9jrb0uv3TThZptWJvaVqVlzjHTaw==",
+      "path": "quantconnect.algorithmfactory/2.5.16603",
+      "hashPath": "quantconnect.algorithmfactory.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.Common/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uZ1/BOaMo7Bsm1j72uyTr9q2Mr80ldJW4GfyAFCTYLkii2AETUU4qXPoGdKT3x/+kuNEbcXxaLyGpI9oMa4NRA==",
+      "path": "quantconnect.common/2.5.16603",
+      "hashPath": "quantconnect.common.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.Indicators/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fuXzZ6WwzvbgQOaHZXwuHYckZYx36S9Y9RTVPES7+PXtSrte8pfsFwcA40C04elG1rSxPPuIZ5nZSv0vDE7lyg==",
+      "path": "quantconnect.indicators/2.5.16603",
+      "hashPath": "quantconnect.indicators.2.5.16603.nupkg.sha512"
+    },
+    "QuantConnect.Lean.Engine/2.5.16603": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fQKO3zOPL6TyZiueVfSdAyqHG+IdwCJUKlXKKIqIHyV0EZrPbW6ofYE9ShBzud3A08HYLpLMwowe2HIIJ2ud0Q==",
+      "path": "quantconnect.lean.engine/2.5.16603",
+      "hashPath": "quantconnect.lean.engine.2.5.16603.nupkg.sha512"
     },
     "QuantConnect.pythonnet/2.0.38": {
       "type": "package",
@@ -579,17 +860,17 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
+    "CustomDataProvider/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "QuantConnect.Api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "QuantConnect.Brokerages/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "QuantConnect.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -606,11 +887,6 @@
     },
     "QuantConnect.Logging/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "QuantConnect.Common.Reference/2.5.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

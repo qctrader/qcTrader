@@ -48,5 +48,8 @@ namespace QuantConnect.Interfaces
         /// Returns a list of zip entries in a provided zip file
         /// </summary>
         List<string> GetZipEntries(string zipFile);
+
+
+       
     }
 }

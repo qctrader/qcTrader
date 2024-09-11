@@ -1,0 +1,101 @@
+2020-01-02 00:00:00 Launching analysis for BacktestingAlgorithm.py with LEAN Engine v2.5.0.0.v1.0.0
+2020-01-02 00:00:00 Accurate daily end-times now enabled by default. See more at https://qnt.co/3YHaWHL. To disable it and use legacy daily bars set self.settings.daily_precise_end_time = False.
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip
+2020-01-02 00:00:00 Recursive fetch detected for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\msft.zip. Aborting fetch to avoid recursion.
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip#aapl.csv
+2020-01-02 00:00:00 Attempting to fetch entry 'aapl.csv' from ZIP file 'D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip'
+2020-01-02 00:00:00 Its a valid zip file having csv folder
+2020-01-02 00:00:00 Fetch returned null for ZIP file: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip#googl.csv
+2020-01-02 00:00:00 Attempting to fetch entry 'googl.csv' from ZIP file 'D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip'
+2020-01-02 00:00:00 Its a valid zip file having csv folder
+2020-01-02 00:00:00 Fetch returned null for ZIP file: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip#ibm.csv
+2020-01-02 00:00:00 Attempting to fetch entry 'ibm.csv' from ZIP file 'D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip'
+2020-01-02 00:00:00 Its a valid zip file having csv folder
+2020-01-02 00:00:00 Fetch returned null for ZIP file: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip#spy.csv
+2020-01-02 00:00:00 Attempting to fetch entry 'spy.csv' from ZIP file 'D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip'
+2020-01-02 00:00:00 Its a valid zip file having csv folder
+2020-01-02 00:00:00 Fetch returned null for ZIP file: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\spy.zip
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
+2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
+2020-01-02 00:00:00 File not found: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\hour\msft.zip
+2020-01-02 00:00:00 fetched 'portfolio' parameter: {"initial_capital": "2000000.00", "assets": ["MSFT", "AAPL", "GOOGL", "IBM", "SPY"]}
+2020-01-02 00:00:00 assets: ['MSFT', 'AAPL', 'GOOGL', 'IBM', 'SPY']
+2020-01-02 00:00:00 security added: MSFT
+2020-01-02 00:00:00 currently subscribed symbols: ['MSFT']
+2020-01-02 00:00:00 AAPL is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 GOOGL is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 IBM is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 security added: AAPL
+2020-01-02 00:00:00 currently subscribed symbols: ['MSFT', 'AAPL']
+2020-01-02 00:00:00 GOOGL is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 IBM is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 security added: GOOGL
+2020-01-02 00:00:00 currently subscribed symbols: ['MSFT', 'AAPL', 'GOOGL']
+2020-01-02 00:00:00 IBM is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 security added: IBM
+2020-01-02 00:00:00 currently subscribed symbols: ['MSFT', 'AAPL', 'GOOGL', 'IBM']
+2020-01-02 00:00:00 SPY is not properly subscribed. check if it was added correctly in initialize.
+2020-01-02 00:00:00 security added: SPY
+2020-01-02 00:00:00 currently subscribed symbols: ['MSFT', 'AAPL', 'GOOGL', 'IBM', 'SPY']
+2020-01-02 00:00:00 unexpected exception during validatedaterange: no historical data available for asset MSFT.
+2020-01-02 00:00:00 initial capital set to: 2000000.0
+2020-01-02 00:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 0.17 seconds at 0k data points per second. Processing total of 1 data points.

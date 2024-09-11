@@ -14,10 +14,6 @@ D:\qctrader\qcTrader\Lean\Configuration\obj\Debug\QuantConnect.Configuration.dll
 D:\qctrader\qcTrader\Lean\Configuration\obj\Debug\refint\QuantConnect.Configuration.dll
 D:\qctrader\qcTrader\Lean\Configuration\obj\Debug\QuantConnect.Configuration.pdb
 D:\qctrader\qcTrader\Lean\Configuration\obj\Debug\ref\QuantConnect.Configuration.dll
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Configuration.deps.json
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Configuration.dll
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Configuration.pdb
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Release\QuantConnect.Configuration.xml
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Configuration\bin\Debug\QuantConnect.Configuration.xml
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Configuration\bin\Debug\QuantConnect.Configuration.deps.json
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\Configuration\bin\Debug\QuantConnect.Configuration.dll

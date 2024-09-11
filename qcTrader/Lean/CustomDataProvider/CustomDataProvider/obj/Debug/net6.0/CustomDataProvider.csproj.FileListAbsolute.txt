@@ -1,8 +1,3 @@
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\AlgorithmImports.py
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\PandasMapper.py
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\CustomDataProvider.deps.json
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\CustomDataProvider.dll
-D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\CustomDataProvider.pdb
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\AlgorithmImports.py
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\PandasMapper.py
 D:\qcTrader-par1\qcTrader\qcTrader\Lean\CustomDataProvider\CustomDataProvider\bin\Debug\net6.0\QuantConnect.Lean.Launcher.dll

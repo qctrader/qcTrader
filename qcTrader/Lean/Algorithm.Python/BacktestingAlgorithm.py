@@ -114,6 +114,8 @@ class BacktestingAlgorithm(QCAlgorithm):
                 raise ValueError("no assets provided in the portfolio.")
 
             self.log(f"assets: {self.assets}")
+
+            
             
             # get weighting scheme and rebalancing frequency
             self.weighting_scheme = self.GetParameter("weighting_scheme")
@@ -424,14 +426,17 @@ class BacktestingAlgorithm(QCAlgorithm):
 
                 # check if the market is open and the security is tradable
                 if security.HasData  and security.Price > 0 and security.IsTradable:
-                    if security.exchange.datetimeisopen(self.time):
-                        
+                    # Check if the market is open at the current time
+                    if security.Exchange.Hours.IsOpen(self.Time, False):  # False means you check for normal trading hours
+        
                         self.SetHoldings(symbol, weight)
-                        # self.tracker.handle_price_update(symbol, security.price)
-                        self.log(f"set holdings for {symbol} to {weight * 100:.2f}% based on market cap weighting.")
+                        self.log(f"Set holdings for {symbol} to {weight * 100:.2f}% based on market cap weighting.")
+    
                     else:
-                        self.log(f"market is closed for {symbol} at {self.Time}. "
-                             f"next open: {next_market_open}, next close: {next_market_close}.")    
+                        next_market_open = security.Exchange.Hours.GetNextMarketOpen(self.Time, False)
+                        next_market_close = security.Exchange.Hours.GetNextMarketClose(self.Time, False)
+                        self.log(f"Market is closed for {symbol} at {self.Time}. "
+                                 f"Next open: {next_market_open}, Next close: {next_market_close}.")  
                 else:
                     # detailed logging to determine the exact issue
                     if security.Price <= 0:
