@@ -3,35 +3,32 @@
 2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
 2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
 2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
-2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
-2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
-2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
-2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
-2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
-2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
-2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
-2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip#aapl.csv
-2020-01-02 00:00:00 CustomDataProvider: Successfully fetched stream from base class.
-2020-01-02 00:00:00 Removing key from in-progress list: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
 2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
 2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
 2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
 2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
 2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
 2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\googl.csv
+2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\aapl.csv
+2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
 2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
 2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
 2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
 2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
 2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip#googl.csv
-2020-01-02 00:00:00 CustomDataProvider: Successfully fetched stream from base class.
-2020-01-02 00:00:00 Removing key from in-progress list: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
+2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip#aapl.csv
 2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
 2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
 2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
 2020-01-02 00:00:00 File exists at: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
 2020-01-02 00:00:00 Failed to fetch data for key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
 2020-01-02 00:00:00 Prevented recursive fetch call in OnNewDataRequest for D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\ibm.csv
+2020-01-02 00:00:00 CustomDataProvider: Successfully fetched stream from base class.
+2020-01-02 00:00:00 Removing key from in-progress list: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\aapl.zip
 2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
 2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
 2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
@@ -39,6 +36,8 @@
 2020-01-02 00:00:00 File to send: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip#ibm.csv
 2020-01-02 00:00:00 CustomDataProvider: Successfully fetched stream from base class.
 2020-01-02 00:00:00 Removing key from in-progress list: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\ibm.zip
+2020-01-02 00:00:00 CustomDataProvider: Successfully fetched stream from base class.
+2020-01-02 00:00:00 Removing key from in-progress list: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\daily\googl.zip
 2020-01-02 00:00:00 Full Path: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
 2020-01-02 00:00:00 Current Working Directory: D:\qcTrader-par1\qcTrader
 2020-01-02 00:00:00 Fetching data for normalized key: D:\qcTrader-par1\qcTrader\qcTrader\Lean\Launcher\bin\Release\Data\equity\usa\factor_files\spy.csv
@@ -12057,4 +12056,4 @@ SPY 2T 2019-12-23 16:00:00  0.032122  0.032165  0.032106  0.032159  52990000.0
 2024-08-30 16:00:00 Set holdings for IBM to 1.63% based on market cap weighting.
 2024-08-30 16:00:00 processing SPY: price = 0.05583499755859375, IsTradable = True, next market open = 2024-09-03 09:30:00, next market close = 2024-08-30 16:00:00, current time = 2024-08-30 09:31:00
 2024-08-30 16:00:00 Set holdings for SPY to 4.95% based on market cap weighting.
-2024-08-30 16:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 1.53 seconds at 4k data points per second. Processing total of 6,051 data points.
+2024-08-30 16:00:00 Algorithm Id:(BacktestingAlgorithm.py) completed in 1.47 seconds at 4k data points per second. Processing total of 6,051 data points.

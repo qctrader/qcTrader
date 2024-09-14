@@ -122,37 +122,79 @@ class LeanRunner:
     "maximum-runtime": "100.00:00:00",  # Example: Max 100 days
     "maximum-orders": 2147483647,  # Example: Max orders
 }
+        
     def detect_is_docker(self):
-        """Check if the code is running inside a Docker container or WSL environment."""
-
+        """Check if the code is running inside a Docker container."""
+        
         # Get the platform type (Windows, Linux, Darwin (macOS))
         os_type = platform.system().lower()
-        print(f"os_type --------------------> {os_type }")
+        print(f"os_type --------------------> {os_type}")
 
-        # Check if the OS is Windows; if so, immediately return False
+        # Check if the OS is Windows; if so, check for Docker in Windows
         if os_type == 'windows':
+            # On Windows, Docker typically runs in a Hyper-V VM or WSL2
+            # We can check for Docker-specific environment variables
+            if os.getenv('DOCKER_CONTAINER') or os.path.exists('C:\\.dockerenv'):
+                return True
+            
+            # Additionally, check for WSL2 Docker setup
+            if 'microsoft' in platform.uname().release.lower():
+                # Check if Docker-specific files exist in WSL
+                docker_env_path = '/.dockerenv'
+                cgroup_path = '/proc/self/cgroup'
+                
+                if os.path.exists(docker_env_path):
+                    return True
+                
+                if os.path.isfile(cgroup_path):
+                    with open(cgroup_path) as f:
+                        if any('docker' in line for line in f):
+                            return True
+
+            # If running in a normal Windows environment, return False
             return False
 
-        # Check if the OS is macOS; if so, immediately return False
-        if os_type == 'darwin':
-            return False
-
-        # If it's a plain Linux environment, check if it's WSL first
+        # If it's a Linux environment, check if it's WSL or Docker
         if os_type == 'linux':
             # Detect if running under WSL (Windows Subsystem for Linux)
             if 'microsoft' in platform.uname().release.lower():
+                # Check if Docker-specific files exist in WSL
+                docker_env_path = '/.dockerenv'
+                cgroup_path = '/proc/self/cgroup'
+                
+                if os.path.exists(docker_env_path):
+                    return True
+                
+                if os.path.isfile(cgroup_path):
+                    with open(cgroup_path) as f:
+                        if any('docker' in line for line in f):
+                            return True
+
+                # If it's just WSL and not Docker
                 print("Running in WSL, not Docker.")
-                return False  # It's WSL, not Docker
+                return False
 
             # Now check for Docker-specific files
             docker_env_path = '/.dockerenv'
             cgroup_path = '/proc/self/cgroup'
             
-            # Check for the existence of .dockerenv file
             if os.path.exists(docker_env_path):
                 return True
             
-            # Check for 'docker' in /proc/self/cgroup
+            if os.path.isfile(cgroup_path):
+                with open(cgroup_path) as f:
+                    if any('docker' in line for line in f):
+                        return True
+
+        # If it's macOS, only check for Docker
+        if os_type == 'darwin':
+            # Check for Docker-specific files
+            docker_env_path = '/.dockerenv'
+            cgroup_path = '/proc/self/cgroup'
+            
+            if os.path.exists(docker_env_path):
+                return True
+            
             if os.path.isfile(cgroup_path):
                 with open(cgroup_path) as f:
                     if any('docker' in line for line in f):
@@ -160,19 +202,47 @@ class LeanRunner:
 
         # If none of the above conditions are met, return False
         return False
+    # def detect_is_docker(self):
+    #     """Check if the code is running inside a Docker container or WSL environment."""
+
+    #     # Get the platform type (Windows, Linux, Darwin (macOS))
+    #     os_type = platform.system().lower()
+    #     print(f"os_type --------------------> {os_type }")
+
+    #     # Check if the OS is Windows; if so, immediately return False
+    #     if os_type == 'windows':
+    #         return False
+
+    #     # Check if the OS is macOS; if so, immediately return False
+    #     if os_type == 'darwin':
+    #         return False
+
+    #     # If it's a plain Linux environment, check if it's WSL first
+    #     if os_type == 'linux':
+    #         # Detect if running under WSL (Windows Subsystem for Linux)
+    #         if 'microsoft' in platform.uname().release.lower():
+    #             print("Running in WSL, not Docker.")
+    #             return False  # It's WSL, not Docker
+
+    #         # Now check for Docker-specific files
+    #         docker_env_path = '/.dockerenv'
+    #         cgroup_path = '/proc/self/cgroup'
+            
+    #         # Check for the existence of .dockerenv file
+    #         if os.path.exists(docker_env_path):
+    #             return True
+            
+    #         # Check for 'docker' in /proc/self/cgroup
+    #         if os.path.isfile(cgroup_path):
+    #             with open(cgroup_path) as f:
+    #                 if any('docker' in line for line in f):
+    #                     return True
+
+    #     # If none of the above conditions are met, return False
+    #     return False
             
     def set_algorithm_config(self, algorithm_location, algorithm_name, parameters, algorithm_type_name, data_config_paramters):
-        # algorithm= {
-        #         "type": algorithm_name,
-        #         "data": {
-        #             "custom": {
-        #                 "equity": {
-        #                 "symbols": ["MSFT"]
-        #                }
-        #             }
-        #          }
-        #        }
-
+       
         base_directory = os.path.normpath(os.path.join(os.getcwd(), 'qcTrader', 'Lean', 'Launcher', 'bin', 'Release', 'Data', 'equity', 'usa', 'daily', 'msft.zip'))
         
 
@@ -278,7 +348,7 @@ class LeanRunner:
         
 
         # Ensure paths are cross-platform compatible
-        dll_path = os.path.join(self.starter_dll_path, 'QuantConnect.Lean.Launcher.dll')
+        dll_path = os.path.join(self.composer_dir, 'QuantConnect.Lean.Launcher.dll')
         dll_path = os.path.normpath(dll_path)
         config_file_path = os.path.normpath(config_file_path)
 

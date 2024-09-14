@@ -17,6 +17,9 @@ It simplifies the run of backtesting algorithms in python.
 ### Installation Steps
 - Install from source : pip install https://github.com/qctrader/qcTrader/releases/download/v1.0-beta.1/qcTrader-1.1.7-py3-none-any.whl
 - Install from dockerfile : There is two Dockerfiles in examples directory, simply run that, create the image and run python examples/example_script.py
+  pip install setuptools wheel
+  python setup.py bdist_wheel
+  docker build -f Dockerfile.Local -t my_custom_image .
 - Install from repository : 
   git clone -b feature-fixes https://github.com/qctrader/qcTrader.git
   cd qcTrader
@@ -35,6 +38,7 @@ check examples/example_script.py file
 - The map files should be in csv format along with anychanges to the ticker symbol in history
 - You can add data to the daily, hour, minute, second folder and it is in zip format
 - Currently it supports daily data history for ticker symbols
+- Custom data provider support
 
 ### Contributing
 `# Clone the repository
@@ -57,5 +61,5 @@ git push origin feature/your-feature
 
 
   
-  
+
 

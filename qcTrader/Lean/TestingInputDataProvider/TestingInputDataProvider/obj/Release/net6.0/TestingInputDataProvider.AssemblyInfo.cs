@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestingInputDataProvider")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0c2fa6692578f8ff41da48af691c430c6527189")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bce59112693231322d29bd2941dad449591d22b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestingInputDataProvider")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestingInputDataProvider")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
